@@ -82,7 +82,8 @@ class CalendarController
     }
     public function allCalendars()
     {
-        return $PlaceArray=$this->dao->readAll();
+        //return $Calendarios=$this->dao->readAll();
+          return $Calendarios=$this->dao->prueba();
     }
 
     public function home()

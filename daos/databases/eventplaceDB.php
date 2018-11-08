@@ -162,6 +162,23 @@ class eventplaceDB extends SingletonDao implements IDao
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
+    protected function mapeoSeat($id)
+    {
+        $sql = "SELECT * FROM tipo_plaza where id_tipo_plaza=$id";
+        try {
+            $this->connection = Connection::getInstance();
+            $value = $this->connection->execute($sql);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+        if (!empty($value)) {
+            $value = is_array($value) ? $value : [];
+            $resp = array_map(function ($p) {
+                return new Seat($p['descript'], $p['id_tipo_plaza']);
+            }, $value);
+            return count($resp) > 1 ? $resp : $resp['0'];
+        }
+    }
     function add($artist) {
         // TODO: Implement add() method.
 
@@ -182,23 +199,6 @@ class eventplaceDB extends SingletonDao implements IDao
             return true;
         }else{
             return false;
-        }
-    }
-    protected function mapeoSeat($id){
-        $sql = "SELECT * FROM tipo_plaza where id_tipo_plaza=$id";
-        try {
-            $this->connection = Connection::getInstance();
-            $value = $this->connection->execute($sql);
-        }
-        catch(Exception $ex) {
-            throw $ex;
-        }
-        if (!empty($value)){
-            $value = is_array($value) ? $value : [];
-            $resp = array_map(function ($p) {
-                return new Seat($p['descript'],$p['id_tipo_plaza']);
-            }, $value);
-            return count($resp) > 1 ? $resp : $resp['0'];
         }
     }
 

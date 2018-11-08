@@ -1,4 +1,19 @@
-<?php namespace views; ?>
+<?php namespace views;
+require_once ("configFacebook.php");
+
+if(!isset($_SESSION))
+{
+    session_start();
+}
+
+
+
+
+    $redirectURL = URl. "fb-callback.php";
+    $permissions = ['email'];
+    $loginURL = $helper->getLoginURL($redirectURL,$permissions);
+
+?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <!---------------------------------------------------------------------------------------------------------------------->
 <html>
@@ -15,7 +30,7 @@
     <div class="login-form">
         <div class="main-div">
             <div class="panel">
-                <h2>Admin Login</h2>
+                <h2>Login</h2>
                 <p>Please enter your email and password</p>
             </div>
 
@@ -37,6 +52,14 @@
                 <button type="submit" class="btn btn-primary" >Login</button>
 
             </form>
+
+
+            <div class="container" >
+                <input class="btn btn-primary" type="button" onclick="window.location = '<?php echo $loginURL; ?>';" value="Login whit Facebook">
+
+            </div>
+
+
             <?php
             if(isset($msg)){
                 ?>

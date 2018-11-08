@@ -69,5 +69,31 @@ class UserController {
 
         }
     }
+    public function islog(){
+        if(!isset($_SESSION['status'])){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    public function setOnLog()
+    {
+        $_SESSION['status']='on';
+    }
+    public function isFB()
+    {
+        if(isset($_SESSION['userData'])){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
+    public function isAdmin($user){
+        if($user->getRol()=='admin'){
+            return true;
+        }
+        return false;
+    }
 }

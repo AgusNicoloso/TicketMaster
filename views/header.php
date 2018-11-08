@@ -1,19 +1,29 @@
-<?php namespace views; ?>
+<?php  namespace views;
+       use controllers\CalendarController;
+use controllers\UserController;
+use models\User;
+
+$c_user=new UserController();
+$c_calendar=new CalendarController();
+?>
 <div class="header-icons">
                     <?php
-                    if(!isset($_SESSION['status']))
+                   print_r($c_calendar->allCalendars());
+                    if($c_user->isFB()){
+                        $c_user->setOnLog();
+                        $user=new User($_SESSION['userData']['mail'],'',$_SESSION['userData']['mail'],'user');
+                    }
+                        if($c_user->islog())
                         {
-                            include("navnotlog.php");
+                            if(empty($user)){
+                                $user=$_SESSION['logued'];
+                            }
 
-                        }
-                        elseif($_SESSION['status']=='on')
-                        {
-                            $user=$_SESSION['logued'];
                             ?>
                                 <p> <?php  echo $user->getName(); ?></p>
                                  <span class="linedivide1"></span>
                                 <?php
-                                    if ($_SESSION['logued']->getRol()== 'admin')
+                                    if ($c_user->isAdmin($user))
                                     { ?>
                                         <div class="btn-group">
 
@@ -26,7 +36,6 @@
                                                 <a class="dropdown-item" href="<?= URl ?>Category/index">Agregar Categoria</a>
                                                 <a class="dropdown-item" href="<?= URl ?>Place/index">Agregar Lugar de Evento</a>
                                                 <a class="dropdown-item" href="<?= URl ?>Seat/index">Agregar Tipo de Plaza</a>
-                                                <a class="dropdown-item" href="<?= URl ?>EventPlace/index">Agregar Plaza</a>
                                                 <a class="dropdown-item" href="<?= URl ?>Event/index">Agregar Evento</a>
                                                 <a class="dropdown-item" href="<?= URl ?>Calendar/index">Agregar Calendario</a>
                                             </div>
@@ -39,6 +48,13 @@
                                   <form action="<?= URl ?>User/logout" method="post" >
                                         <button type="submit" name="cs"><p>Cerrar Sesion</p></button>
                                   </form>
-                        <?php } ?>
+                        <?php }
+                        else
+                        {
+                            include("navnotlog.php");
+
+                        }
+
+                        ?>
                      </div>
 				</div>
