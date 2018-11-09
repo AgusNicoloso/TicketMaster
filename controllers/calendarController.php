@@ -86,7 +86,13 @@ class CalendarController
           return $Calendarios=$this->dao->mapeoCalendar();
     }
     public function last(){
-       return $array=array_reverse($this->allCalendars());
+        if(is_array($this->allCalendars())){
+            return $array=array_reverse($this->allCalendars());
+        }
+        else{
+            return $this->allCalendars();
+        }
+
     }
 
     public function home()

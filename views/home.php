@@ -75,36 +75,76 @@ if ($_POST) {
 	</section>
 
 	<!-- Prueba -->
+
+    <div class="container">
+        <div class="divtx" align="center">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12" align="center">
+                <header>
+                    <br>
+                    <h2 class="textH">Novedades</h2>
+                    <p class="subTex">Los eventos mas esperados!</p>
+                </header>
+            </div>
+        </div>
+         </div>
+        </div>
+    </div>
     <?php $array=$c_calendar->last();?>
     <section class="banner bgwhite p-t-40 p-b-40">
         <div class="container">
             <div class="row">
-                    <?php $i=1;
-                    foreach($array as $key=>$value){
-                    ?>
+                    <?php
+                    if(is_array($array)){
+                        $i=1;foreach($array as $key=>$value){
+                        ?>
 
-                 <div id="cartel" class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-                   <h4 align="center"><?php echo $value->getEvent()->getName();?></h4>
-                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <div id="cartel" class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                            <div align="center">
+                            <label  align="center"><?php echo $value->getEvent()->getName();?></label>
+                            </div>
+                            <div class="block1 hov-img-zoom pos-relative m-b-30">
 
-                        <img
-                                src="<?php echo $value->getEvent()->getPhoto();?>"
-                                height="478.94px"
-                                width="370px"
-                        >
-                        <div class="block1-wrapbtn w-size2">
-                            <!-- Button -->
-                            <a href="" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-                                Ver Ficha
-                            </a>
-                        </div>
-                        </div>
+                                <img
+                                        src="<?php echo $value->getEvent()->getPhoto();?>"
+                                        height="478.94px"
+                                        width="370px"
+                                >
+                                <div class="block1-wrapbtn w-size2">
+                                    <!-- Button -->
+                                    <a href="" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                        Ver Ficha
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <?php $i++;
                         if($i>='5'){
                             exit();
                         }
-                    }?>
+                    }}else{ ?>
+                        <div id="cartel" class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                            <div align="center">
+                                <label  align="center"><?php echo $array->getEvent()->getName();?></label>
+                            </div>
+                            <div class="block1 hov-img-zoom pos-relative m-b-30">
+
+                                <img
+                                        src="<?php echo $array->getEvent()->getPhoto();?>"
+                                        height="478.94px"
+                                        width="370px"
+                                >
+                                <div class="block1-wrapbtn w-size2">
+                                    <!-- Button -->
+                                    <a href="" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                        Ver Ficha
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+
+
             </div>
 
         </div>

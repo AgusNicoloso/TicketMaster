@@ -513,7 +513,28 @@ iframe {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
 }
+.divtx{
+    background-image: url(https://d11ew2uwv5qi1a.cloudfront.net/VistasNew/images/bg/info.jpg);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.textH{
+    font-size: 48px;
 
+    color: #737373;
+
+    font-weight: 300;
+}
+.subTex{
+    color: #7d8098;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    font-style: italic;
+}
 .fixed-header {}
 
 
