@@ -8,7 +8,6 @@ $c_calendar=new CalendarController();
 ?>
 <div class="header-icons">
                     <?php
-                   print_r($c_calendar->allCalendars());
                     if($c_user->isFB()){
                         $c_user->setOnLog();
                         $user=new User($_SESSION['userData']['mail'],'',$_SESSION['userData']['mail'],'user');

@@ -10,6 +10,7 @@ namespace daos\databases;
 use daos\daoList\idao as IDao;
 use daos\daoList\Singleton as SingletonDao;
 use daos\databases\Connection as Connection;
+use models\Artist;
 use models\Calendar as Calendar;
 use models\Category;
 use models\Event as Event;
@@ -135,7 +136,8 @@ from 	calendarios c
                 $event=new Event($p['title_event'],$p['photo'],$category,$p['id_event']);
                 $place=new Place($p['id_place'],$p['place_name'],$p['capacity']);
                 $placeevent=$this->mapeoPlacetype($p['id_calendar']);
-                return new Calendar($event,$place,$placeevent,$p['id_calendar'],'','',$p['date_event']);
+                $artist=$this->mapeoART($p['id_calendar']);
+                return new Calendar($event,$place,$placeevent,$p['id_calendar'],'',$artist,$p['date_event']);
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }
@@ -174,6 +176,25 @@ from 	calendarios c
             $value = is_array($value) ? $value : [];
             $resp = array_map(function ($p) {
                 return new Seat($p['descript'], $p['id_tipo_plaza']);
+            }, $value);
+            return count($resp) > 1 ? $resp : $resp['0'];
+        }
+    }
+    protected function mapeoART($id)
+    {
+        $sql = "
+		SELECT * FROM artistas_x_calendarios axc inner join artistas a on axc.id_artist = a.id_artist where axc.id_calendar=$id ";
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $value = $this->connection->execute($sql);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+        if (!empty($value)) {
+            $value = is_array($value) ? $value : [];
+            $resp = array_map(function ($p) {
+                return new Artist($p['artist_name']);
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }
