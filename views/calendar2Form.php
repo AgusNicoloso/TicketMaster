@@ -34,7 +34,7 @@ use controllers\ArtistController;
                     $dayCounter = $dateStart->diff($dateFinish);
                     $dayCounter = $dayCounter->format('%a');
                     $_SESSION['dates']=array();
-                $lista = new ArtistController();
+                $lista= new ArtistController();
                 $lista= $lista->showArtist();
                 $contador = 1;
                 while($contador <= $dayCounter+1) {
@@ -51,10 +51,14 @@ use controllers\ArtistController;
                         <?php
 
                         if(!empty($lista)){
+                          if(!is_array($lista)){ ?>
+                            <option value="<?php echo $lista->getId(); ?>"> <?php echo $lista->getName(); ?> </option>
+
+                        <?php  } else {
                             foreach ($lista as $key => $value) { ?>
 
                                 <option value="<?php echo $value->getId(); ?>"> <?php echo $value->getName(); ?> </option>
-                            <?php }
+                            <?php } }
                         } ?>
                     </select>
                     <?php $contador++; }

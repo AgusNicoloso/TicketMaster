@@ -86,7 +86,7 @@ use controllers\EventPlaceController;
 						</div>
 						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
 							<select class="selection-2" name="id_tipo_plaza">
-								<?php $epc = new EventPlaceController(); $list = $epc->readAll(); print_r($list);?>
+								<?php $epc = new EventPlaceController(); $list = $epc->readAll(); var_dump($list);?>
 								<option disabled selected>Seleccione sector</option>
 								<?php if(is_array($list)){
 								foreach ($list as $key => $value) {?>
