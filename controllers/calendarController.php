@@ -12,6 +12,7 @@ use daos\databases\Connection;
 use daos\databases\calendarDB as dao;
 use daos\databases\eventplaceDB;
 use models\Calendar as Calendar;
+use models\Category;
 use models\EventPlace;
 use models\Seat;
 
@@ -56,21 +57,20 @@ class CalendarController
                 $price=$_SESSION['data']['precios'];
                 $seatid=$_SESSION['data']['seats'];
                 $b=array_shift($a);
-
+                $calendar=new Calendar($event,$place);
+                $this->dao->create($calendar,$b);
                 while(!empty($seatid)){
                     $artists=$_POST[$dia];
                     $seatparam=array_shift($seatid);
                     $priceparam=array_shift($price);
                     $quantparam=array_shift($quant);
-                    $c_eventPlace->addEventPlace($quantparam,$priceparam,$seatparam);
-                    $lastidPlace=$c_eventPlace->getLastId();
                     while(!empty($artists)){
                         $artistparam=array_shift($artists);
-                        $calendar=new Calendar($event,$place,$lastidPlace);
-                        $this->dao->create($calendar,$b);
                         $idCalendar=$this->dao->lastId();
                         $axc->addArtistxCalendar($idCalendar,$artistparam);
+
                     }
+                    $c_eventPlace->addEventPlace($quantparam,$priceparam,$seatparam,$idCalendar);
                 }
 
                 $i++;
@@ -82,8 +82,8 @@ class CalendarController
     }
     public function allCalendars()
     {
-        //return $Calendarios=$this->dao->readAll();
-          return $Calendarios=$this->dao->prueba();
+
+          return $Calendarios=$this->dao->mapeoCalendar();
     }
 
     public function home()

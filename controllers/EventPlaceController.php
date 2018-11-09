@@ -23,12 +23,12 @@ class EventPlaceController
         require ('views/eventplaceForm.php');
     }
 
-    public function addEventPlace($quantity,$price,$idseat)
+    public function addEventPlace($quantity,$price,$idseat,$idcalendar)
     {
          $eplace=new EventPlace($quantity,$price);
         if($this->dao->issetSeat()){
             $eplace=new EventPlace($quantity,$price);
-            $this->dao->create($eplace,$idseat);
+            $this->dao->create($eplace,$idseat,$idcalendar);
             $ePlaceArray=$this->dao->readAll();
         }else{
             $msg="No hay Tipos de Plaza creados";

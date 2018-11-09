@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f096a6db-6e3d-41ce-b9d5-023be7ea198b" name="Default Changelist" comment="" />
+    <list default="true" id="f096a6db-6e3d-41ce-b9d5-023be7ea198b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/EventPlaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/EventPlaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/calendarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/calendarController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daos/databases/calendarDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/daos/databases/calendarDB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daos/databases/eventplaceDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/daos/databases/eventplaceDB.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +18,8 @@
     <session id="810564067">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.23" value="1" />
@@ -21,27 +28,27 @@
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="php" value="91" />
+          <entry key="php" value="97" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="91" />
+          <entry key="PHP" value="97" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="6079" />
+          <entry key="php" value="6345" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="6079" />
+          <entry key="PHP" value="6345" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -55,38 +62,7 @@
     <favorites_list name="TicketMaster" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/controllers/EventController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="45" column="30" lean-forward="true" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
-              <folding>
-                <element signature="e#65#132#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/event.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/photo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="67" column="15" selection-start-line="67" selection-start-column="15" selection-end-line="67" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <replaceStrings>
@@ -102,7 +78,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/header.php" />
         <option value="$PROJECT_DIR$/models/place.php" />
         <option value="$PROJECT_DIR$/daos/databases/categoryDB.php" />
         <option value="$PROJECT_DIR$/daos/databases/placeDB.php" />
@@ -111,15 +86,16 @@
         <option value="$PROJECT_DIR$/models/eventplace.php" />
         <option value="$PROJECT_DIR$/views/calendar2Form.php" />
         <option value="$PROJECT_DIR$/views/calendarForm.php" />
-        <option value="$PROJECT_DIR$/daos/databases/eventplaceDB.php" />
-        <option value="$PROJECT_DIR$/controllers/EventPlaceController.php" />
-        <option value="$PROJECT_DIR$/controllers/calendarController.php" />
-        <option value="$PROJECT_DIR$/daos/databases/calendarDB.php" />
         <option value="$PROJECT_DIR$/models/calendar.php" />
         <option value="$PROJECT_DIR$/controllers/ArtistController.php" />
         <option value="$PROJECT_DIR$/daos/databases/artistDB.php" />
         <option value="$PROJECT_DIR$/daos/daoList/idao.php" />
         <option value="$PROJECT_DIR$/controllers/EventController.php" />
+        <option value="$PROJECT_DIR$/controllers/EventPlaceController.php" />
+        <option value="$PROJECT_DIR$/daos/databases/eventplaceDB.php" />
+        <option value="$PROJECT_DIR$/views/header.php" />
+        <option value="$PROJECT_DIR$/controllers/calendarController.php" />
+        <option value="$PROJECT_DIR$/daos/databases/calendarDB.php" />
       </list>
     </option>
   </component>
@@ -165,7 +141,18 @@
             <path>
               <item name="TicketMaster" type="b2602c69:ProjectViewProjectNode" />
               <item name="TicketMaster" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TicketMaster" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TicketMaster" type="462c0819:PsiDirectoryNode" />
+              <item name="daos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TicketMaster" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TicketMaster" type="462c0819:PsiDirectoryNode" />
+              <item name="daos" type="462c0819:PsiDirectoryNode" />
+              <item name="databases" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TicketMaster" type="b2602c69:ProjectViewProjectNode" />
@@ -222,16 +209,17 @@
       <workItem from="1541026998468" duration="7457000" />
       <workItem from="1541072278126" duration="10609000" />
       <workItem from="1541256706652" duration="2669000" />
+      <workItem from="1541717564402" duration="3977000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46237000" />
+    <option name="totallyTimeSpent" value="50214000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.27458397" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49839744" weight="0.1633888" />
       <window_info id="Structure" order="1" sideWeight="0.5016026" side_tool="true" weight="0.120272316" />
       <window_info id="Favorites" order="2" sideWeight="0.5016026" side_tool="true" weight="0.120272316" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -252,7 +240,7 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.19515885" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.1633888" />
       <window_info id="Structure" order="1" sideWeight="0.5016026" side_tool="true" weight="0.120272316" />
       <window_info id="Favorites" order="2" sideWeight="0.5016026" side_tool="true" weight="0.120272316" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -290,13 +278,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/blogdetailController.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="30" column="122" selection-start-line="30" selection-start-column="122" selection-end-line="30" selection-end-column="122" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/event.php">
       <provider selected="true" editor-type-id="text-editor" />
@@ -376,13 +357,6 @@
     <entry file="file://$PROJECT_DIR$/daos/databases/seatDB.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/EventPlaceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/daos/databases/connection.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -404,23 +378,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/calendarController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
-          <folding>
-            <element signature="e#112#142#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/calendar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/artistpercalendarController.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -438,13 +395,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daos/databases/eventplaceDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2693">
-          <caret line="178" column="9" lean-forward="true" selection-start-line="178" selection-start-column="9" selection-end-line="178" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/daos/databases/artistxcalendarDB.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -459,16 +409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daos/databases/calendarDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="17" column="42" lean-forward="true" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-          <folding>
-            <element signature="e#115#145#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/ArtistController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -479,13 +419,6 @@
     <entry file="file://$PROJECT_DIR$/config/constantes.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/daos/databases/eventDB.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -493,20 +426,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/EventController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+          <folding>
+            <element signature="e#65#132#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/photo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
+        <state relative-caret-position="1541">
           <caret line="67" column="15" selection-start-line="67" selection-start-column="15" selection-end-line="67" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/EventController.php">
+    <entry file="file://$PROJECT_DIR$/daos/databases/calendarDB.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="45" column="30" lean-forward="true" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+        <state relative-caret-position="391">
+          <caret line="120" column="65" selection-start-line="120" selection-start-column="65" selection-end-line="120" selection-end-column="65" />
           <folding>
-            <element signature="e#65#132#0#PHP" expanded="true" />
+            <element signature="e#115#145#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daos/databases/eventplaceDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-145">
+          <caret line="32" column="49" lean-forward="true" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/calendar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/calendarController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="706">
+          <caret line="85" column="56" selection-start-line="85" selection-start-column="56" selection-end-line="85" selection-end-column="56" />
+          <folding>
+            <element signature="e#112#142#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/EventPlaceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
         </state>
       </provider>
     </entry>

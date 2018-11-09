@@ -23,13 +23,14 @@ class eventplaceDB extends SingletonDao implements IDao
     /**
      *
      */
-    public function create($eventplace,$idSeat) {
+    public function create($eventplace,$idSeat,$idcalendar) {
         // Guardo como string la consulta sql utilizand o como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
-        $sql = "INSERT INTO plaza_eventos (quantity,available,price,id_tipo_plaza) VALUES (:quantity,:available,:price,:id_tipo_plaza)";
+        $sql = "INSERT INTO plaza_eventos (quantity,available,price,id_tipo_plaza,id_calendar) VALUES (:quantity,:available,:price,:id_tipo_plaza,:id_calendar)";
         $parameters['quantity'] = $eventplace->getQuantity();
         $parameters['available'] = $eventplace->getQuantity();
         $parameters['price'] = $eventplace->getPrice();
         $parameters['id_tipo_plaza'] = $idSeat;
+        $parameters['id_calendar'] = $idcalendar;
         print_r($parameters);
         try {
             // creo la instancia connection
