@@ -141,7 +141,7 @@ $cc = new calendarController();
 									}
 									$res_arr = implode(' - ',$new_arr);
 								}else{
-									$res_arr = $artistlist;
+									$res_arr = $artistlist->getName();
 								}
 								?>
 								
