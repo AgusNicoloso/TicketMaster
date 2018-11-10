@@ -90,12 +90,12 @@ $cc = new calendarController();
 						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
 							<select class="selection-2" name="id_tipo_plaza">
 								<option disabled selected>Seleccione sector</option>
-								<?php $list = $info[0]->getTypeplace(); ?>
-								<?php if(is_array($list)){
+								<?php if(is_array($info)){
+									$list = $info[0]->getTypeplace();
 								foreach ($list as $key => $value) {?>
 								<option value="<?= $value->getID(); ?>"><?= $value->getSeatName() . " - $" . $value->getPrice();?></option>
 							<?php } } else { ?>
-								<option value="<?= $list->getID(); ?>"><?= $list->getSeatName() . " - $" . $list->getPrice();?></option>
+								<option value="<?= $info->getTypeplace()->getID(); ?>"><?= $info->getTypeplace()->getSeatName() . " - $" . $info->getTypeplace()->getPrice();?></option>
 							<?php } ?>
 							</select>
 						</div>
@@ -133,8 +133,9 @@ $cc = new calendarController();
 
 					<div class="dropdown-content dis-none p-t-15 p-b-23">
 						<p class="s-text8">
-
-							<?php $i=0; while($i < count($info)){ $date = $info[$i]->getDate(); $artistlist = $info[$i]->getArtist();
+							<?php if(is_array($info)) { ?>
+							<?php $i=0; while($i < count($info)){ 
+								$date = $info[$i]->getDate(); $artistlist = $info[$i]->getArtist();
 								if(is_array($artistlist)){
 									foreach($artistlist as $artist){
 									    $new_arr[] = $artist->getName();
@@ -144,9 +145,11 @@ $cc = new calendarController();
 									$res_arr = $artistlist->getName();
 								}
 								?>
-								
 							<label><input type="checkbox" name="date[]" value="<?=$date; ?>"> <?= "<b>".$date."</b>"." / "."<b>".$res_arr."</b>"; ?></label><br>
 						<?php $i++; unset($new_arr);} ?>
+					<?php } else { ?>
+						<label><input type="checkbox" name="date[]" value="<?=$info->getDate(); ?>"> <?= "<b>".$info->getDate()."</b>"." / "."<b>".$info->getArtist()->getName()."</b>"; ?></label><br>
+						<?php } ?>
 						</p>
 					</div>
 				</div>
@@ -157,12 +160,19 @@ $cc = new calendarController();
 						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
 						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
 					</h5>
-
+					<?php if(is_array($info)) { ?>
 					<div class="dropdown-content dis-none p-t-15 p-b-23">
 						<p class="s-text8">
 							<?= "Nombre del lugar : " . "<b>".$info[0]->getPlace()->getPlace()."</b>" . " - Capacidad : " . "<b>".$info[0]->getPlace()->getCapacity()."</b>";?>
 						</p>
 					</div>
+				<?php } else { ?>
+					<div class="dropdown-content dis-none p-t-15 p-b-23">
+						<p class="s-text8">
+							<?= "Nombre del lugar : " . "<b>".$info->getPlace()->getPlace()."</b>" . " - Capacidad : " . "<b>".$info->getPlace()->getCapacity()."</b>";?>
+						</p>
+					</div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>

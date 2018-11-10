@@ -75,16 +75,17 @@
 						</tr>
 							<?php foreach ($_SESSION['CarritoList'] as $key){ ?>
 							<tr class="table-row">
-								
 								<td class="column-1">
-									<div class="cart-img-product b-rad-4 o-f-hidden">
+									<a href="<?= URl ?>event/deleteEvent/<?= $i; ?>">
+										<div class="cart-img-product b-rad-4 o-f-hidden">
 										<img
 										 title="<?php $key['title_event']; ?>"
 							 			 alt="<?php $key['title_event']; ?>"
 							 			 src="<?= URl.$key['photo']; ?>"
 							 			 height="120px"
 										>
-									</div>
+									</div>	
+									</a>
 								</td>
 								<td class="column-2"><?= $key['title_event'];?><span class="header-cart-item-info">Tipo de plaza: <?= $key['name_place']?></span><span class="header-cart-item-info">Dia: <?= $key['date']?></span></td>
 								<td class="column-3">$<?= $key['price'];?></td>
