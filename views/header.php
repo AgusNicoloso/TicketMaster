@@ -35,8 +35,7 @@ $c_calendar=new CalendarController();
                                                 <a class="dropdown-item" href="<?= URl ?>Category/index">Agregar Categoria</a>
                                                 <a class="dropdown-item" href="<?= URl ?>Place/index">Agregar Lugar de Evento</a>
                                                 <a class="dropdown-item" href="<?= URl ?>Seat/index">Agregar Tipo de Plaza</a>
-                                                <a class="dropdown-item" href="<?= URl ?>Event/index">Agregar Evento</a>
-                                                <a class="dropdown-item" href="<?= URl ?>Calendar/index">Agregar Calendario</a>
+                                                <a class="dropdown-item" href="<?= URl ?>Event/index">Agregar Calendario</a>
                                             </div>
                                         </div>
                                         <span class="linedivide1"></span>

@@ -51,14 +51,14 @@ $c_seat=new SeatController();
                             if(!empty($eventList)){
                                 foreach ($eventList as $key=>$value){
                                     ?>
-                                    <option value="<?php $value->getId(); ?>"><?php echo $value->getName(); ?></option>
+                                    <option value="<?= $value->getId(); ?>"><?= $value->getName(); ?></option>
                                     <?php
                                 }
                             }
                         }
                         else{
                             ?>
-                            <option value="<?php echo $eventList->getId(); ?>"><?php echo $eventList->getName(); ?></option>
+                            <option value="<?=  $eventList->getId(); ?>"><?= $eventList->getName(); ?></option>
                         <?php
                         }
 

@@ -5,20 +5,15 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-
-
-
-
     $redirectURL = URl. "fb-callback.php";
     $permissions = ['email'];
     $loginURL = $helper->getLoginURL($redirectURL,$permissions);
-
 ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <!---------------------------------------------------------------------------------------------------------------------->
 <html>
 <head>
-
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link type="text/css" href="../css/csslog.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -71,6 +66,7 @@ if(!isset($_SESSION))
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <div id="fb-root"></div>
     <!------ Include the above in your HEAD tag ---------->
 </body>
 </html>

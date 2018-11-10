@@ -1,6 +1,8 @@
 <?php namespace views;
 use controllers\EventController as EventController;
+use controllers\calendarController as calendarController;
 use controllers\EventPlaceController;
+$cc = new calendarController();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,8 +55,9 @@ use controllers\EventPlaceController;
 			 </div>
 		</div>
 </header>
-
+	
 	<!-- Product Detail -->
+	<?php $info= $cc->infoEvent($product->getID()); ?>
 	<div class="container bgwhite p-t-35 p-b-80">
 		<div class="flex-w flex-sb">
 			<div class="w-size13 p-t-30 respon5">
@@ -82,17 +85,17 @@ use controllers\EventPlaceController;
 				<div class="p-t-33 p-b-60">
 					<div class="flex-m flex-w p-b-10">
 						<div class="s-text15 w-size15 t-center">
-							Tipo de plaza
+							<b>Tipo de plaza</b>
 						</div>
 						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
 							<select class="selection-2" name="id_tipo_plaza">
-								<?php $epc = new EventPlaceController(); $list = $epc->readAll(); var_dump($list);?>
 								<option disabled selected>Seleccione sector</option>
+								<?php $list = $info[0]->getTypeplace(); ?>
 								<?php if(is_array($list)){
 								foreach ($list as $key => $value) {?>
-								<option value="<?php echo $value->getID(); ?>"><?php echo $value->getSeatName() . " - $" . $value->getPrice();?></option>
+								<option value="<?= $value->getID(); ?>"><?= $value->getSeatName() . " - $" . $value->getPrice();?></option>
 							<?php } } else { ?>
-								<option value="<?php echo $list->getID(); ?>"><?php echo $list->getSeatName() . " - $" . $list->getPrice();?></option>
+								<option value="<?= $list->getID(); ?>"><?= $list->getSeatName() . " - $" . $list->getPrice();?></option>
 							<?php } ?>
 							</select>
 						</div>
@@ -120,17 +123,44 @@ use controllers\EventPlaceController;
 						</div>
 					</div>
 				</div>
-				</form>
-				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
+				
+				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14">
 					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
-						Descripcion
+						Seleccione en cual fecha desea ir / Artistas presentes
 						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
 						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
 					</h5>
 
 					<div class="dropdown-content dis-none p-t-15 p-b-23">
 						<p class="s-text8">
-							<?php echo "Aca veremos que ponemos" ?>
+
+							<?php $i=0; while($i < count($info)){ $date = $info[$i]->getDate(); $artistlist = $info[$i]->getArtist();
+								if(is_array($artistlist)){
+									foreach($artistlist as $artist){
+									    $new_arr[] = $artist->getName();
+									}
+									$res_arr = implode(' - ',$new_arr);
+								}else{
+									$res_arr = $artistlist;
+								}
+								?>
+								
+							<label><input type="checkbox" name="date[]" value="<?=$date; ?>"> <?= "<b>".$date."</b>"." / "."<b>".$res_arr."</b>"; ?></label><br>
+						<?php $i++; unset($new_arr);} ?>
+						</p>
+					</div>
+				</div>
+				</form>
+				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14">
+					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
+						Lugar
+						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
+						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
+					</h5>
+
+					<div class="dropdown-content dis-none p-t-15 p-b-23">
+						<p class="s-text8">
+							<?= "Nombre del lugar : " . "<b>".$info[0]->getPlace()->getPlace()."</b>" . " - Capacidad : " . "<b>".$info[0]->getPlace()->getCapacity()."</b>";?>
 						</p>
 					</div>
 				</div>

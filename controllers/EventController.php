@@ -36,7 +36,6 @@ class EventController {
       return $this->dao->read($id);
     }
     public function insert(){
-      print_r($_POST);
         try {
           $rutaFoto = new Photo();
           $rutaFoto->uploadPhoto($_FILES['fotoevento'], "photos");
@@ -45,6 +44,7 @@ class EventController {
       } catch (Exception $e) {
         echo $e->getMessage();
       }
+      header("Location:" . URl . "Calendar/index");
     }
     public function getAll(){
       return $this->dao->readAll();

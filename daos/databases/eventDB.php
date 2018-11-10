@@ -30,7 +30,6 @@ class EventDB extends SingletonDao implements idao {
         catch(\PDOException $ex) {
             throw $ex;
         }
-        header("Location:" . URl . "product");
     }
     /**
      *

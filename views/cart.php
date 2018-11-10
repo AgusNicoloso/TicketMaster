@@ -57,12 +57,11 @@
 			Carrito
 		</h2>
 	</section>
-
 	<!-- Cart -->
 	<section class="cart bgwhite p-t-70 p-b-100">
 		<div class="container">
 			<!-- Cart item -->
-		<?php if (isset($_SESSION['CarritoList']) && count($_SESSION['CarritoList']) != 0) { $total=0;?>
+		<?php if (isset($_SESSION['CarritoList']) && count($_SESSION['CarritoList']) != 0) { $i=1; $total=0;?>
 			
 			<div class="container-table-cart pos-relative">
 				<div class="wrap-table-shopping-cart bgwhite">
@@ -87,7 +86,7 @@
 										>
 									</div>
 								</td>
-								<td class="column-2"><?= $key['title_event'];?><span class="header-cart-item-info">Tipo de plaza: <?= $key['name_place']?></span></td>
+								<td class="column-2"><?= $key['title_event'];?><span class="header-cart-item-info">Tipo de plaza: <?= $key['name_place']?></span><span class="header-cart-item-info">Dia: <?= $key['date']?></span></td>
 								<td class="column-3">$<?= $key['price'];?></td>
 								<td class="column-4 text-center"><?=$key['quantity'];?></td>
 								<td class="column-5">$<?=($key['price']*$key['quantity']);?></td>

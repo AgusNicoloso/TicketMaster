@@ -117,10 +117,9 @@ select
 		le.place_name,
 		le.capacity
 from 	calendarios c 
-		inner join eventos e on  c.id_event=e.id_event 
+		inner join eventos e on  c.id_event=e.id_event
 		inner join categorias cat on e.id_category=cat.id_category
 		inner join lugares_eventos le on c.id_place = le.id_place";
-
         try {
             $this->connection = Connection::getInstance();
             $this->connection->connect();
@@ -195,6 +194,46 @@ from 	calendarios c
             $value = is_array($value) ? $value : [];
             $resp = array_map(function ($p) {
                 return new Artist($p['artist_name']);
+            }, $value);
+            return count($resp) > 1 ? $resp : $resp['0'];
+        }
+    }
+    public function mapeoEventDetail($id){
+        $sql = "
+select 
+        c.id_calendar,
+        c.date_event,
+        c.id_place,
+        c.id_event,
+        e.title_event,
+        e.photo,
+        e.id_category,
+        cat.category_name,
+        le.place_name,
+        le.capacity
+from    calendarios c 
+        inner join eventos e on  c.id_event=e.id_event
+        inner join categorias cat on e.id_category=cat.id_category
+        inner join lugares_eventos le on c.id_place = le.id_place
+where
+        e.id_event = $id";
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $value = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            throw $ex;
+        }
+        if (!empty($value)){
+            $value = is_array($value) ? $value : [];
+            $resp = array_map(function ($p) {
+                $category=NEW Category($p['category_name'],$p['id_category']);
+                $event=new Event($p['title_event'],$p['photo'],$category,$p['id_event']);
+                $place=new Place($p['id_place'],$p['place_name'],$p['capacity']);
+                $placeevent=$this->mapeoPlacetype($p['id_calendar']);
+                $artist=$this->mapeoART($p['id_calendar']);
+                return new Calendar($event,$place,$placeevent,$p['id_calendar'],'',$artist,$p['date_event']);
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }

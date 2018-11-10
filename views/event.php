@@ -44,10 +44,12 @@ $controllercategory = new \controllers\categoryController();?>
               </div>
                 <button type="submit" class="btn btn-primary">Agregar</button>
             </form>
+            <form action="<?= URl ?>Calendar/index">
+                <button type="" class="btn btn-primary">Omitir</button>
+            </form>
             <form action="Home">
                 <button type="" class="btn btn-primary">Volver al menú principal</button>
             </form>
-
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
                 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
                 <!------ Include the above in your HEAD tag ---------->

@@ -38,7 +38,6 @@ class CalendarController
         $c_eventPlace=new EventPlaceController();
         $axc=new ArtistperCalendarController();
         $controller=false;
-
         while(!empty($a)){
             $b=array_shift($a);
             $aux=$this->dao->verifyDate($b,$place);
@@ -68,16 +67,13 @@ class CalendarController
                         $artistparam=array_shift($artists);
                         $idCalendar=$this->dao->lastId();
                         $axc->addArtistxCalendar($idCalendar,$artistparam);
-
                     }
                     $c_eventPlace->addEventPlace($quantparam,$priceparam,$seatparam,$idCalendar);
                 }
-
                 $i++;
             }
             header("Location:" . URl);
         }
-
         unset($_SESSION['data'],$_SESSION['dates']);
     }
     public function allCalendars()
@@ -98,6 +94,9 @@ class CalendarController
     public function home()
     {
         header("Location:".URl);
+    }
+    public function infoEvent($id){
+        return $this->dao->mapeoEventDetail($id);
     }
 
 }

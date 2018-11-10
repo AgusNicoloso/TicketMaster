@@ -14,7 +14,7 @@ $daocarrito = new \daos\daoList\daoCarrito();
 			<ul class="header-cart-wrapitem">
 			<?php foreach ($_SESSION['CarritoList'] as $key){ ?>
 					<li class="header-cart-item">
-						<a class="header-cart-item-img" href="<?= URl ?>event/deleteEvent/<?= 1; ?>">
+						<a class="header-cart-item-img" href="<?= URl ?>event/deleteEvent/<?= $i; ?>">
 							<img
 							 title="<?php $key['title_event']; ?>"
 							 alt="<?php $key['title_event']; ?>"

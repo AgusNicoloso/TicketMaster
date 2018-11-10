@@ -33,7 +33,6 @@ class EventPlaceController
         }else{
             $msg="No hay Tipos de Plaza creados";
         }
-        header("Location:".URl);
     }
     public function getLastId()
     {
@@ -48,13 +47,17 @@ class EventPlaceController
     public function readAll(){
       return $this->dao->readAll();
     }
-    public function ver($id,$id_tipo_plaza, $num_product){
-      $place = $this->dao->read($id_tipo_plaza);
-      $ec = new EventController();
-      $event = $ec->getEvent($id);
-      $array = array('title_event' => $event->getName(), 'id_event' =>$id, 'photo' => $event->getPhoto(), 'name_place' => $place->getSeatName(), 'price' => $place->getPrice(), 'quantity' => $num_product, 'total' => $place->getPrice()*$num_product);
+    public function ver($id,$id_tipo_plaza, $num_product,$fecha){
       $carrito= new DaoCarrito();
+      $ec = new EventController();
+      $i=0;
+      while ($i<count($fecha)) {
+        $place = $this->dao->read($id_tipo_plaza);
+      $event = $ec->getEvent($id);
+      $array = array('title_event' => $event->getName(), 'id_event' =>$id, 'photo' => $event->getPhoto(), 'name_place' => $place->getSeatName(), 'price' => $place->getPrice(), 'quantity' => $num_product, 'total' => $place->getPrice()*$num_product, 'date' => $fecha[$i]);
       $carrito->add($array);
-      header("Location:".URl);
+      $i++;
+      }
+      header("Location:".URl."product");
     }
 }
