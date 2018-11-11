@@ -136,27 +136,18 @@ class EventDB extends SingletonDao implements idao {
     /**
      *
      */
-    public function delete($email) {
-        /*$sql = "DELETE FROM usuarios WHERE email = :email";
-
-        $obj_pdo = new Conexion();
-
+    public function delete($id) {
         try {
-             $conexion = $obj_pdo->conectar();
-
-         // Creo una sentencia llamando a prepare. Esto devuelve un objeto statement
-         $sentencia = $conexion->prepare($sql);
-
-             $sentencia->bindParam(":email", $email);
-
-             $sentencia->execute();
-
-
-        } catch(PDOException $Exception) {
-
-         throw new MyDatabaseException( $Exception->getMessage( ) , $Exception->getCode( ) );
-
-        }*/
+            $sql = "DELETE FROM eventos WHERE id_event = $id";
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            echo $ex->getMessage();
+        }
+        if (!empty($resultSet)) return $this->mapear($resultSet);
+        else return false;
     }
     /**
      * Transforma el listado de usuario en

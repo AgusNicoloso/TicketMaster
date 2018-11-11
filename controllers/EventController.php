@@ -20,9 +20,26 @@ class EventController {
       $daocarrito->add($event);
       header("Location: http://localhost/TicketMaster/product");
     }
+    public function indexEditEvent($product) {
+        require (ROOT . 'views/editevent.php');
+    }
     public function deleteEvent($i){
-      $daocarrito = new \daos\daoList\daoCarrito();
-      $daocarrito->delete($i);
+      $this->dao->delete($i);
+      header("Location: http://localhost/TicketMaster/product");
+    }
+    public function editEvent($id){
+      $product=$this->dao->read($id);
+      $this->indexEditEvent($product);
+    }
+    public function edit(){
+      try {
+          $rutaFoto = new Photo();
+          $rutaFoto->uploadPhoto($_FILES['fotoevento'], "photos");
+          $us=new Event($_POST['nombreevento'],$rutaFoto->getDirection(),$_POST['categoria']);
+          $this->dao->edit($us);
+      } catch (Exception $e) {
+        echo $e->getMessage();
+      }
       header("Location: http://localhost/TicketMaster/product");
     }
     public function see($id){

@@ -75,6 +75,7 @@ $cc = new calendarController();
 					</div>
 				</div>
 			</div>
+			<?php if($_SESSION['logued']->getRol()!="admin") { ?>
 			<div class="w-size14 p-t-30 respon5">
 				<h4 class="product-detail-name m-text16 p-b-13">
 					<?php echo $product->getName(); ?>
@@ -175,31 +176,29 @@ $cc = new calendarController();
 					<?php } ?>
 				</div>
 			</div>
+		<?php } else { ?>
+			<div class="w-size14 p-t-30 respon5">
+				<form action="<?= URl ?>Event/deleteEvent/<?=$product->getID();?>"> 
+					<button class='delete btn btn-danger'>Borrar evento</button>
+				</form>
+				<form action="<?= URl ?>Event/editEvent/<?=$product->getID();?>">
+			<button class='edit btn btn-success'>Editar evento</button>
+			</form>
+			</div>
+			<?php } ?>
 		</div>
 	</div>
-
-
-
-
 	<!-- Footer -->
-	<?php include("footer.php");
-	/*if(isset($_SESSION['Event'])){
-		print_r($_SESSION['Event']);
-	}*/?>
-
+	<?php include("footer.php"); ?>
 	<!-- Back to top -->
 	<div class="btn-back-to-top bg0-hov" id="myBtn">
 		<span class="symbol-btn-back-to-top">
 			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
 		</span>
 	</div>
-
 	<!-- Container Selection -->
 	<div id="dropDownSelect1"></div>
 	<div id="dropDownSelect2"></div>
-
-
-
 <!--===============================================================================================-->
 	<script type="text/javascript" src="<?= URl ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
