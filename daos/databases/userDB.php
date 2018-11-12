@@ -126,7 +126,7 @@ class userDB extends SingletonDao implements idao {
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
-            return new User($p['user'], $p['pass'], $p['name'], $p['rol']);
+            return new User($p['user'], $p['pass'], $p['name'], $p['rol'],$p['id_client']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }

@@ -93,9 +93,14 @@ $cc = new calendarController();
 								<option disabled selected>Seleccione sector</option>
 								<?php if(is_array($info)){
 									$list = $info[0]->getTypeplace();
-								foreach ($list as $key => $value) {?>
+									if(is_array($list)){
+										foreach ($list as $key => $value) { ?>
 								<option value="<?= $value->getID(); ?>"><?= $value->getSeatName() . " - $" . $value->getPrice();?></option>
-							<?php } } else { ?>
+																	<?php } ?>
+									<?php } else {  ?>
+										<option value="<?= $list->getID(); ?>"><?= $list->getSeatName() . " - $" . $list->getPrice();?></option>
+								<?php } ?>
+								<?php } else { ?>
 								<option value="<?= $info->getTypeplace()->getID(); ?>"><?= $info->getTypeplace()->getSeatName() . " - $" . $info->getTypeplace()->getPrice();?></option>
 							<?php } ?>
 							</select>

@@ -1,24 +1,26 @@
 <?php namespace models;
 class Buy {
     private $date;
-    private $number;
+    private $client;
     private $id;
-    function __construct($d, $n) {
-        $this->date = $d;
-        $this->number = $n;
+    private $ticket;
+    function __construct($ticket,$client,$date='',$id='') {
+        $this->id = $id;
+        $this->ticket = $ticket;
+        $this->date = $date;
+        $this->client = $client;
     }
     public function getDate() {
         return $this->date;
     }
-    public function getNumero() {
-        return $this->number;
+    public function getClient() {
+        return $this->client;
     }
-    public function setNumero($n) {
-        $this->number = $n;
+    public function getID(){
+        return $this->id;
     }
-    public function setDate($d) {
-        $this->date = $d;
+    public function getTicket(){
+        return $this->ticket;
     }
-    public function getId() {return $this->id;}
 }
 ?>

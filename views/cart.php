@@ -112,9 +112,11 @@
 								</div>
 								<div class="size15 trans-0-4">
 									<!-- Button -->
-									<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-										Confirmar Compra
-									</button>
+										<form class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" action="<?=URl?>checkout/index">
+										<button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" >
+										Confirmar Compra</button>
+										</form>
+									
 								</div>
 							</div>
 						<?php } else { ?>

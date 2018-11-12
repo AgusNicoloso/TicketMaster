@@ -5,11 +5,12 @@ class User {
     private $name;
     private $rol;
     private $id;
-    public function __construct($mail, $pass, $name, $rol) {
+    public function __construct($mail, $pass, $name, $rol,$id='') {
         $this->mail = $mail;
         $this->pass = $pass;
         $this->name = $name;
         $this->rol = $rol;
+        $this->id = $id;
     }
     /**
      * @return mixed
@@ -35,5 +36,5 @@ class User {
     public function getRol() {
         return $this->rol;
     }
-    public function getId() {return $this->id;}
+    public function getID() {return $this->id;}
 }
