@@ -76,6 +76,21 @@ if (isset($_GET["page"])) {
          <div class="container">
             <div class="row">
                <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                <form method="post" action="<?= URl ?>calendar/filter">
+                <div class="flex-sb-m flex-w p-b-35">
+                  <div class="flex-w">
+              <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+                <input type="date" name="startdate">
+              </div>
+              <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+                <input type="date" name="enddate">
+              </div>
+                </div>
+                <button type="submit"class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" name="filter">
+                        Filtrar
+                      </button>
+                </div>
+              </form>
                 <div class="leftbar p-r-20 p-r-0-sm">
                   <form action="<?= URl ?>Product/search" method="post">
 

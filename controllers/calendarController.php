@@ -98,5 +98,12 @@ class CalendarController
     public function infoEvent($id){
         return $this->dao->mapeoEventDetail($id);
     }
+    public function filter($startdate='',$enddate=''){
+      $product =  $this->dao->filter($startdate,$enddate);
+      $this->viewEventbyfilter($product);
+    }
+    public function viewEventbyfilter($product) {
+      include (ROOT . 'views/eventbyfilter.php');
+    }
 
 }

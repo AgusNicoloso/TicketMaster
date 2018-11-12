@@ -252,5 +252,33 @@ where
     {
         // TODO: Implement save() method.
     }
+    public function filter($startdate,$enddate){
+        $sql = "select DISTINCT
+        e.id_event,
+        e.title_event,
+        e.photo,
+        e.id_category,
+        cat.category_name
+from    calendarios c 
+        inner join eventos e on  c.id_event=e.id_event
+        inner join categorias cat on e.id_category=cat.id_category
+where e.id_event in (select id_event from calendarios where date_event between '$startdate' and '$enddate' order by date_event)";
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $value = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            throw $ex;
+        }
+        if (!empty($value)){
+            $value = is_array($value) ? $value : [];
+            $resp = array_map(function ($p) {
+                $category=NEW Category($p['category_name'],$p['id_category']);
+                return new Event($p['title_event'],$p['photo'],$category,$p['id_event']);
+            }, $value);
+            return count($resp) > 1 ? $resp : $resp['0'];
+        }
+    }
 
 }

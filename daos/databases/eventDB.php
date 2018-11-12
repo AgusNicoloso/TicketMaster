@@ -106,26 +106,21 @@ class EventDB extends SingletonDao implements idao {
     /**
      *
      */
-    public function edit($_user) {
-        $sql = "UPDATE users SET name = :name, surname = :surname, nationality = :nationality, state = :state, city = :city, birthdate = :birthdate, email = :email, password = :password, avatar = :avatar, role = :role";
-        $parameters['name'] = $_user->getName();
-        $parameters['surname'] = $_user->getSurname();
-        $parameters['nationality'] = $_user->getNationality();
-        $parameters['state'] = $_user->getState();
-        $parameters['city'] = $_user->getCity();
-        $parameters['birthdate'] = $_user->getBirthdate();
-        $parameters['email'] = $_user->getEmail();
-        $parameters['pass'] = $_user->getPass();
-        $parameters['avatar'] = $_user->getAvatar() ['avatar']['name'];
-        $parameters['role'] = $_user->getRole();
+    public function edit($event) {
+        $sql = "UPDATE event SET title_event = :title_event, photo = :photo, id_category = :id_category";
+        $parameters['title_event'] = $event->getName();
+        $parameters['photo'] = $event->getPhoto();
+        $parameters['id_category'] = $event->getCategory();
         try {
             // creo la instancia connection
             $this->connection = Connection::getInstance();
+            $this->connection->connect();
             // Ejecuto la sentencia.
-            return $this->connection->ExecuteNonQuery($sql, $parameters);
+            //return $this->connection->ExecuteNonQuery($sql, $parameters);
+            $this->connection->ExecuteNonQuery($sql, $parameters);
         }
         catch(\PDOException $ex) {
-            throw $ex;
+            echo $ex->getMessage();
         }
     }
     /**
@@ -188,4 +183,5 @@ class EventDB extends SingletonDao implements idao {
         // TODO: Implement save() method.
 
     }
+    
 }

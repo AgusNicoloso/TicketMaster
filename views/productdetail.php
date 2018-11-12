@@ -75,7 +75,7 @@ $cc = new calendarController();
 					</div>
 				</div>
 			</div>
-			<?php if($_SESSION['logued']->getRol()!="admin") { ?>
+			<?php /*isset($_SESSION['logued']->getRol()!="admin") || is_null($_SESSION['logued'])*/if(true) { ?>
 			<div class="w-size14 p-t-30 respon5">
 				<h4 class="product-detail-name m-text16 p-b-13">
 					<?php echo $product->getName(); ?>

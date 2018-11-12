@@ -18,17 +18,17 @@ $controllercategory = new \controllers\categoryController();?>
                 <h2>Editar Evento</h2>
                 <p>Agrega datos para editar el evento</p>
             </div>
-              <form id="Event" method="post" action="event/edit" enctype="multipart/form-data">
+              <form id="Event" method="post" action="<?= URl?>event/edit/<?= $product->getID();?>" enctype="multipart/form-data">
               <div class="form-group">
-                <input type="text" class="form-control" name="nombreevento" placeholder="<?= $product->getName(); ?>" value="<?= $product->getName(); ?>">
+                <input type="text" class="form-control" name="nombreevento" placeholder="<?= $product->getName(); ?>">
               </div>
               <div class="form-group">
-                <input type="file" class="form-control-file" name="fotoevento" value="<?= $product->getPhoto(); ?>">
+                <input type="file" class="form-control-file" name="fotoevento">
               </div>
               <div class="form-group">
                 <select class="custom-select my-1 mr-sm-2" name="categoria">
                   <?php if ($controllercategory->getAll()) { $list = $controllercategory->getAll(); ?>
-                  <option selected disabled value="<?= $product->getCategory()->getCategoryName();?>">Elige una categoría</option>
+                  <option selected disabled>Elige una categoría</option>
                   <?php if(!is_array($list)){ ?>
                       <option value="<?php echo $list->getID(); ?>"><?php echo $list->getCategoryName(); ?></option>
                   <?php } else { ?>

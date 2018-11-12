@@ -31,16 +31,33 @@ class EventController {
       $product=$this->dao->read($id);
       $this->indexEditEvent($product);
     }
-    public function edit(){
-      try {
-          $rutaFoto = new Photo();
-          $rutaFoto->uploadPhoto($_FILES['fotoevento'], "photos");
-          $us=new Event($_POST['nombreevento'],$rutaFoto->getDirection(),$_POST['categoria']);
-          $this->dao->edit($us);
-      } catch (Exception $e) {
-        echo $e->getMessage();
+    public function edit($id){
+      
+      if($this->dao->read($id)){
+        echo "nada";
       }
-      header("Location: http://localhost/TicketMaster/product");
+          
+           print_r($_POST);
+          die;
+          if($product){
+            $foto = $product->getPhoto();
+          if(isset($_FILES['fotoevento'])){
+              $rutaFoto = new Photo();
+              $rutaFoto->uploadPhoto($_FILES['fotoevento'], "photos");
+              $foto = $rutaFoto->getDirection();
+          }
+          if (!isset($_POST['nombreevento'])){
+            $_POST['nombreevento'] = $product->getName();
+          }
+           if (!isset($_POST['categoria'])){
+            $_POST['categoria'] = $product->getCategory()->getID();
+          }
+
+        $event=new Event($_POST['nombreevento'],$foto,$_POST['categoria']);
+        $this->dao->edit($event); 
+        header("Location: http://localhost/TicketMaster/product");
+          }
+      
     }
     public function see($id){
       $product=$this->dao->read($id);
@@ -75,5 +92,6 @@ class EventController {
     public function getAllbyID($id){
       return $this->dao->readAllbyID($id);
     }
+    
 
 }
