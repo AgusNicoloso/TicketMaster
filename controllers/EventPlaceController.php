@@ -60,4 +60,20 @@ class EventPlaceController
       }
       header("Location:".URl."product");
     }
+    public function capacityCounter($array){
+        $suma=0;
+        if(is_array($array)){
+            if(empty($array['0'])){
+                return '0';
+            }
+            foreach($array as $key=>$value){
+
+                $suma=$suma+$value;
+            }
+        }else{
+            $suma=$array;
+        }
+        return $suma;
+    }
+
 }

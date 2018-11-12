@@ -142,41 +142,7 @@ $c_seat=new SeatController();
                     </select>
                     
                 </div>
-                <div class="form-group">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Plaza</th>
-                            <th scope="col">Campos</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        if(is_array($seatList)){
 
-                                foreach ($seatList as $key => $value) { ?>
-
-                                    <tr>
-                                        <th scope="row"><?php echo $key+1;?></th>
-                                        <td><?php echo $value->getDescript(); ?></td>
-                                        <td><input type="text" class="form-control" placeholder="Precio" name="precios[]"><input type="text" class="form-control" placeholder="Cantidad" name="cantidad[]"></td>
-                                    </tr>
-                                <?php }
-                             }else{?>
-                            <?php ?>
-                            <tr>
-                                <th scope="row"><?php echo '1'?></th>
-                                <td><?php echo $seatList->getDescript(); ?></td>
-                                <td><input type="text" placeholder="Precio" class="form-control" name="precios[]"><input type="text" class="form-control" placeholder="Cantidad" name="cantidad[]"></td>
-
-                            </tr>
-                        <?php }  ?>
-
-
-                        </tbody>
-                    </table>
-                </div>
                 <button type="submit" class="btn btn-primary" >Siguiente</button>
 
             </form>

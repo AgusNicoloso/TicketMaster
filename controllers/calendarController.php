@@ -19,6 +19,7 @@ use models\Seat;
 class CalendarController
 {
     protected $dao;
+
     public function __construct() {
         $this->dao = dao::getInstance();
     }
@@ -26,55 +27,90 @@ class CalendarController
         require ('views/calendarForm.php');
     }
     public function index2() {
-        require ('views/calendar2Form.php');
+        $c_eventplace=new EventPlaceController();
+        $c_place=new PlaceController();
+        $c_seat=new SeatController();
+                require('views/calendar2Form.php');
+    }
+    public function quatity()
+    {
+
+        $c_eventplace = new EventPlaceController();
+        $c_place = new PlaceController();
+        if ($_POST) {
+            $cant = $c_eventplace->capacityCounter($_POST['cantidad']);
+
+            $place = $c_place->placebyid($_SESSION['data']['place']);
+            if ($place->getCapacity() < $cant) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public function oktoadd(){
+        $c_event=new EventController();
+        if($this->quatity()!=true){
+
+            $c_event->deletelastevent();
+            $msg='Supera la capacidad del establecimiento';
+            $c_event->setmsg($msg);
+            header("Location:" . URl.'Event/index');
+
+        }else{
+            $this->addCalendar();
+        }
     }
 
     public function addCalendar()
     {
-        $i=1;
-        $a=$_SESSION['dates'];
-        $event=$_SESSION['data']['event'];
-        $place=$_SESSION['data']['place'];
-        $c_eventPlace=new EventPlaceController();
-        $axc=new ArtistperCalendarController();
-        $controller=false;
-        while(!empty($a)){
-            $b=array_shift($a);
-            $aux=$this->dao->verifyDate($b,$place);
-            if($aux==true){
-                $controller=true;
-            }
-        }
-        if($controller){
-            $msg="La fecha en ese lugar ya está ocupada";
-            require("views/calendarForm.php");
-        }else{
+
+            $i=1;
             $a=$_SESSION['dates'];
-            while ($i <= $_SESSION['data']['days']){
-                $dia='dia'.$i;
-                $quant=$_SESSION['data']['cantidad'];
-                $price=$_SESSION['data']['precios'];
-                $seatid=$_SESSION['data']['seats'];
+            $event=$_SESSION['data']['event'];
+            $place=$_SESSION['data']['place'];
+            $c_eventPlace=new EventPlaceController();
+            $axc=new ArtistperCalendarController();
+            $controller=false;
+            while(!empty($a)){
                 $b=array_shift($a);
-                $calendar=new Calendar($event,$place);
-                $this->dao->create($calendar,$b);
-                while(!empty($seatid)){
-                    $artists=$_POST[$dia];
-                    $seatparam=array_shift($seatid);
-                    $priceparam=array_shift($price);
-                    $quantparam=array_shift($quant);
-                    while(!empty($artists)){
-                        $artistparam=array_shift($artists);
-                        $idCalendar=$this->dao->lastId();
-                        $axc->addArtistxCalendar($idCalendar,$artistparam);
-                    }
-                    $c_eventPlace->addEventPlace($quantparam,$priceparam,$seatparam,$idCalendar);
+                $aux=$this->dao->verifyDate($b,$place);
+                if($aux==true){
+                    $controller=true;
                 }
-                $i++;
             }
-            header("Location:" . URl);
-        }
-        unset($_SESSION['data'],$_SESSION['dates']);
+            if($controller){
+                $msg="La fecha en ese lugar ya está ocupada";
+                require("views/calendarForm.php");
+            }else{
+                $a=$_SESSION['dates'];
+                while ($i <= $_SESSION['data']['days']){
+                    $dia='dia'.$i;
+                    // $quant=$_SESSION['data']['cantidad'];
+                    //$price=$_SESSION['data']['precios'];
+                    $quant=$_POST['cantidad'];
+                    $price=$_POST['precios'];
+                    $seatid=$_SESSION['data']['seats'];
+                    $b=array_shift($a);
+                    $calendar=new Calendar($event,$place);
+                    $this->dao->create($calendar,$b);
+                    while(!empty($seatid)){
+                        $artists=$_POST[$dia];
+                        $seatparam=array_shift($seatid);
+                        $priceparam=array_shift($price);
+                        $quantparam=array_shift($quant);
+                        while(!empty($artists)){
+                            $artistparam=array_shift($artists);
+                            $idCalendar=$this->dao->lastId();
+                            $axc->addArtistxCalendar($idCalendar,$artistparam);
+                        }
+                        $c_eventPlace->addEventPlace($quantparam,$priceparam,$seatparam,$idCalendar);
+                    }
+                    $i++;
+                }
+                header("Location:" . URl);
+            }
+            unset($_SESSION['data'],$_SESSION['dates']);
+
     }
     public function allCalendars()
     {

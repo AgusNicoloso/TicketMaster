@@ -8,11 +8,14 @@ use daos\databases\eventDB as dao;
 class EventController {
     protected $dao;
     private $obj;
+    public $msg;
     public function __construct() {
         $this->dao = dao::getInstance();
     }
     public function index() {
+
         require (ROOT . 'views/event.php');
+
     }
     public function addEvent($nombre){
       $event = $this->dao->getEvent($nombre);
@@ -100,6 +103,14 @@ class EventController {
     public function viewEventbysearch($product) {
       include (ROOT . 'views/eventbysearch.php');
     }
-    
+    public function deletelastevent(){
+       $array=$this->dao->maxId();
+       $array=array_shift($array);
+        $id=array_shift($array);
+        $this->dao->deleteid($id);
+    }
+    public function setmsg($msg){
+        $this->msg=$msg;
+    }
 
 }

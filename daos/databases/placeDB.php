@@ -38,6 +38,20 @@ class placeDB extends SingletonDao implements IDao
         }
       // header("Location:" . URl);
     }
+    public function readId($id) {
+        $sql = "SELECT * FROM lugares_eventos where id_place=$id";
+
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            throw $ex;
+        }
+        if (!empty($resultSet)) return $this->mapear($resultSet);
+        else return false;
+    }
     /**
      *
      */

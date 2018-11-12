@@ -43,5 +43,8 @@ class PlaceController
     {
         header("Location:".URl);
     }
+    public function placebyid($id){
+       return $this->dao->readId($id);
+    }
 
 }
