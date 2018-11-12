@@ -96,7 +96,7 @@ if (isset($_GET["page"])) {
 
 
                   <div class="search-product pos-relative bo4 of-hidden">
-                    <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search_product" placeholder="Buscar evento o artista...">
+                    <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search_product" placeholder="Buscar evento...">
                        <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
                         <i class="fs-12 fa fa-search" aria-hidden="true"></i>
                        </button>

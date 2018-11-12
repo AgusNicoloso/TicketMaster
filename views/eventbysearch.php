@@ -192,7 +192,7 @@ $dbevents = new \controllers\EventController();
                      <?php } ?>
                   </div>
 								<?php } else { ?>
-                  <h3 class="text-center">No hay eventos para esa fecha...</h3>
+                  <h3 class="text-center">No hay eventos para esa busqueda...</h3>
 								<?php } ?>
                   <!-- Pagination -->
 
