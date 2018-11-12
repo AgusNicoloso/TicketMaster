@@ -92,6 +92,14 @@ class EventController {
     public function getAllbyID($id){
       return $this->dao->readAllbyID($id);
     }
+    public function search($search_product){
+      $search_product = preg_replace("#[^0-9a-z]#i", "", $search_product);
+      $product = $this->dao->search($search_product);
+      $this->viewEventbysearch($product);
+    }
+    public function viewEventbysearch($product) {
+      include (ROOT . 'views/eventbysearch.php');
+    }
     
 
 }

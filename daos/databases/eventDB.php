@@ -183,5 +183,18 @@ class EventDB extends SingletonDao implements idao {
         // TODO: Implement save() method.
 
     }
+    public function search($search) {
+        try {
+            $sql = "SELECT * FROM eventos WHERE title_event LIKE '%$search%'";
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            echo $ex->getMessage();
+        }
+        if (!empty($resultSet)) return $this->mapear($resultSet);
+        else return false;
+    }
     
 }

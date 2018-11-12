@@ -95,7 +95,7 @@ if (isset($_GET["page"])) {
 
 
                 <div class="leftbar p-r-20 p-r-0-sm">
-                  <form action="Product/search" method="post">
+                  <form action="Event/search" method="post">
 
 
                   <div class="search-product pos-relative bo4 of-hidden">
