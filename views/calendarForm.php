@@ -14,15 +14,16 @@ $c_seat=new SeatController();
 
 
 ?>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <!---------------------------------------------------------------------------------------------------------------------->
 <html>
 <head>
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/bootstrap-multiselect.css" type="text/css"/>
+    <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
+    <script type="text/javascript" src="../js/bootstrap-multiselect.js"></script>
     <link type="text/css" href="../css/csslog.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
 </head>
 <body id="LoginForm">
@@ -91,10 +92,10 @@ $c_seat=new SeatController();
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="">Fecha Inicio</label> <input type="date" class="form-control" name="dateIn">
+                    <label for="">Fecha Inicio</label> <input type="date" class="form-control" name="dateIn" min="<?=date("Y-m-d"); ?>">
                 </div>
                 <div class="form-group">
-                    <label for="">Fecha Fin</label> <input type="date" class="form-control" name="dateOut">
+                    <label for="">Fecha Fin</label> <input type="date" class="form-control" name="dateOut" min="<?=date("Y-m-d"); ?>">
                 </div>
                 <tile>Lugar</tile>
                 <div class="form-group">
@@ -123,13 +124,12 @@ $c_seat=new SeatController();
                     </select>
                 </div>
                 <tile>Plaza</tile>
-                <div class="form-group">
-                    <select class="custom-select my-1 mr-sm-2" multiple name="seats[]">
-
+                <div class="container-fluid">
+                    <select id="multiselectwithsearch" multiple="multiple" name="seats[]">
                         <?php
                         $seatList=$c_seat->allSeat();
                         if(is_array($seatList)){?>
-                            <option disabled selected>Elige uno o mas tipos de Plaza: </option>
+                            
                            <?php foreach ($seatList as $key => $value) { ?>
 
                                 <option value="<?php echo $value->getId(); ?>"> <?php echo $value->getDescript(); ?> </option>
@@ -140,6 +140,7 @@ $c_seat=new SeatController();
                             <option value="<?php echo $seatList->getId(); ?>"> <?php echo $seatList->getDescript(); ?> </option>
                       <?php }  ?>
                     </select>
+                    
                 </div>
                 <div class="form-group">
                     <table class="table">
@@ -187,6 +188,17 @@ $c_seat=new SeatController();
             }
             ?>
         </div></div>
-
+<script>
+$(function() {  
+ $('#multiselectwithsearch').multiselect({
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true,
+            nonSelectedText: 'Elige uno o mas tipos de plazas',
+            nSelectedText: 'Seleccionados',
+            allSelectedText: 'Todo seleccionado',
+            filterPlaceholder: 'Buscar plaza'
+        }); 
+});
+</script>
 </body>
 </html>

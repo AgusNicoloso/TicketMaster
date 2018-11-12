@@ -71,10 +71,10 @@ $dbevents = new \controllers\EventController();
                 <div class="flex-sb-m flex-w p-b-35">
                   <div class="flex-w">
               <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                <input type="date" name="startdate">
+                <input type="date" name="startdate" min="<?=date("Y-m-d"); ?>">
               </div>
               <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                <input type="date" name="enddate">
+                <input type="date" name="enddate" min="<?=date("Y-m-d"); ?>">
               </div>
                 </div>
                 <button type="submit"class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" name="filter">
