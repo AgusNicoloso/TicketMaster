@@ -50,6 +50,13 @@ $controllercategory = new \controllers\categoryController();?>
             <form action="Home">
                 <button type="" class="btn btn-primary">Volver al menú principal</button>
             </form>
+            <?php
+            if(isset($this->msg)){
+                ?>
+                <div class="alert alert-danger"><?php echo $this->msg;?></div>
+                <?php
+            }
+            ?>
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
                 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
                 <!------ Include the above in your HEAD tag ---------->

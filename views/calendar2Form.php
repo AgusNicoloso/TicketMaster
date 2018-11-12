@@ -59,7 +59,7 @@ use controllers\ArtistController;
                      $('#multiselectwithsearch<?=$contador?>').multiselect({
                                 enableFiltering: true,
                                 enableCaseInsensitiveFiltering: true,
-                                nonSelectedText: 'Elige uno o mas tipos de plazas',
+                                nonSelectedText: 'Elige uno o mas Artistas',
                                 nSelectedText: 'Seleccionados',
                                 allSelectedText: 'Todo seleccionado',
                                 filterPlaceholder: 'Buscar plaza'
@@ -68,6 +68,47 @@ use controllers\ArtistController;
                     </script>
                     <?php $contador++; }
                     ?>
+
+
+                    <br><br>
+                    <div class="form-group">
+                        <div class="alert alert-danger">Capacidad maxima: <?php  $place=$c_place->placebyid($_POST['place']);echo $place->getCapacity()?></div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Plaza</th>
+                                <th scope="col">Campos</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $seatList=$_POST['seats'];
+                            $seatList=$c_seat->arrayseat($seatList);
+                            if(is_array($seatList)){
+
+                                foreach ($seatList as $key => $value) { echo 'num'.$key;?>
+
+                                    <tr>
+                                        <th scope="row"><?php echo $key+1;?></th>
+                                        <td><?php echo $value->getDescript(); ?></td>
+                                        <td><input type="text" class="form-control" placeholder="Precio" name="precios[]"><input type="text" class="form-control" placeholder="Cantidad" name="cantidad[]"></td>
+                                    </tr>
+                                <?php }
+                            }else{?>
+                                <?php ?>
+                                <tr>
+                                    <th scope="row"><?php echo '1'?></th>
+                                    <td><?php echo $seatList->getDescript(); ?></td>
+                                    <td><input type="text" placeholder="Precio" class="form-control" name="precios[]"><input type="text" class="form-control" placeholder="Cantidad" name="cantidad[]"></td>
+
+                                </tr>
+                            <?php }  ?>
+
+
+                            </tbody>
+                        </table>
+                    </div>
             <?php
             $_SESSION['data']=$_POST;
             $_SESSION['data']['days']=$dayCounter+1;

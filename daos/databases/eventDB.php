@@ -51,6 +51,31 @@ class EventDB extends SingletonDao implements idao {
     /**
      *
      */
+    public function maxId(){
+        $sql = "select MAX(id_event) from eventos";
+
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            throw $ex;
+        }
+        return $resultSet;
+    }
+    public function deleteId($id){
+        $sql = "Delete from eventos where id_event= $id";
+        $parameters['id_event'] = $id;
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            throw $ex;
+        }
+    }
     public function readAll() {
         try {
             $sql = "SELECT * FROM eventos";

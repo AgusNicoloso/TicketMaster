@@ -44,4 +44,25 @@ class SeatController
     {
         header("Location:" . URl);
     }
+
+    public function seatbyid($id){
+     return $this->dao->seatbyid($id);
+    }
+    public function arrayseat($array){
+        $arreglo=array();
+        if(is_array($array)){
+            if(count($array)>1){
+                foreach ($array as $key=>$value){
+                    $seat=$this->seatbyid($value);
+                    array_push($arreglo,$seat);
+                }
+            }else{
+                $arreglo=$array[0];
+                $seat=$this->seatbyid($arreglo);
+                $arreglo=$seat;
+            }
+
+        }
+        return $arreglo;
+    }
 }

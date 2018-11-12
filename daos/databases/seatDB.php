@@ -44,6 +44,18 @@ class seatDB extends SingletonDao implements IDao
     /**
      *
      */
+    public function seatbyid($id){
+        $sql = "SELECT * FROM tipo_plaza where id_tipo_plaza = $id";
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+        if (!empty($resultSet)) return $this->mapear($resultSet);
+        else return false;
+    }
     public function read($seat_descript)
     {
         $sql = "SELECT * FROM tipo_plaza where seat_descript = :seat_descript";
