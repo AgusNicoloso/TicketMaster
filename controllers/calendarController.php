@@ -48,14 +48,14 @@ class CalendarController
         return true;
     }
     public function oktoadd(){
+        $c_eventplace=new EventPlaceController();
+        $c_place=new PlaceController();
+        $c_seat=new SeatController();
         $c_event=new EventController();
         if($this->quatity()!=true){
 
-            $c_event->deletelastevent();
             $msg='Supera la capacidad del establecimiento';
-            $c_event->setmsg($msg);
-            header("Location:" . URl.'Event/index');
-
+            require ('views/calendarForm.php');
         }else{
             $this->addCalendar();
         }

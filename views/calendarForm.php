@@ -125,7 +125,7 @@ $c_seat=new SeatController();
                 </div>
                 <tile>Plaza</tile>
                 <div class="container-fluid">
-                    <select id="multiselectwithsearch" multiple="multiple" name="seats[]">
+                    <select class="form-control" id="multiselectwithsearch" multiple="multiple" name="seats[]">
                         <?php
                         $seatList=$c_seat->allSeat();
                         if(is_array($seatList)){?>
@@ -142,7 +142,7 @@ $c_seat=new SeatController();
                     </select>
                     
                 </div>
-
+                <br>
                 <button type="submit" class="btn btn-primary" >Siguiente</button>
 
             </form>

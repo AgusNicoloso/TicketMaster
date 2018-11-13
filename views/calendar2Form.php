@@ -23,7 +23,7 @@ use controllers\ArtistController;
                 <h2>Calendario</h2>
                 <p>Porfavor, ingrese la informacion solicitada.</p>
             </div>
-            <form id="Calendar" method="post" action="addCalendar">
+            <form id="Calendar" method="post" action="oktoadd">
                 <?php
                 if($_POST) {
                      $dateStart = new \DateTime($_POST['dateIn']);
