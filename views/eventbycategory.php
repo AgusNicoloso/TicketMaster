@@ -220,6 +220,9 @@ if (isset($_GET["page"])) {
                   <?php if($count!=0){ ?>
                   <div class="pagination flex-m flex-w p-t-26">
                     <?php $total = $dbevents->getAllbyID($id); ?>
+                    <?php if(!is_array($total)) { ?>
+                      <a href="<?= URl ?>category/see/<?php echo $id; ?>?page=<?php echo 1; ?>" class="item-pagination flex-c-m trans-0-4 active-pagination"><?php echo 1; ?></a>
+                    <?php } else { ?>
                   <?php for($a=1;$a<=ceil(count($total)/9);$a++){ ?>
                     <?php if($page==$a){ ?>
                       <a href="<?= URl ?>category/see/<?php echo $id; ?>?page=<?php echo $a; ?>" class="item-pagination flex-c-m trans-0-4 active-pagination"><?php echo $a; ?></a>
@@ -228,7 +231,7 @@ if (isset($_GET["page"])) {
                      <?php } ?>
                   <?php } ?>
                   </div>
-                <?php } ?>
+                <?php } }?>
                </div>
             </div>
          </div>

@@ -204,13 +204,16 @@ if (isset($_GET["page"])) {
                   </div>
                   <div class="pagination flex-m flex-w p-t-26">
                     <?php $total = $dbevents->getAll();?>
+                    <?php if(!is_array($total)){ ?>
+                      <a href="product?page=<?php echo 1; ?>" class="item-pagination flex-c-m trans-0-4 active-pagination"><?php echo 1; ?></a>
+                    <?php } else { ?>
                   <?php for($a=1;$a<=ceil(count($total)/9);$a++){ ?>
                     <?php if($page==$a){ ?>
                       <a href="product?page=<?php echo $a; ?>" class="item-pagination flex-c-m trans-0-4 active-pagination"><?php echo $a; ?></a>
                     <?php } else{ ?>
                      <a href="product?page=<?php echo $a; ?>" class="item-pagination flex-c-m trans-0-4"><?php echo $a; ?></a>
                      <?php } ?>
-                  <?php } ?>
+                  <?php } }?>
                   </div>
 								<?php } else { ?>
                   <h3 class="text-center">No hay eventos...</h3>
