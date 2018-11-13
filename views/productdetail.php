@@ -75,7 +75,7 @@ $cc = new calendarController();
 					</div>
 				</div>
 			</div>
-			<?php /*isset($_SESSION['logued']->getRol()!="admin") || is_null($_SESSION['logued'])*/if(true) { ?>
+			<?php if($_SESSION['logued']->getRol()!="admin") { ?>
 			<div class="w-size14 p-t-30 respon5">
 				<h4 class="product-detail-name m-text16 p-b-13">
 					<?php echo $product->getName(); ?>
@@ -186,8 +186,9 @@ $cc = new calendarController();
 				<form action="<?= URl ?>Event/deleteEvent/<?=$product->getID();?>"> 
 					<button class='delete btn btn-danger'>Borrar evento</button>
 				</form>
-				<form action="<?= URl ?>Event/editEvent/<?=$product->getID();?>">
-			<button class='edit btn btn-success'>Editar evento</button>
+				<form action="<?= URl ?>Event/editEvent" method="post" >
+                    <input type="number" value="<?=$product->getID();?>" name="eventid" hidden>
+			    <button type="submit" class='edit btn btn-success'>Editar evento</button>
 			</form>
 			</div>
 			<?php } ?>

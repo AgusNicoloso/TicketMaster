@@ -18,7 +18,7 @@ $controllercategory = new \controllers\categoryController();?>
                 <h2>Editar Evento</h2>
                 <p>Agrega datos para editar el evento</p>
             </div>
-              <form id="Event" method="post" action="<?= URl?>event/edit/<?= $product->getID();?>" enctype="multipart/form-data">
+              <form id="Event" method="post" action="<?= URl?>event/edit" enctype="multipart/form-data">
               <div class="form-group">
                 <input type="text" class="form-control" name="nombreevento" placeholder="<?= $product->getName(); ?>">
               </div>
@@ -40,6 +40,7 @@ $controllercategory = new \controllers\categoryController();?>
                       <option selected disabled>No hay categorias</option> 
                       <?php } ?>
                   </select>
+                  <input type="number" value="<?=$product->getID();?>" name="eventid" hidden>
               </div>
                 <button type="submit" class="btn btn-primary">Editar</button>
             </form>

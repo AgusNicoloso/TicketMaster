@@ -35,12 +35,9 @@ class EventController {
       $this->indexEditEvent($product);
     }
     public function edit($id){
-      
-      if($this->dao->read($id)){
-        echo "nada";
-      }
-          
-           print_r($_POST);
+        $id=$_POST['eventid'];
+        $product=$this->dao->read($id);
+           print_r($product);
           die;
           if($product){
             $foto = $product->getPhoto();
