@@ -131,8 +131,8 @@ class EventDB extends SingletonDao implements idao {
     /**
      *
      */
-    public function edit($event) {
-        $sql = "UPDATE event SET title_event = :title_event, photo = :photo, id_category = :id_category";
+    public function edit($event,$id) {
+        $sql = "UPDATE eventos SET title_event = :title_event, photo = :photo, id_category = :id_category where id_event = $id";
         $parameters['title_event'] = $event->getName();
         $parameters['photo'] = $event->getPhoto();
         $parameters['id_category'] = $event->getCategory();

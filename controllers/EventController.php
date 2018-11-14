@@ -37,27 +37,27 @@ class EventController {
     public function edit($id){
         $id=$_POST['eventid'];
         $product=$this->dao->read($id);
-           print_r($product);
-          die;
           if($product){
             $foto = $product->getPhoto();
+            $nombreevento = $product->getName();
+            $categoria = $product->getIDCategory();
           if(isset($_FILES['fotoevento'])){
               $rutaFoto = new Photo();
               $rutaFoto->uploadPhoto($_FILES['fotoevento'], "photos");
               $foto = $rutaFoto->getDirection();
           }
-          if (!isset($_POST['nombreevento'])){
-            $_POST['nombreevento'] = $product->getName();
+          if (isset($_POST['nombreevento'])){
+            $nombreevento = $_POST['nombreevento'];
           }
-           if (!isset($_POST['categoria'])){
-            $_POST['categoria'] = $product->getCategory()->getID();
+           if (isset($_POST['categoria'])){
+            $categoria = $_POST['categoria'];
+          }
+        $event=new Event($nombreevento,$foto,$categoria);
+        $this->dao->edit($event,$id); 
+
           }
 
-        $event=new Event($_POST['nombreevento'],$foto,$_POST['categoria']);
-        $this->dao->edit($event); 
-        header("Location: http://localhost/TicketMaster/product");
-          }
-      
+                  header("Location: http://localhost/TicketMaster/product");
     }
     public function see($id){
       $product=$this->dao->read($id);
