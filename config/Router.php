@@ -1,9 +1,5 @@
 <?php namespace config;
 class Router {
-    /**
-     * Se encarga de direccionar a la pagina solicitada
-     * @param Request
-     */
     public function __construct() {
     }
     public static function direccionar(Request $request) {
