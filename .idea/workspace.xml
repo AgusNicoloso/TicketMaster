@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f096a6db-6e3d-41ce-b9d5-023be7ea198b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/editevent.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/editevent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/productdetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/productdetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/calendarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/calendarController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/calendar2Form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/calendar2Form.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +16,9 @@
     <session id="810564067">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.23" value="1" />
@@ -27,33 +27,33 @@
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.7" value="3" />
-          <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="16" />
+          <entry key="project.open.time.7" value="4" />
+          <entry key="project.open.time.8" value="4" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="3" />
-          <entry key="php" value="132" />
+          <entry key="php" value="135" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="3" />
-          <entry key="PHP" value="132" />
+          <entry key="PHP" value="135" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="32" />
-          <entry key="php" value="9439" />
+          <entry key="php" value="9455" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="32" />
-          <entry key="PHP" value="9439" />
+          <entry key="PHP" value="9455" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -67,7 +67,35 @@
     <favorites_list name="TicketMaster" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/calendarForm.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2369">
+              <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/calendar2Form.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1909">
+              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/calendarController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="37" column="34" lean-forward="true" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <replaceStrings>
@@ -104,12 +132,12 @@
         <option value="$PROJECT_DIR$/daos/databases/eventDB.php" />
         <option value="$PROJECT_DIR$/controllers/PlaceController.php" />
         <option value="$PROJECT_DIR$/views/event.php" />
-        <option value="$PROJECT_DIR$/views/calendar2Form.php" />
-        <option value="$PROJECT_DIR$/controllers/calendarController.php" />
         <option value="$PROJECT_DIR$/views/calendarForm.php" />
         <option value="$PROJECT_DIR$/views/productdetail.php" />
         <option value="$PROJECT_DIR$/views/editevent.php" />
         <option value="$PROJECT_DIR$/controllers/EventController.php" />
+        <option value="$PROJECT_DIR$/views/calendar2Form.php" />
+        <option value="$PROJECT_DIR$/controllers/calendarController.php" />
       </list>
     </option>
   </component>
@@ -150,22 +178,6 @@
             <path>
               <item name="TicketMaster" type="b2602c69:ProjectViewProjectNode" />
               <item name="TicketMaster" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TicketMaster" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TicketMaster" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TicketMaster" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TicketMaster" type="462c0819:PsiDirectoryNode" />
-              <item name="daos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TicketMaster" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TicketMaster" type="462c0819:PsiDirectoryNode" />
-              <item name="daos" type="462c0819:PsiDirectoryNode" />
-              <item name="databases" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TicketMaster" type="b2602c69:ProjectViewProjectNode" />
@@ -225,16 +237,21 @@
       <workItem from="1542053447646" duration="6472000" />
       <workItem from="1542110195920" duration="2089000" />
       <workItem from="1542118678969" duration="4457000" />
+      <workItem from="1542137906668" duration="1311000" />
+      <workItem from="1542156964059" duration="118000" />
+      <workItem from="1542203051773" duration="8000" />
+      <workItem from="1542203251377" duration="385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72116000" />
+    <option name="totallyTimeSpent" value="73938000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.20953101" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.22163388" />
       <window_info id="Structure" order="1" sideWeight="0.5016026" side_tool="true" weight="0.120272316" />
       <window_info id="Favorites" order="2" sideWeight="0.5016026" side_tool="true" weight="0.120272316" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -515,23 +532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/calendarForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="125" column="34" lean-forward="true" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/calendarController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="e#112#142#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/EventController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -553,10 +553,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/calendarForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2369">
+          <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/calendarController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="37" column="34" lean-forward="true" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/calendar2Form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+        <state relative-caret-position="1909">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
         </state>
       </provider>
     </entry>

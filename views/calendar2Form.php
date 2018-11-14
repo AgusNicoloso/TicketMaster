@@ -26,13 +26,7 @@ use controllers\ArtistController;
             <form id="Calendar" method="post" action="oktoadd">
                 <?php
                 if($_POST) {
-                     $dateStart = new \DateTime($_POST['dateIn']);
-                     $dateFinish = new \DateTime($_POST['dateOut']);
-                    $dayCounter = $dateStart->diff($dateFinish);
-                    $dayCounter = $dayCounter->format('%a');
-                    $_SESSION['dates']=array();
-                    $lista= new ArtistController();
-                    $lista= $lista->showArtist();
+
                     $contador = 1;
                      while($contador <= $dayCounter+1) {
                     if (($dateStart <= $dateFinish)) {
@@ -72,7 +66,7 @@ use controllers\ArtistController;
 
                     <br><br>
                     <div class="form-group">
-                        <div class="alert alert-danger">Capacidad maxima: <?php  $place=$c_place->placebyid($_POST['place']);echo $place->getCapacity()?></div>
+                        <div class="alert alert-danger">Capacidad maxima: <?php  $place;echo $place->getCapacity()?></div>
                         <table class="table">
                             <thead>
                             <tr>
@@ -83,8 +77,7 @@ use controllers\ArtistController;
                             </thead>
                             <tbody>
                             <?php
-                            $seatList=$_POST['seats'];
-                            $seatList=$c_seat->arrayseat($seatList);
+
                             if(is_array($seatList)){
 
                                 foreach ($seatList as $key => $value) { echo 'num'.$key;?>

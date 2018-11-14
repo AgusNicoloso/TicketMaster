@@ -30,6 +30,16 @@ class CalendarController
         $c_eventplace=new EventPlaceController();
         $c_place=new PlaceController();
         $c_seat=new SeatController();
+        $lista= new ArtistController();
+        $dateStart = new \DateTime($_POST['dateIn']);
+        $dateFinish = new \DateTime($_POST['dateOut']);
+        $dayCounter = $dateStart->diff($dateFinish);
+        $dayCounter = $dayCounter->format('%a');
+        $seatList=$_POST['seats'];
+        $seatList=$c_seat->arrayseat($seatList);
+        $_SESSION['dates']=array();
+        $place=$c_place->placebyid($_POST['place']);
+        $lista= $lista->showArtist();
                 require('views/calendar2Form.php');
     }
     public function quatity()
