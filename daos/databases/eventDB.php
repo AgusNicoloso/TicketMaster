@@ -178,12 +178,14 @@ class EventDB extends SingletonDao implements idao {
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
-            $category=$this->mapeoCategory($p['id_category']);
+            //$category=$this->mapeoCategory($p['id_category']);
+            $categorydb=new categoryDB();
+            $category=$categorydb->read($p['id_category']);
             return new Event($p['title_event'], $p['photo'], $category,$p['id_event']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
-    protected function mapeoCategory($id){
+    /*protected function mapeoCategory($id){
         $sql = "SELECT * FROM categorias where id_category=$id";
         try {
             $this->connection = Connection::getInstance();
@@ -199,15 +201,8 @@ class EventDB extends SingletonDao implements idao {
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }
-    }
-    function add($artist) {
-        // TODO: Implement add() method.
+    }*/
 
-    }
-    function save() {
-        // TODO: Implement save() method.
-
-    }
     public function search($search) {
         try {
             $sql = "SELECT * FROM eventos WHERE title_event LIKE '%$search%'";

@@ -123,9 +123,6 @@ class eventplaceDB extends SingletonDao implements IDao
      */
     public function update($value, $valiue) {
     }
-    /**
-     *
-     */
     public function delete($email) {
         /*$sql = "DELETE FROM usuarios WHERE email = :email";
 
@@ -157,13 +154,15 @@ class eventplaceDB extends SingletonDao implements IDao
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
-            $seat=$this->mapeoSeat($p['id_tipo_plaza']);
+            //$seat=$this->mapeoSeat($p['id_tipo_plaza']);
+              $seatdb=new seatDB();
+              $seat=$seatdb->seatbyid($p['id_tipo_plaza']);
             return new EventPlace($p['quantity'],$p['price'],$seat,$p['available'],$p['id_plaza_evento']);
            // return new EventPlace($p['id_lugar_evento'],$p['quantity'],$p['available'],$p['price'],$p['id_tipo_plaza']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
-    protected function mapeoSeat($id)
+    /*protected function mapeoSeat($id)
     {
         $sql = "SELECT * FROM tipo_plaza where id_tipo_plaza=$id";
         try {
@@ -179,14 +178,7 @@ class eventplaceDB extends SingletonDao implements IDao
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }
-    }
-    function add($artist) {
-        // TODO: Implement add() method.
-
-    }
-    function save() {
-        // TODO: Implement save() method.
-    }
+    }*/
     public function issetSeat(){
         $sql = "SELECT * FROM tipo_plaza";
         try {

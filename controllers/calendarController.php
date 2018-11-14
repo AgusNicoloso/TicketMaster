@@ -97,6 +97,14 @@ class CalendarController
                 }
             }
             if($controller){
+                $c_event=new EventController();
+                $c_place=new PlaceController();
+                $c_category=new CategoryController();
+                $c_seat=new SeatController();
+                $seatList=$c_seat->allSeat();
+                $categoryList=$c_category->getAll();
+                $eventList=$c_event->getAll();
+                $placeList=$c_place->allPlace();
                 $msg="La fecha en ese lugar ya está ocupada";
                 require("views/calendarForm.php");
             }else{

@@ -105,7 +105,7 @@ class calendarDB extends SingletonDao implements IDao
 
     public function mapeoCalendar(){
         $sql = "
-select 
+      select 
 		c.id_calendar,
 		c.date_event,
 		c.id_place,
@@ -116,7 +116,8 @@ select
 		cat.category_name,
 		le.place_name,
 		le.capacity
-from 	calendarios c 
+      from 	
+        calendarios c 
 		inner join eventos e on  c.id_event=e.id_event
 		inner join categorias cat on e.id_category=cat.id_category
 		inner join lugares_eventos le on c.id_place = le.id_place";
@@ -134,15 +135,19 @@ from 	calendarios c
                 $category=NEW Category($p['category_name'],$p['id_category']);
                 $event=new Event($p['title_event'],$p['photo'],$category,$p['id_event']);
                 $place=new Place($p['id_place'],$p['place_name'],$p['capacity']);
-                $placeevent=$this->mapeoPlacetype($p['id_calendar']);
-                $artist=$this->mapeoART($p['id_calendar']);
+               // $placeevent=$this->mapeoPlacetype($p['id_calendar']);
+                  $placeevent=new eventplaceDB();
+                  $artist=new artistxcalendarDB();
+                  $placeevent->read($p['id_calendar']);
+                  $artist->mapeoART($p['id_calendar']);
+                //$artist=$this->mapeoART($p['id_calendar']);
                 return new Calendar($event,$place,$placeevent,$p['id_calendar'],'',$artist,$p['date_event']);
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }
     }
 
-    public function mapeoPlacetype($id)
+   /* public function mapeoPlacetype($id)
     {
         $sql = "select * from plaza_eventos p where p.id_calendar=$id";
         try {
@@ -237,7 +242,7 @@ where
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }
-    }
+    }*/
     function delete($nombre)
     {
         // TODO: Implement delete() method.
