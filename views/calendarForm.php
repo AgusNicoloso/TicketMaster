@@ -24,10 +24,17 @@ use controllers\SeatController;
             <div class="panel">
                 <h2>Calendario</h2>
                 <p>Porfavor, ingrese la informacion solicitada.</p>
+
             </div>
-
+            <?php
+            if(isset($msg)){
+                ?>
+                <div class="alert alert-danger"><?php echo $msg;?></div>
+                <?php
+            }
+            ?>
             <form id="Calendar" method="post" action="index2">
-
+                <?php if(empty($msg)){ ?>
                 <div class="form-group">
 
                     <tile>Evento</tile>
@@ -129,15 +136,12 @@ use controllers\SeatController;
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary" >Siguiente</button>
+                <?php }?>
+                </form>
+            <br>
+            <a class="btn btn-primary" href="<?= URl.'home' ?>">Home</a>
 
-            </form>
-            <?php
-            if(isset($msg)){
-                ?>
-                <div class="alert alert-danger"><?php echo $msg;?></div>
-                <?php
-            }
-            ?>
+
         </div></div>
 <script>
 $(function() {  

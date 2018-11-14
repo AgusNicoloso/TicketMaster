@@ -202,7 +202,7 @@ class calendarDB extends SingletonDao implements IDao
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }
-    }
+    }*/
     public function mapeoEventDetail($id){
         $sql = "
 select 
@@ -236,13 +236,17 @@ where
                 $category=NEW Category($p['category_name'],$p['id_category']);
                 $event=new Event($p['title_event'],$p['photo'],$category,$p['id_event']);
                 $place=new Place($p['id_place'],$p['place_name'],$p['capacity']);
-                $placeevent=$this->mapeoPlacetype($p['id_calendar']);
-                $artist=$this->mapeoART($p['id_calendar']);
+                //$placeevent=$this->mapeoPlacetype($p['id_calendar']);
+                //$artist=$this->mapeoART($p['id_calendar']);
+                $pdb=new eventplaceDB();
+                $adb=new artistxcalendarDB();
+                $placeevent=$pdb->read($p['id_calendar']);
+                $artist=$adb->mapeoART($p['id_calendar']);
                 return new Calendar($event,$place,$placeevent,$p['id_calendar'],'',$artist,$p['date_event']);
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }
-    }*/
+    }
     function delete($nombre)
     {
         // TODO: Implement delete() method.

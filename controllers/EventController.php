@@ -78,7 +78,8 @@ class EventController {
       } catch (Exception $e) {
         echo $e->getMessage();
       }
-      header("Location:" . URl . "Calendar/index");
+           header("Location:" . URl . "Calendar/index");
+
     }
     public function getAll(){
       return $this->dao->readAll();

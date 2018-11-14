@@ -28,11 +28,22 @@ class CalendarController
         $c_place=new PlaceController();
         $c_category=new CategoryController();
         $c_seat=new SeatController();
+        $c_artist=new ArtistController();
+        $art=$c_artist->showArtist();
         $seatList=$c_seat->allSeat();
         $categoryList=$c_category->getAll();
         $eventList=$c_event->getAll();
         $placeList=$c_place->allPlace();
-        require ('views/calendarForm.php');
+        $msg;
+        if(empty($seatList) || empty($art) || empty($eventList) || empty($placeList) ) {
+            $msg="No estan todas las listas cargadas";
+        }
+        require('views/calendarForm.php');
+
+
+
+
+
     }
     public function index2() {
         $c_eventplace=new EventPlaceController();
