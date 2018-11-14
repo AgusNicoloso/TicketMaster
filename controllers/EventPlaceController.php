@@ -20,6 +20,8 @@ class EventPlaceController
         $this->dao = dao::getInstance();
     }
     public function index() {
+        $c_seat=new SeatController();
+        $listplace=$c_seat->allSeat();
         require ('views/eventplaceForm.php');
     }
 

@@ -31,8 +31,6 @@ use controllers\SeatController;
                     <input type="text" class="form-control" name="price" id="inputEmail" placeholder="Precio" required>
                 </div>
                 <div class="form-group">
-                    <?php $c_seat=new SeatController();
-                          $listplace=$c_seat->allSeat(); ?>
                     <select class="form-control" name="seat" required>
                        <?php if(is_array($listplace)){
                        foreach ($listplace as $key => $value) {?>
@@ -52,7 +50,7 @@ use controllers\SeatController;
             <?php
             if(empty($listplace)){
                 ?>
-                <div class="alert alert-danger">No hay Tipo de Clase cargados.</div>
+                <div class="alert alert-danger">No hay Tipo de plaza cargados.</div>
                 <?php
             }
             ?>

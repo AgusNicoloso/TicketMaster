@@ -4,15 +4,6 @@ use controllers\CategoryController;
 use controllers\EventController;
 use controllers\PlaceController;
 use controllers\SeatController;
-
-$c_event=new EventController();
-$c_place=new PlaceController();
-$c_category=new CategoryController();
-$c_seat=new SeatController();
-
-
-
-
 ?>
 <!---------------------------------------------------------------------------------------------------------------------->
 <html>
@@ -38,11 +29,6 @@ $c_seat=new SeatController();
             <form id="Calendar" method="post" action="index2">
 
                 <div class="form-group">
-                    <?php
-                    $categoryList=$c_category->getAll();
-                    $eventList=$c_event->getAll();
-                    $placeList=$c_place->allPlace();
-                    ?>
 
                     <tile>Evento</tile>
                     <select class="form-control" name="event" id="">
@@ -127,7 +113,6 @@ $c_seat=new SeatController();
                 <div class="container-fluid">
                     <select class="form-control" id="multiselectwithsearch" multiple="multiple" name="seats[]">
                         <?php
-                        $seatList=$c_seat->allSeat();
                         if(is_array($seatList)){?>
                             
                            <?php foreach ($seatList as $key => $value) { ?>

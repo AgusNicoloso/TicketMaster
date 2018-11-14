@@ -24,6 +24,14 @@ class CalendarController
         $this->dao = dao::getInstance();
     }
     public function index() {
+        $c_event=new EventController();
+        $c_place=new PlaceController();
+        $c_category=new CategoryController();
+        $c_seat=new SeatController();
+        $seatList=$c_seat->allSeat();
+        $categoryList=$c_category->getAll();
+        $eventList=$c_event->getAll();
+        $placeList=$c_place->allPlace();
         require ('views/calendarForm.php');
     }
     public function index2() {
