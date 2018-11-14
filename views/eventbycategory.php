@@ -143,7 +143,6 @@ if (isset($_GET["page"])) {
 									<?php
                   if ($dbevents->getLimit($pageaux,$id)) {
                     $i=0;
-                    $count=0;
                     $list = $dbevents->getLimit($pageaux,$id);
                     ?>
                   <div class="row">

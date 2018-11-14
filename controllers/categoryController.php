@@ -37,6 +37,7 @@ class CategoryController {
       $this->viewEventbyCategory($id);
     }
     public function viewEventbyCategory($id) {
+        $count=0;
       include (ROOT . 'views/eventbycategory.php');
     }
 
