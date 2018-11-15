@@ -1,5 +1,4 @@
-<?php namespace views; 
-$controllercategory = new \controllers\categoryController();?>
+<?php namespace views; ?>
 <!---------------------------------------------------------------------------------------------------------------------->
 <html>
 <head>

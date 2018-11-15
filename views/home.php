@@ -1,11 +1,4 @@
-<?php namespace views;
-$daocategory = new \daos\daoList\CategoryDao();
-$controllercategory = new \controllers\categoryController();
-if ($_POST) {
-    $category = new \models\TipoCategoria($_POST['namecategory'], $_POST['photocategory']);
-    $daocategory->add($category);
-}
-?>
+<?php namespace views;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -42,7 +42,7 @@ $c_calendar=new CalendarController();
                                         <span class="linedivide1"></span>
                                  <?php
                                } else { ?>
-                                <a href="buy/userbuylist"><img src="<?= URl ?>images/icons/billeteraicon.png" alt="" height="25px" width="25px"></a>
+                                <a href="<?= URl ?>buy/userbuylist"><img src="<?= URl ?>images/icons/billeteraicon.png" alt="" height="25px" width="25px"></a>
                                 <span class="linedivide1"></span>
                                 <?php include("headercart.php");?>
                                 <span class="linedivide1"></span>

@@ -176,6 +176,9 @@ class CalendarController
       $this->viewEventbyfilter($product);
     }
     public function viewEventbyfilter($product) {
+        $controllercategory = new \controllers\categoryController();
+$dbevents = new \controllers\EventController();
+
       include (ROOT . 'views/eventbyfilter.php');
     }
 

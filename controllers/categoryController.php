@@ -37,6 +37,18 @@ class CategoryController {
       $this->viewEventbyCategory($id);
     }
     public function viewEventbyCategory($id) {
+        $controllercategory = new \controllers\categoryController();
+$dbevents = new \controllers\EventController();
+$pageaux = 0;
+$page = 1;
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+    if ($page == "1") {
+        $pageaux = 0;
+    } else {
+        $pageaux = ($page * 9) - 9;
+    }
+}
         $count=0;
       include (ROOT . 'views/eventbycategory.php');
     }

@@ -1,7 +1,4 @@
-<?php namespace views;
-$controllercategory = new \controllers\categoryController();
-$dbevents = new \controllers\EventController();
-?>
+<?php namespace views; ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

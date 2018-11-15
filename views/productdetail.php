@@ -1,9 +1,7 @@
 <?php namespace views;
 use controllers\EventController as EventController;
 use controllers\calendarController as calendarController;
-use controllers\EventPlaceController;
-$cc = new calendarController();
-?>
+use controllers\EventPlaceController; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

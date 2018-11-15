@@ -13,7 +13,7 @@ class EventController {
         $this->dao = dao::getInstance();
     }
     public function index() {
-
+        $controllercategory = new \controllers\categoryController();
         require (ROOT . 'views/event.php');
 
     }
@@ -24,6 +24,7 @@ class EventController {
       header("Location: http://localhost/TicketMaster/product");
     }
     public function indexEditEvent($product) {
+      $controllercategory = new \controllers\categoryController();
         require (ROOT . 'views/editevent.php');
     }
     public function deleteEvent($i){
@@ -41,12 +42,12 @@ class EventController {
             $foto = $product->getPhoto();
             $nombreevento = $product->getName();
             $categoria = $product->getIDCategory();
-          if(isset($_FILES['fotoevento'])){
+          if($_FILES['fotoevento']['size']!=0){
               $rutaFoto = new Photo();
               $rutaFoto->uploadPhoto($_FILES['fotoevento'], "photos");
               $foto = $rutaFoto->getDirection();
           }
-          if (isset($_POST['nombreevento'])){
+          if ($_POST['nombreevento']!=NULL){
             $nombreevento = $_POST['nombreevento'];
           }
            if (isset($_POST['categoria'])){
@@ -64,6 +65,7 @@ class EventController {
       $this->viewProductDetail($product);
     }
     public function viewProductDetail($product) {
+      $cc = new calendarController();
       include (ROOT . 'views/productdetail.php');
     }
     public function getEvent($id){
@@ -99,6 +101,9 @@ class EventController {
       $this->viewEventbysearch($product);
     }
     public function viewEventbysearch($product) {
+      $controllercategory = new \controllers\categoryController();
+$dbevents = new \controllers\EventController();
+
       include (ROOT . 'views/eventbysearch.php');
     }
     public function deletelastevent(){
