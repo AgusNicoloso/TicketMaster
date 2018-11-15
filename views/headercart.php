@@ -34,9 +34,6 @@ $daocarrito = new \daos\daoList\daoCarrito();
 		<div class="header-cart-total">
 			Total: $<?= $total;?>
 		</div>
-	<?php } else { 
-			echo "No agregaste nada...";
-		} ?>
 		<div class="header-cart-buttons">
 			<div class="header-cart-wrapbtn">
 				<!-- Button -->
@@ -46,10 +43,13 @@ $daocarrito = new \daos\daoList\daoCarrito();
 			</div>
 			<div class="header-cart-wrapbtn">
 				<!-- Button -->
-				<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+				<a href="<?=URl?>checkout/index" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 					Comprar
 				</a>
 			</div>
 		</div>
+	<?php } else { 
+			echo "No agregaste nada...";
+		} ?>
 	</div>
 </div>

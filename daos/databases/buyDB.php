@@ -74,6 +74,19 @@ class BuyDB extends SingletonDao implements idao {
         if (!empty($resultSet)) return $this->mapearAll($resultSet);
         else return false;
     }
+    public function getbuyuser($user) {
+        try {
+            $sql = "SELECT * from compras c inner join tickets t on c.id_ticket = t.id_ticket where c.id_client = $user";
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            echo $ex->getMessage();
+        }
+        if (!empty($resultSet)) return $this->mapearAll($resultSet);
+        else return false;
+    }
     protected function mapearAll($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {

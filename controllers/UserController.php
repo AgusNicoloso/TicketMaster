@@ -96,4 +96,7 @@ class UserController {
         }
         return false;
     }
+    public function search($user){
+        return $this->dao->read($user);
+    }
 }

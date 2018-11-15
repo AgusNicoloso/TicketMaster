@@ -3,6 +3,7 @@ namespace controllers;
 //use daos\daoList\EventDao as Dao;
 use models\Buy as Buy;
 use daos\databases\BuyDB as dao;
+use controllers\UserController as UserController;
 class BuyController {
     protected $dao;
     private $obj;
@@ -23,6 +24,12 @@ class BuyController {
     public function getAll(){
       return $this->dao->getAll();
     }
-    
-
+    public function getbuyuser($email){
+      $userdb = new UserController();
+      $user = $userdb->search($email);
+      return $this->dao->getbuyuser($user->getID());
+    }
+    public function userbuylist(){
+      require (ROOT . 'views/userbuylist.php');
+    }
 }
