@@ -1,9 +1,12 @@
 <?php namespace controllers;
+
+
 use models\user as User;
 class LoginController {
     public function __construct() {
     }
     public function index() {
+    
         require (ROOT . "Views/login.php");
     }
     public function log() {

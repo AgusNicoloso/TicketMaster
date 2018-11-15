@@ -55,7 +55,6 @@ use controllers\SeatController;
                             <option value="<?=  $eventList->getId(); ?>"><?= $eventList->getName(); ?></option>
                         <?php
                         }
-
                         ?>
 
                     </select>
@@ -79,7 +78,6 @@ use controllers\SeatController;
                             <option value="<?php echo $categoryList->getID(); ?>"><?php echo $categoryList->getCategoryName(); ?></option>
                             <?php
                         }
-
                         ?>
 
                     </select>
@@ -111,7 +109,6 @@ use controllers\SeatController;
                             <option value="<?php echo $placeList->getId(); ?>"><?php echo $placeList->getPlace(); ?></option>
                             <?php
                         }
-
                         ?>
 
                     </select>
@@ -126,7 +123,6 @@ use controllers\SeatController;
 
                                 <option value="<?php echo $value->getId(); ?>"> <?php echo $value->getDescript(); ?> </option>
                             <?php }
-
                              } else{  ?>
 
                             <option value="<?php echo $seatList->getId(); ?>"> <?php echo $seatList->getDescript(); ?> </option>

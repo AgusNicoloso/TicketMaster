@@ -1,7 +1,8 @@
 <?php namespace views;
 use controllers\EventController as EventController;
 use controllers\calendarController as calendarController;
-use controllers\EventPlaceController; ?>
+use controllers\EventPlaceController;
+if(isset($_SESSION['logued'])){ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,9 +99,15 @@ use controllers\EventPlaceController; ?>
 									<?php } else {  ?>
 										<option value="<?= $list->getID(); ?>"><?= $list->getSeatName() . " - $" . $list->getPrice();?></option>
 								<?php } ?>
-								<?php } else { ?>
+								<?php } else { 
+								$list = $info->getTypeplace();
+								if(is_array($list)){
+								foreach ($list as $key => $value) { ?>
+								  	<option value="<?= $value->getID(); ?>"><?= $value->getSeatName() . " - $" . $value->getPrice();?></option>
+								  <?php }  ?>
+							<?php } else { ?>
 								<option value="<?= $info->getTypeplace()->getID(); ?>"><?= $info->getTypeplace()->getSeatName() . " - $" . $info->getTypeplace()->getPrice();?></option>
-							<?php } ?>
+							<?php }}?>
 							</select>
 						</div>
 					</div>
@@ -128,7 +135,7 @@ use controllers\EventPlaceController; ?>
 					</div>
 				</div>
 				
-				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14">
+				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
 					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
 						Seleccione en cual fecha desea ir / Artistas presentes
 						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
@@ -158,7 +165,7 @@ use controllers\EventPlaceController; ?>
 					</div>
 				</div>
 				</form>
-				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14">
+				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
 					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
 						Lugar
 						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
@@ -242,3 +249,6 @@ use controllers\EventPlaceController; ?>
 
 </body>
 </html>
+<?php } else {
+ header("Location: ". URl. "login/index");
+}

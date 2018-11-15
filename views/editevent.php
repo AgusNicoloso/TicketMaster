@@ -26,7 +26,7 @@
               </div>
               <div class="form-group">
                 <select class="custom-select my-1 mr-sm-2" name="categoria">
-                  <?php if ($controllercategory->getAll()) { $list = $controllercategory->getAll(); ?>
+                  <?php if ($list) { ?>
                   <option selected disabled>Elige una categoría</option>
                   <?php if(!is_array($list)){ ?>
                       <option value="<?php echo $list->getID(); ?>"><?php echo $list->getCategoryName(); ?></option>
@@ -43,9 +43,7 @@
               </div>
                 <button type="submit" class="btn btn-primary">Editar</button>
             </form>
-            <form action="Home">
-                <button type="" class="btn btn-primary">Volver al menú principal</button>
-            </form>
+            <a class="btn btn-primary" href="<?= URl.'home' ?>">Home</a>
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
                 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
                 <!------ Include the above in your HEAD tag ---------->

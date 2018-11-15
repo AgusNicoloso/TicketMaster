@@ -27,7 +27,7 @@
               </div>
               <div class="form-group">
                 <select class="custom-select my-1 mr-sm-2" name="categoria" required>
-                  <?php if ($controllercategory->getAll()) { $list = $controllercategory->getAll(); ?>
+                  <?php if($list){ ?>
                   <option selected disabled>Elige una categoría</option>
                   <?php if(!is_array($list)){ ?>
                       <option value="<?php echo $list->getID(); ?>"><?php echo $list->getCategoryName(); ?></option>
@@ -46,9 +46,7 @@
             <form action="<?= URl ?>Calendar/index">
                 <button type="" class="btn btn-primary">Omitir</button>
             </form>
-            <form action="Home">
-                <button type="" class="btn btn-primary">Volver al menú principal</button>
-            </form>
+            <a class="btn btn-primary" href="<?= URl.'home' ?>">Home</a>
             <?php
             if(isset($this->msg)){
                 ?>

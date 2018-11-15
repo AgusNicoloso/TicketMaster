@@ -96,7 +96,7 @@
                   <h4 class="m-text14 p-b-7">
                     <br>Categorias
                   </h4>
-                  <?php if ($controllercategory->getAll()) { $list = $controllercategory->getAll(); ?>
+                  <?php if($list){ ?>
                   <?php if(!is_array($list)){ ?>
                   <ul class="p-b-54">
                    <li class="p-t-4">
@@ -122,66 +122,65 @@
                <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
                   <!-- Product -->
 									<?php
-                  if ($dbevents->getLimitAll($pageaux)) {
-                    $i=0;
-                    $list = $dbevents->getLimitAll($pageaux);
+                 if($listevent){
                     ?>
+
                   <div class="row">
-                    <?php if(!is_array($list)){ ?>
+                    <?php if(!is_array($listevent)){ ?>
                       <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <div class="block2">
                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
                              <img
-                              title="<?php $list->getName(); ?>"
-                              alt="<?php $list->getName(); ?>"
-                              src="<?php echo $list->getPhoto(); ?>"
+                              title="<?php $listevent->getName(); ?>"
+                              alt="<?php $listevent->getName(); ?>"
+                              src="<?php echo $listevent->getPhoto(); ?>"
                               height="320px"
                              >
                               <div class="block2-overlay trans-0-4">
                                  <div class="block2-btn-addcart w-size1 trans-0-4">
                                     <!-- Button -->
-                                    <a href="<?= URl ?>event/see/<?= $list->getID();?>" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    <a href="<?= URl ?>event/see/<?= $listevent->getID();?>" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                     Ver evento
                                   </a>
                                  </div>
                               </div>
                            </div>
                            <div class="block2-txt p-t-20">
-                              <a href="<?= URl ?>event/see/<?= $list->getID();?>" class="block2-name dis-block m-text6 p-r-5">
-                                <?php echo $list->getName(); ?>
+                              <a href="<?= URl ?>event/see/<?= $listevent->getID();?>" class="block2-name dis-block m-text6 p-r-5">
+                                <?php echo $listevent->getName(); ?>
                               </a>
                               <span class="block2-name dis-block s-text3 p-b-5">
-                                <?php echo "Categoria : " . $list->getNameCategory(); ?>
+                                <?php echo "Categoria : " . $listevent->getNameCategory(); ?>
                               </span>
                            </div>
                         </div>
                      </div>
                     <?php } else { ?>
-										<?php while ($i<count($list)) { ?>
+										<?php while ($i<count($listevent)) { ?>
                      <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <div class="block2">
                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
                              <img
-                              title="<?php $list[$i]->getName(); ?>"
-                              alt="<?php $list[$i]->getName(); ?>"
-                              src="<?php echo $list[$i]->getPhoto(); ?>"
+                              title="<?php $listevent[$i]->getName(); ?>"
+                              alt="<?php $listevent[$i]->getName(); ?>"
+                              src="<?php echo $listevent[$i]->getPhoto(); ?>"
                               height="320px"
                              >
                               <div class="block2-overlay trans-0-4">
                                  <div class="block2-btn-addcart w-size1 trans-0-4">
                                     <!-- Button -->
-                                    <a href="<?= URl ?>event/see/<?= $list[$i]->getID();?>" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    <a href="<?= URl ?>event/see/<?= $listevent[$i]->getID();?>" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                     Ver evento
                                   </a>
                                  </div>
                               </div>
                            </div>
                            <div class="block2-txt p-t-20">
-                              <a href="<?= URl ?>event/see/<?= $list[$i]->getID();?>" class="block2-name dis-block m-text6 p-r-5">
-																<?php echo $list[$i]->getName(); ?>
+                              <a href="<?= URl ?>event/see/<?= $listevent[$i]->getID();?>" class="block2-name dis-block m-text6 p-r-5">
+																<?php echo $listevent[$i]->getName(); ?>
                               </a>
                               <span class="block2-name dis-block s-text3 p-b-5">
-                                <?php echo "Categoria : " . $list[$i]->getNameCategory(); ?>
+                                <?php echo "Categoria : " . $listevent[$i]->getNameCategory(); ?>
                               </span>
                            </div>
                         </div>
@@ -190,7 +189,6 @@
                      <?php } ?>
                   </div>
                   <div class="pagination flex-m flex-w p-t-26">
-                    <?php $total = $dbevents->getAll();?>
                     <?php if(!is_array($total)){ ?>
                       <a href="product?page=<?php echo 1; ?>" class="item-pagination flex-c-m trans-0-4 active-pagination"><?php echo 1; ?></a>
                     <?php } else { ?>

@@ -26,7 +26,6 @@ use controllers\ArtistController;
             <form id="Calendar" method="post" action="oktoadd">
                 <?php
                 if($_POST) {
-
                     $contador = 1;
                      while($contador <= $dayCounter+1) {
                     if (($dateStart <= $dateFinish)) {
@@ -77,10 +76,8 @@ use controllers\ArtistController;
                             </thead>
                             <tbody>
                             <?php
-
                             if(is_array($seatList)){
-
-                                foreach ($seatList as $key => $value) { echo 'num'.$key;?>
+                                foreach ($seatList as $key => $value) { ?>
 
                                     <tr>
                                         <th scope="row"><?php echo $key+1;?></th>

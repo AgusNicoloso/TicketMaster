@@ -11,12 +11,13 @@ class PlaceController {
     public function index() {
         require ('views/placeForm.php');
     }
-    public function addPlace() {
-        if ($this->dao->read($_POST['place_name'])) {
+  
+     public function addPlace($place_name,$capacity) {
+        if ($this->dao->read($place_name)) {
             $msg = "El lugar ya existe.";
             require ("views/placeForm.php");
         } else {
-            $place = new Place('', $_POST['place_name'], $_POST['capacity']);
+            $place = new Place('', $place_name, $capacity);
             $this->dao->create($place);
             header("Location:" . URl);
         }

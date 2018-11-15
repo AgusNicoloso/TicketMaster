@@ -35,6 +35,8 @@
                 <button type="submit" class="btn btn-primary" >Registrarse</button>
 
             </form>
+            <br>
+            <a class="btn btn-primary" href="<?= URl.'home' ?>">Home</a>
             <?php
             if(isset($msg)){
                 ?>

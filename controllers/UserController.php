@@ -19,24 +19,23 @@ class UserController {
             $_SESSION['logued'] = $user;
         }
     }
-    public function logout() {
-        if ($_POST) {
-            if (isset($_POST['cs'])) {
-                //unset($_SESSION['status']);
-                //unset($_SESSION['logued']);
+    public function logout($cs) {
+        
+            if (isset($cs)) {
                 session_destroy();
                 header("Location:" . URl);
             }
-        }
     }
-    public function insert() {
-        $us = new User($_POST['mail'], $_POST['pass'], $_POST['name'], "user");
+    public function insert($mail,$pass,$name) {
+        $us = new User($mail, $pass, $name, "user");
         $this->dao->create($us);
     }
-    public function searchUser() {
-        $us = $this->dao->read($_POST['mail']);
+    public function searchUser($mail,$pass) {
+       
+   
+        $us = $this->dao->read($mail);
         if ($us) {
-            if ($us->getPass() == $_POST['pass']) {
+            if ($us->getPass() == $pass) {
                 if (!isset($_SESSION)) {
                     session_start();
                 }
@@ -51,8 +50,8 @@ class UserController {
             require ("views/login.php");
         }
     }
-    public function logverify() {
-        if ($this->dao->read($_POST['mail'])) {
+    public function logverify($mail) {
+        if ($this->dao->read($mail)) {
             $msg = "El usuario ya esta registrado.";
             require ("views/register.php");
         } else {

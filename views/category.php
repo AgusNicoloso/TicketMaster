@@ -20,9 +20,7 @@
               </div>
                 <button type="submit" class="btn btn-primary">Agregar</button>
             </form>
-            <form action="Home">
-                <a href="home.php"><button type="" class="btn btn-primary">Volver al menú principal</button></a>
-            </form>
+            <a class="btn btn-primary" href="<?= URl.'home' ?>">Home</a>
             <?php
             if(isset($msg)){
                 ?>

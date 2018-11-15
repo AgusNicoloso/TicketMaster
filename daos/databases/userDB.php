@@ -79,28 +79,7 @@ class userDB extends SingletonDao implements idao {
     /**
      *
      */
-    public function edit($_user) {
-        $sql = "UPDATE users SET name = :name, surname = :surname, nationality = :nationality, state = :state, city = :city, birthdate = :birthdate, email = :email, password = :password, avatar = :avatar, role = :role";
-        $parameters['name'] = $_user->getName();
-        $parameters['surname'] = $_user->getSurname();
-        $parameters['nationality'] = $_user->getNationality();
-        $parameters['state'] = $_user->getState();
-        $parameters['city'] = $_user->getCity();
-        $parameters['birthdate'] = $_user->getBirthdate();
-        $parameters['email'] = $_user->getEmail();
-        $parameters['pass'] = $_user->getPass();
-        $parameters['avatar'] = $_user->getAvatar() ['avatar']['name'];
-        $parameters['role'] = $_user->getRole();
-        try {
-            // creo la instancia connection
-            $this->connection = Connection::getInstance();
-            // Ejecuto la sentencia.
-            return $this->connection->ExecuteNonQuery($sql, $parameters);
-        }
-        catch(\PDOException $ex) {
-            throw $ex;
-        }
-    }
+    
     /**
      *
      */

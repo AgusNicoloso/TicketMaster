@@ -29,7 +29,7 @@ class CalendarController {
         }
         require ('views/calendarForm.php');
     }
-    public function index2() {
+     public function index2() {
         $c_eventplace = new EventPlaceController();
         $c_place = new PlaceController();
         $c_seat = new SeatController();

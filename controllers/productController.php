@@ -15,6 +15,11 @@ class productController {
                 $pageaux = ($page * 9) - 9;
             }
         }
+        if ($controllercategory->getAll()) { $list = $controllercategory->getAll();  }
+         if ($dbevents->getLimitAll($pageaux)) {
+                    $i=0;
+                    $listevent = $dbevents->getLimitAll($pageaux);}
+                    $total = $dbevents->getAll();
         require (ROOT . 'views/product.php');
     }
 }

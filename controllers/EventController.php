@@ -13,6 +13,7 @@ class EventController {
     }
     public function index() {
         $controllercategory = new \controllers\categoryController();
+         if ($controllercategory->getAll()) { $list = $controllercategory->getAll();}
         require (ROOT . 'views/event.php');
     }
     public function addEvent($nombre) {
@@ -23,17 +24,18 @@ class EventController {
     }
     public function indexEditEvent($product) {
         $controllercategory = new \controllers\categoryController();
+        if ($controllercategory->getAll()) { $list = $controllercategory->getAll();}
         require (ROOT . 'views/editevent.php');
     }
-    public function deleteEvent($i) {
-        $this->dao->delete($i);
+    public function deleteEvent($id) {
+        $this->dao->delete($id);
         header("Location: http://localhost/TicketMaster/product");
     }
     public function editEvent($id) {
         $product = $this->dao->read($id);
         $this->indexEditEvent($product);
     }
-    public function edit($id) {
+        public function edit($id) {
         $id = $_POST['eventid'];
         $product = $this->dao->read($id);
         if ($product) {
