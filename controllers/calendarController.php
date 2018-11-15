@@ -29,51 +29,48 @@ class CalendarController {
         }
         require ('views/calendarForm.php');
     }
-     public function index2() {
+     public function index2($event,$dateIn,$dateOut,$place,$seats) {
         $c_eventplace = new EventPlaceController();
         $c_place = new PlaceController();
         $c_seat = new SeatController();
         $lista = new ArtistController();
-        $dateStart = new \DateTime($_POST['dateIn']);
-        $dateFinish = new \DateTime($_POST['dateOut']);
+        $dateStart = new \DateTime($dateIn);
+        $dateFinish = new \DateTime($dateOut);
         $dayCounter = $dateStart->diff($dateFinish);
         $dayCounter = $dayCounter->format('%a');
-        $seatList = $_POST['seats'];
-        $seatList = $c_seat->arrayseat($seatList);
+        $seatList = $c_seat->arrayseat($seats);
         $_SESSION['dates'] = array();
-        $place = $c_place->placebyid($_POST['place']);
+        $place = $c_place->placebyid($place);
         $lista = $lista->showArtist();
         require ('views/calendar2Form.php');
     }
-    public function quatity() {
+    public function quatity($cantidad,$place) {
         $c_eventplace = new EventPlaceController();
         $c_place = new PlaceController();
         if ($_POST) {
-            $cant = $c_eventplace->capacityCounter($_POST['cantidad']);
-            $place = $c_place->placebyid($_SESSION['data']['place']);
+            $cant = $c_eventplace->capacityCounter($cantidad);
+            $place = $c_place->placebyid($place);
             if ($place->getCapacity() < $cant) {
                 return false;
             }
         }
         return true;
     }
-    public function oktoadd() {
+    public function oktoadd($precios,$cantidad,$event,$dateIn,$dateOut,$place,$days,$seats,$dates) {
         $c_eventplace = new EventPlaceController();
         $c_place = new PlaceController();
         $c_seat = new SeatController();
         $c_event = new EventController();
-        if ($this->quatity() != true) {
+        if ($this->quatity($cantidad,$place) != true) {
             $msg = 'Supera la capacidad del establecimiento';
             require ('views/calendarForm.php');
         } else {
-            $this->addCalendar();
+            $this->addCalendar($precios,$cantidad,$event,$dateIn,$dateOut,$place,$days,$seats,$dates);
         }
     }
-    public function addCalendar() {
+    public function addCalendar($precios,$cantidad,$event,$dateIn,$dateOut,$place,$days,$seats,$dates) {
         $i = 1;
-        $a = $_SESSION['dates'];
-        $event = $_SESSION['data']['event'];
-        $place = $_SESSION['data']['place'];
+        $a = $dates;
         $c_eventPlace = new EventPlaceController();
         $axc = new ArtistperCalendarController();
         $controller = false;
@@ -87,23 +84,22 @@ class CalendarController {
         if ($controller) {
             $c_event = new EventController();
             $c_place = new PlaceController();
-            $c_category = new CategoryController();
             $c_seat = new SeatController();
             $seatList = $c_seat->allSeat();
-            $categoryList = $c_category->getAll();
+            
             $eventList = $c_event->getAll();
             $placeList = $c_place->allPlace();
             $msg = "La fecha en ese lugar ya está ocupada";
             require ("views/calendarForm.php");
         } else {
-            $a = $_SESSION['dates'];
-            while ($i <= $_SESSION['data']['days']) {
+            $a = $dates;
+            while ($i <= $days) {
                 $dia = 'dia' . $i;
                 // $quant=$_SESSION['data']['cantidad'];
                 //$price=$_SESSION['data']['precios'];
-                $quant = $_POST['cantidad'];
-                $price = $_POST['precios'];
-                $seatid = $_SESSION['data']['seats'];
+                $quant = $cantidad;
+                $price = $precios;
+                $seatid = $seats;
                 $b = array_shift($a);
                 $calendar = new Calendar($event, $place);
                 $this->dao->create($calendar, $b);
@@ -123,7 +119,6 @@ class CalendarController {
             }
             header("Location:" . URl);
         }
-        unset($_SESSION['data'], $_SESSION['dates']);
     }
     public function allCalendars() {
         return $Calendarios = $this->dao->mapeoCalendar();

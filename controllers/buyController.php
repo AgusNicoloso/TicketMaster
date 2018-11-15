@@ -10,6 +10,8 @@ class BuyController {
         $this->dao = dao::getInstance();
     }
     public function index() {
+        $buys=NULL;
+        if ($this->getAll()) { $buys = $this->getAll(); }
         require (ROOT . 'views/allbuy.php');
     }
     public function insert($ticket, $client, $date) {

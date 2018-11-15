@@ -1,11 +1,5 @@
-<?php namespace views;
-use controllers\ArtistController;
-use controllers\CategoryController;
-use controllers\EventController;
-use controllers\PlaceController;
-use controllers\SeatController;
-?>
-<!---------------------------------------------------------------------------------------------------------------------->
+<?php namespace views;?>
+
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -54,29 +48,6 @@ use controllers\SeatController;
                             ?>
                             <option value="<?=  $eventList->getId(); ?>"><?= $eventList->getName(); ?></option>
                         <?php
-                        }
-                        ?>
-
-                    </select>
-                </div>
-                <tile>Categoria</tile>
-                <div class="form-group">
-                    <select class="form-control" name="category" id="">
-                        <?php
-                        if(is_array($categoryList))
-                        {
-                            if(!empty($categoryList)){
-                                foreach ($categoryList as $key=>$value){
-                                    ?>
-                                    <option value="<?php echo $value->getID(); ?>"><?php echo $value->getCategoryName(); ?></option>
-                                    <?php
-                                }
-                            }
-                        }
-                        else{
-                            ?>
-                            <option value="<?php echo $categoryList->getID(); ?>"><?php echo $categoryList->getCategoryName(); ?></option>
-                            <?php
                         }
                         ?>
 

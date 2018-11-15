@@ -1,7 +1,4 @@
-<?php
-namespace views;
-use controllers\ArtistController;
-?>
+<?php namespace views;?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <!---------------------------------------------------------------------------------------------------------------------->
 <html>
@@ -24,46 +21,7 @@ use controllers\ArtistController;
                 <p>Porfavor, ingrese la informacion solicitada.</p>
             </div>
             <form id="Calendar" method="post" action="oktoadd">
-                <?php
-                if($_POST) {
-                    $contador = 1;
-                     while($contador <= $dayCounter+1) {
-                    if (($dateStart <= $dateFinish)) {
-                        $aux = $dateStart;
-                        array_push( $_SESSION['dates'], $aux->format('Y-m-d'));
-                        $dateStart->modify('+1 day');
-                    }
-                ?>
-                    <h2><?php echo "Día " . $contador ?></h2>
-                    <select id="multiselectwithsearch<?=$contador?>" multiple="multiple" name="dia<?php echo $contador?>[]">
-                        <?php
-                        if(!empty($lista)){
-                          if(!is_array($lista)){ ?>
-                            <option value="<?php echo $lista->getId(); ?>"> <?php echo $lista->getName(); ?> </option>
-                        <?php  } else {
-                            foreach ($lista as $key => $value) { ?>
-
-                                <option value="<?php echo $value->getId(); ?>"> <?php echo $value->getName(); ?> </option>
-                            <?php } }
-                        } ?>
-                    </select>
-                    <script>
-                    $(function() {  
-                     $('#multiselectwithsearch<?=$contador?>').multiselect({
-                                enableFiltering: true,
-                                enableCaseInsensitiveFiltering: true,
-                                nonSelectedText: 'Elige uno o mas Artistas',
-                                nSelectedText: 'Seleccionados',
-                                allSelectedText: 'Todo seleccionado',
-                                filterPlaceholder: 'Buscar plaza'
-                            }); 
-                    });
-                    </script>
-                    <?php $contador++; }
-                    ?>
-
-
-                    <br><br>
+                <br><br>
                     <div class="form-group">
                         <div class="alert alert-danger">Capacidad maxima: <?php  $place;echo $place->getCapacity()?></div>
                         <table class="table">
@@ -99,10 +57,63 @@ use controllers\ArtistController;
                             </tbody>
                         </table>
                     </div>
+                      <input type="text" value="<?=$_POST['event']?>" name="event" hidden>
+            <input type="text" value="<?=$_POST['dateIn']?>" name="dateIn" hidden>
+            <input type="text" value="<?=$_POST['dateOut']?>" name="dateOut" hidden>
+            <input type="text" value="<?=$_POST['place']?>" name="place" hidden>
+            <input type="text" value="<?=$dayCounter+1?>" name="days" hidden>
+            <?php foreach($_POST['seats'] as $key=>$value){?>
+            <input multiple="multiple" value="<?=$value?>" name="seats[]" hidden>
+        <?php } ?>
+                <?php
+                if($_POST) {
+                    $contador = 1;
+                     while($contador <= $dayCounter+1) {
+                    if (($dateStart <= $dateFinish)) {
+                        $aux = $dateStart;
+                        array_push( $_SESSION['dates'], $aux->format('Y-m-d'));
+                        $dateStart->modify('+1 day');
+                    }
+                ?>
+                <?php foreach($_SESSION['dates'] as $key=>$value){?>
+            <input type="date" name="dates[]" value="<?= $value ?>" hidden>
+        <?php } ?>
+            
+                    <h2><?php echo "Día " . $contador ?></h2>
+                    <select id="multiselectwithsearch<?=$contador?>" multiple="multiple" name="dia<?php echo $contador?>[]">
+                        <?php
+                        if(!empty($lista)){
+                          if(!is_array($lista)){ ?>
+                            <option value="<?php echo $lista->getId(); ?>"> <?php echo $lista->getName(); ?> </option>
+                        <?php  } else {
+                            foreach ($lista as $key => $value) { ?>
+
+                                <option value="<?php echo $value->getId(); ?>"> <?php echo $value->getName(); ?> </option>
+                            <?php } }
+                        } ?>
+                    </select>
+                    <script>
+                    $(function() {  
+                     $('#multiselectwithsearch<?=$contador?>').multiselect({
+                                enableFiltering: true,
+                                enableCaseInsensitiveFiltering: true,
+                                nonSelectedText: 'Elige uno o mas Artistas',
+                                nSelectedText: 'Seleccionados',
+                                allSelectedText: 'Todo seleccionado',
+                                filterPlaceholder: 'Buscar plaza'
+                            }); 
+                    });
+                    </script>
+                    <?php $contador++; }
+                    ?>
+
+
+                    
             <?php
-            $_SESSION['data']=$_POST;
-            $_SESSION['data']['days']=$dayCounter+1;
             } ?>
+
+            
+            <br>
                  <button type="submit" class="btn btn-primary" >Siguiente</button>
             </form>
             <?php 

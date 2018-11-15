@@ -61,7 +61,7 @@
     <section class="cart bgwhite p-t-70 p-b-100">
         <div class="container">
             <!-- Cart item -->
-        <?php if ($this->getAll()) { $buys = $this->getAll(); ?>
+        <?php if ($buys) { ?>
             <div class="container-table-cart pos-relative">
                 <div class="wrap-table-shopping-cart bgwhite">
                     <table class="table-shopping-cart">
