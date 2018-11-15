@@ -1,5 +1,5 @@
 <?php namespace views;
-    use controllers\ArtistController;
+use controllers\ArtistController;
 use controllers\CategoryController;
 use controllers\EventController;
 use controllers\PlaceController;
