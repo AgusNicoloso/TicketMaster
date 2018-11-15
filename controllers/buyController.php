@@ -10,6 +10,7 @@ class BuyController {
         $this->dao = dao::getInstance();
     }
     public function index() {
+      require (ROOT . 'views/allbuy.php');
     }
     public function insert($ticket,$client,$date){
         try {
@@ -18,6 +19,9 @@ class BuyController {
       } catch (Exception $e) {
         echo $e->getMessage();
       }
+    }
+    public function getAll(){
+      return $this->dao->getAll();
     }
     
 

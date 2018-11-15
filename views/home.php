@@ -73,10 +73,6 @@ if ($_POST) {
 			</div>
 		</div>
 	</section>
-
-	<!-- Prueba -->
-<?php //aca lo de maxi ?>
-	<!-- Banner -->
 	<section class="banner bgwhite p-t-40 p-b-40">
 			<?php if ($controllercategory->getAll()) { $list = $controllercategory->getAll(); ?>
 		<div class="container">

@@ -4,6 +4,8 @@ use daos\daoList\Singleton as SingletonDao;
 use daos\databases\Connection as Connection;
 use daos\daoList\idao as idao;
 use models\Buy as Buy;
+use models\Ticket as Ticket;
+
 class BuyDB extends SingletonDao implements idao {
     private $connection;
     function __construct() {
@@ -56,6 +58,29 @@ class BuyDB extends SingletonDao implements idao {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
             return new Ticket($p['qr'],$p['id_ticket']);
+        }, $value);
+        return count($resp) > 1 ? $resp : $resp['0'];
+    }
+    public function getAll() {
+        try {
+            $sql = "SELECT * from compras c inner join tickets t where c.id_ticket = t.id_ticket";
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            echo $ex->getMessage();
+        }
+        if (!empty($resultSet)) return $this->mapearAll($resultSet);
+        else return false;
+    }
+    protected function mapearAll($value) {
+        $value = is_array($value) ? $value : [];
+        $resp = array_map(function ($p) {
+            $userdb = new userDB(); 
+            $ticket = new Ticket($p['qr'],$p['id_ticket']);
+            $user = $userdb->readBYID($p['id_client']);
+            return new Buy ($ticket,$user,$p['date_buy'],$p['id_buy']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }

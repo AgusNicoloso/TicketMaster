@@ -47,6 +47,20 @@ class userDB extends SingletonDao implements idao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
+    public function readBYID($id_client) {
+        $sql = "SELECT * FROM clientes where id_client = :id_client";
+        $parameters['id_client'] = $id_client;
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql, $parameters);
+        }
+        catch(Exception $ex) {
+            throw $ex;
+        }
+        if (!empty($resultSet)) return $this->mapear($resultSet);
+        else return false;
+    }
     /**
      *
      */
