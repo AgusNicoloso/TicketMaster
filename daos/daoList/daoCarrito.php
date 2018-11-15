@@ -17,7 +17,7 @@ class DaoCarrito extends Singleton implements idao {
         if (!isset($_SESSION)) {
             session_start();
         }
-        $_SESSION['CarritoList'][]= $array;
+        $_SESSION['CarritoList'][] = $array;
     }
     function delete($i) {
         if (!isset($_SESSION)) {
@@ -25,17 +25,17 @@ class DaoCarrito extends Singleton implements idao {
         }
         if (isset($_SESSION['CarritoList'])) {
             $ArrayEvent = $_SESSION['CarritoList'];
-            unset($ArrayEvent[$i-1]);
+            unset($ArrayEvent[$i - 1]);
         }
         $_SESSION['CarritoList'] = array_values($ArrayEvent);
     }
     function update($dato, $datonuevo) {
         // TODO: Implement updateArtist() method.
-
+        
     }
     function save() {
         // TODO: Implement save() method.
-
+        
     }
     function returnList() {
         return $this->list;

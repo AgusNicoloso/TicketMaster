@@ -1,9 +1,7 @@
 <?php
 namespace controllers;
-//use daos\daoList\ArtistDao as Dao;
 use daos\databases\artistDB as dao;
 use models\Artist as Artist;
-
 class ArtistController {
     protected $dao;
     public function __construct() {

@@ -7,18 +7,15 @@ class Calendar {
     private $artist;
     private $place;
     private $typeplace;
-
-    public function __construct( $event='', $place='',$typeplace='', $id='', $hour='',  $artist='',$date='')
-    {
+    public function __construct($event = '', $place = '', $typeplace = '', $id = '', $hour = '', $artist = '', $date = '') {
         $this->date = $date;
         $this->hour = $hour;
         $this->id = $id;
         $this->event = $event;
         $this->artist = $artist;
         $this->place = $place;
-        $this->typeplace=$typeplace;
+        $this->typeplace = $typeplace;
     }
-
     public function getDate() {
         return $this->date;
     }
@@ -31,40 +28,20 @@ class Calendar {
     public function setHour($h) {
         $this->hour = $h;
     }
-    public function getId() {return $this->id;}
-
-    /**
-     * @return string
-     */
-    public function getEvent()
-    {
+    public function getId() {
+        return $this->id;
+    }
+    public function getEvent() {
         return $this->event;
     }
-
-    /**
-     * @return array
-     */
-    public function getArtist()
-    {
+    public function getArtist() {
         return $this->artist;
     }
-
-    /**
-     * @return string
-     */
-    public function getPlace()
-    {
+    public function getPlace() {
         return $this->place;
     }
-
-    /**
-     * @return string
-     */
-    public function getTypeplace()
-    {
+    public function getTypeplace() {
         return $this->typeplace;
     }
-
-
 }
 ?>

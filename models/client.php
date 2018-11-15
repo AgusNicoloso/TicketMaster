@@ -19,6 +19,8 @@ class Client {
     public function setName($n) {
         $this->name = $n;
     }
-    public function getId() {return $this->id;}
+    public function getId() {
+        return $this->id;
+    }
 }
 ?>

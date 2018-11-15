@@ -7,7 +7,6 @@ use models\Ticket as Ticket;
 class TicketsDB extends SingletonDao implements idao {
     private $connection;
     function __construct() {
-
     }
     public function create($ticket) {
         $sql = "INSERT INTO tickets (qr) VALUES (:qr)";
@@ -53,7 +52,7 @@ class TicketsDB extends SingletonDao implements idao {
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
-            return new Ticket($p['qr'],$p['id_ticket']);
+            return new Ticket($p['qr'], $p['id_ticket']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }

@@ -111,24 +111,24 @@ class userDB extends SingletonDao implements idao {
      */
     public function delete($email) {
         /*$sql = "DELETE FROM usuarios WHERE email = :email";
-
+        
         $obj_pdo = new Conexion();
-
+        
         try {
              $conexion = $obj_pdo->conectar();
-
+        
          // Creo una sentencia llamando a prepare. Esto devuelve un objeto statement
          $sentencia = $conexion->prepare($sql);
-
+        
              $sentencia->bindParam(":email", $email);
-
+        
              $sentencia->execute();
-
-
+        
+        
         } catch(PDOException $Exception) {
-
+        
          throw new MyDatabaseException( $Exception->getMessage( ) , $Exception->getCode( ) );
-
+        
         }*/
     }
     /**
@@ -140,16 +140,16 @@ class userDB extends SingletonDao implements idao {
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
-            return new User($p['user'], $p['pass'], $p['name'], $p['rol'],$p['id_client']);
+            return new User($p['user'], $p['pass'], $p['name'], $p['rol'], $p['id_client']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
     function add($artist) {
         // TODO: Implement add() method.
-
+        
     }
     function save() {
         // TODO: Implement save() method.
-
+        
     }
 }

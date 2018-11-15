@@ -8,7 +8,6 @@ use models\Category as Category;
 class EventDB extends SingletonDao implements idao {
     private $connection;
     function __construct() {
-
     }
     /**
      *
@@ -51,9 +50,8 @@ class EventDB extends SingletonDao implements idao {
     /**
      *
      */
-    public function maxId(){
+    public function maxId() {
         $sql = "select MAX(id_event) from eventos";
-
         try {
             $this->connection = Connection::getInstance();
             $this->connection->connect();
@@ -64,7 +62,7 @@ class EventDB extends SingletonDao implements idao {
         }
         return $resultSet;
     }
-    public function deleteId($id){
+    public function deleteId($id) {
         $sql = "Delete from eventos where id_event= $id";
         $parameters['id_event'] = $id;
         try {
@@ -89,7 +87,7 @@ class EventDB extends SingletonDao implements idao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
-    public function readLimit($page,$id){
+    public function readLimit($page, $id) {
         try {
             $sql = "SELECT * FROM eventos WHERE id_category = $id limit $page,9";
             $this->connection = Connection::getInstance();
@@ -102,7 +100,7 @@ class EventDB extends SingletonDao implements idao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
-    public function readLimitAll($page){
+    public function readLimitAll($page) {
         try {
             $sql = "SELECT * FROM eventos limit $page,9";
             $this->connection = Connection::getInstance();
@@ -115,7 +113,7 @@ class EventDB extends SingletonDao implements idao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
-    public function readAllbyID($id){
+    public function readAllbyID($id) {
         try {
             $sql = "SELECT * FROM eventos WHERE id_category = $id";
             $this->connection = Connection::getInstance();
@@ -131,7 +129,7 @@ class EventDB extends SingletonDao implements idao {
     /**
      *
      */
-    public function edit($event,$id) {
+    public function edit($event, $id) {
         $sql = "UPDATE eventos SET title_event = :title_event, photo = :photo, id_category = :id_category where id_event = $id";
         $parameters['title_event'] = $event->getName();
         $parameters['photo'] = $event->getPhoto();
@@ -179,9 +177,9 @@ class EventDB extends SingletonDao implements idao {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
             //$category=$this->mapeoCategory($p['id_category']);
-            $categorydb=new categoryDB();
-            $category=$categorydb->read($p['id_category']);
-            return new Event($p['title_event'], $p['photo'], $category,$p['id_event']);
+            $categorydb = new categoryDB();
+            $category = $categorydb->read($p['id_category']);
+            return new Event($p['title_event'], $p['photo'], $category, $p['id_event']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
@@ -202,7 +200,6 @@ class EventDB extends SingletonDao implements idao {
             return count($resp) > 1 ? $resp : $resp['0'];
         }
     }*/
-
     public function search($search) {
         try {
             $sql = "SELECT * FROM eventos WHERE title_event LIKE '%$search%'";
@@ -216,5 +213,4 @@ class EventDB extends SingletonDao implements idao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
-    
 }

@@ -2,11 +2,9 @@
 namespace controllers;
 use daos\databases\Connection;
 use models\user as User;
-//use daos\daoList\userDB as Dao;
 use daos\databases\userDB as dao;
-
 class UserController {
-     protected $dao;
+    protected $dao;
     public function __construct() {
         $this->dao = dao::getInstance();
     }
@@ -14,12 +12,11 @@ class UserController {
         require (ROOT . "Views/register.php");
     }
     public function log($user) {
-        if($_POST)
-        {
-            if(!isset($_SESSION['status'])){
-                $_SESSION['status']="on";
+        if ($_POST) {
+            if (!isset($_SESSION['status'])) {
+                $_SESSION['status'] = "on";
             }
-            $_SESSION['logued']=$user;
+            $_SESSION['logued'] = $user;
         }
     }
     public function logout() {
@@ -32,71 +29,60 @@ class UserController {
             }
         }
     }
-    public function insert(){
-        $us=new User($_POST['mail'],$_POST['pass'],$_POST['name'],"user");
+    public function insert() {
+        $us = new User($_POST['mail'], $_POST['pass'], $_POST['name'], "user");
         $this->dao->create($us);
     }
-    public function searchUser(){
-        $us=$this->dao->read($_POST['mail']);
-        if($us)
-        {
-
-           if($us->getPass() == $_POST['pass'])
-           {
-               if(!isset($_SESSION)){
-                   session_start();
-               }
+    public function searchUser() {
+        $us = $this->dao->read($_POST['mail']);
+        if ($us) {
+            if ($us->getPass() == $_POST['pass']) {
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
                 $this->log($us);
-               header('Location:'.URl);
-           }
-           else{
-               $msg= 'Error, la password es incorrecta.';
-               require("views/login.php");
-           }
-        }else{
-            $msg= 'Error, el usuario no existe.';
-            require("views/login.php");
+                header('Location:' . URl);
+            } else {
+                $msg = 'Error, la password es incorrecta.';
+                require ("views/login.php");
+            }
+        } else {
+            $msg = 'Error, el usuario no existe.';
+            require ("views/login.php");
         }
     }
-    public function logverify()
-    {
-        if($this->dao->read($_POST['mail'])) {
-            $msg="El usuario ya esta registrado.";
+    public function logverify() {
+        if ($this->dao->read($_POST['mail'])) {
+            $msg = "El usuario ya esta registrado.";
             require ("views/register.php");
-        }
-        else{
+        } else {
             $this->insert();
-
         }
     }
-    public function islog(){
-        if(!isset($_SESSION['status'])){
+    public function islog() {
+        if (!isset($_SESSION['status'])) {
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
-    public function setOnLog()
-    {
-        $_SESSION['status']='on';
+    public function setOnLog() {
+        $_SESSION['status'] = 'on';
     }
-    public function isFB()
-    {
-        if(isset($_SESSION['userData'])){
+    public function isFB() {
+        if (isset($_SESSION['userData'])) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-
-    public function isAdmin($user){
-        if($user->getRol()=='admin'){
+    public function isAdmin($user) {
+        if ($user->getRol() == 'admin') {
             return true;
         }
         return false;
     }
-    public function search($user){
+    public function search($user) {
         return $this->dao->read($user);
     }
 }

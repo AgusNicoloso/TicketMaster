@@ -1,6 +1,5 @@
 <?php
 namespace controllers;
-//use daos\daoList\EventDao as Dao;
 use models\Ticket as Ticket;
 use daos\databases\TicketsDB as dao;
 class TicketsController {
@@ -11,17 +10,16 @@ class TicketsController {
     }
     public function index() {
     }
-    public function insert($qr){
+    public function insert($qr) {
         try {
-          $ticket=new Ticket($qr);
-          $this->dao->create($ticket);
-      } catch (Exception $e) {
-        echo $e->getMessage();
-      }
+            $ticket = new Ticket($qr);
+            $this->dao->create($ticket);
+        }
+        catch(Exception $e) {
+            echo $e->getMessage();
+        }
     }
-    public function search($qr){
-      return $this->dao->read($qr);
+    public function search($qr) {
+        return $this->dao->read($qr);
     }
-    
-
 }

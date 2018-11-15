@@ -1,6 +1,6 @@
 <?php namespace controllers;
 class ProductdetailController {
-	private $obj;
+    private $obj;
     public function __construct() {
     }
     public function index() {

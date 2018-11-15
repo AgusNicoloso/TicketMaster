@@ -3,7 +3,6 @@ use daos\daoList\idao as IDao;
 use daos\daoList\Singleton as SingletonDao;
 use daos\databases\Connection as Connection;
 use models\Artist as Artist;
-
 class ArtistDB extends SingletonDao implements IDao {
     public function __construct() {
     }
@@ -31,7 +30,7 @@ class ArtistDB extends SingletonDao implements IDao {
         catch(\PDOException $ex) {
             throw $ex;
         }
-       header("Location:" . URl);
+        header("Location:" . URl);
     }
     public function delete($name) {
         $query = 'DELETE FROM artists WHERE artist_name = :name';
@@ -54,7 +53,7 @@ class ArtistDB extends SingletonDao implements IDao {
         $artistList = array();
         $query = 'SELECT * FROM artists';
         $pdo = Connection::getInstance();
-        $pdo= $pdo->Connect();
+        $pdo = $pdo->Connect();
         $command = $pdo->prepare($query);
         $command->execute();
         while ($result = $command->fetch()) {
@@ -79,12 +78,12 @@ class ArtistDB extends SingletonDao implements IDao {
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
-            return new Artist($p['artist_name'],$p['id_artist']);
+            return new Artist($p['artist_name'], $p['id_artist']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
     public function save() {
         // TODO: Implement save() method.
-
+        
     }
 }

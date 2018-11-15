@@ -47,23 +47,23 @@ class EventDao extends Singleton implements idao {
     }
     function update($dato, $datonuevo) {
         // TODO: Implement updateArtist() method.
-
+        
     }
     function save() {
         // TODO: Implement save() method.
-
+        
     }
     function returnList() {
         return $this->list;
     }
-    public function getEvent($nombre){
-      if (isset($_SESSION['EventList'])) {
-          $ArrayEvent = $_SESSION['EventList'];
-          foreach ($ArrayEvent as $key => $value) {
-              if ($nombre == $value->getName()) {
-                return $value;
-              }
-          }
-      }
+    public function getEvent($nombre) {
+        if (isset($_SESSION['EventList'])) {
+            $ArrayEvent = $_SESSION['EventList'];
+            foreach ($ArrayEvent as $key => $value) {
+                if ($nombre == $value->getName()) {
+                    return $value;
+                }
+            }
+        }
     }
 }

@@ -47,11 +47,11 @@ class ArtistDao extends Singleton implements idao {
     }
     function update($dato, $datonuevo) {
         // TODO: Implement updateArtist() method.
-
+        
     }
     function save() {
         // TODO: Implement saveArtist() method.
-
+        
     }
     function returnList() {
         return $this->list;

@@ -4,7 +4,7 @@ class Event {
     private $photo;
     private $id;
     private $category;
-    function __construct($n, $p, $category="",$id="") {
+    function __construct($n, $p, $category = "", $id = "") {
         $this->name = $n;
         $this->photo = $p;
         $this->id = $id;
@@ -19,14 +19,14 @@ class Event {
     public function getID() {
         return $this->id;
     }
-    public function getCategory(){
-      return $this->category;
+    public function getCategory() {
+        return $this->category;
     }
     public function getNameCategory() {
         return $this->category->getCategoryName();
     }
-    public function getIDCategory(){
-      return $this->category->getID();
+    public function getIDCategory() {
+        return $this->category->getID();
     }
     public function setName($n) {
         $this->name = $n;

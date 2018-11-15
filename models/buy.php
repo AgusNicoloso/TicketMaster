@@ -4,7 +4,7 @@ class Buy {
     private $client;
     private $id;
     private $ticket;
-    function __construct($ticket,$client,$date='',$id='') {
+    function __construct($ticket, $client, $date = '', $id = '') {
         $this->id = $id;
         $this->ticket = $ticket;
         $this->date = $date;
@@ -16,10 +16,10 @@ class Buy {
     public function getClient() {
         return $this->client;
     }
-    public function getID(){
+    public function getID() {
         return $this->id;
     }
-    public function getTicket(){
+    public function getTicket() {
         return $this->ticket;
     }
 }

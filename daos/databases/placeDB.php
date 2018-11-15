@@ -1,21 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: maxuu
- * Date: 23/10/2018
- * Time: 10:45
- */
-
 namespace daos\databases;
-
 use daos\daoList\idao as IDao;
 use daos\daoList\Singleton as SingletonDao;
 use daos\databases\Connection as Connection;
 use models\Place as Place;
-
-
-class placeDB extends SingletonDao implements IDao
-{
+class placeDB extends SingletonDao implements IDao {
     function __construct() {
     }
     /**
@@ -36,11 +25,11 @@ class placeDB extends SingletonDao implements IDao
         catch(\PDOException $ex) {
             throw $ex;
         }
-      // header("Location:" . URl);
+        // header("Location:" . URl);
+        
     }
     public function readId($id) {
         $sql = "SELECT * FROM lugares_eventos where id_place=$id";
-
         try {
             $this->connection = Connection::getInstance();
             $this->connection->connect();
@@ -119,24 +108,24 @@ class placeDB extends SingletonDao implements IDao
      */
     public function delete($email) {
         /*$sql = "DELETE FROM usuarios WHERE email = :email";
-
+        
         $obj_pdo = new Conexion();
-
+        
         try {
              $conexion = $obj_pdo->conectar();
-
+        
          // Creo una sentencia llamando a prepare. Esto devuelve un objeto statement
          $sentencia = $conexion->prepare($sql);
-
+        
              $sentencia->bindParam(":email", $email);
-
+        
              $sentencia->execute();
-
-
+        
+        
         } catch(PDOException $Exception) {
-
+        
          throw new MyDatabaseException( $Exception->getMessage( ) , $Exception->getCode( ) );
-
+        
         }*/
     }
     /**
@@ -148,18 +137,16 @@ class placeDB extends SingletonDao implements IDao
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
-            return new Place($p['id_place'],$p['place_name'],$p['capacity']);
+            return new Place($p['id_place'], $p['place_name'], $p['capacity']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
     function add($artist) {
         // TODO: Implement add() method.
-
+        
     }
     function save() {
         // TODO: Implement save() method.
+        
     }
-
-
-
 }

@@ -19,6 +19,8 @@ class BuyLine {
     public function setPrice($p) {
         $this->price = $p;
     }
-    public function getId() {return $this->id;}
+    public function getId() {
+        return $this->id;
+    }
 }
 ?>
