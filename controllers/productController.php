@@ -17,9 +17,9 @@ class productController {
         }
         if ($controllercategory->getAll()) { $list = $controllercategory->getAll();  }
          if ($dbevents->getLimitAll($pageaux)) {
-                    $i=0;
-                    $listevent = $dbevents->getLimitAll($pageaux);}
-                    $total = $dbevents->getAll();
+                    $listevent = $dbevents->getLimitAll($pageaux);
+                }
+        $total = $dbevents->getAll();
         require (ROOT . 'views/product.php');
     }
 }

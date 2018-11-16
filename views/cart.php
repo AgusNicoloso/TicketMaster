@@ -61,7 +61,7 @@
 	<section class="cart bgwhite p-t-70 p-b-100">
 		<div class="container">
 			<!-- Cart item -->
-		<?php if (isset($_SESSION['CarritoList']) && count($_SESSION['CarritoList']) != 0) { $i=1; $total=0;?>
+		<?php if (isset($carrito) && count($carrito) != 0) { ?>
 			
 			<div class="container-table-cart pos-relative">
 				<div class="wrap-table-shopping-cart bgwhite">
@@ -73,7 +73,7 @@
 							<th class="column-4 text-center">Cantidad</th>
 							<th class="column-5">Total</th>
 						</tr>
-							<?php foreach ($_SESSION['CarritoList'] as $key){ ?>
+							<?php foreach ($carrito as $key){ ?>
 							<tr class="table-row">
 								<td class="column-1">
 									<a href="<?= URl ?>event/deleteEvent/<?= $i; ?>">

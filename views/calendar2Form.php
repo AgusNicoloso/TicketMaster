@@ -21,7 +21,6 @@
                 <p>Porfavor, ingrese la informacion solicitada.</p>
             </div>
             <form id="Calendar" method="post" action="oktoadd">
-                <br><br>
                     <div class="form-group">
                         <div class="alert alert-danger">Capacidad maxima: <?php  $place;echo $place->getCapacity()?></div>
                         <table class="table">
@@ -113,7 +112,7 @@
             } ?>
 
             
-            <br>
+            <br><br>
                  <button type="submit" class="btn btn-primary" >Siguiente</button>
             </form>
             <?php 

@@ -120,6 +120,7 @@
               <?php } ?>
               </div>
                <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
+                
                   <!-- Product -->
 									<?php
                  if($listevent){
@@ -156,36 +157,36 @@
                         </div>
                      </div>
                     <?php } else { ?>
-										<?php while ($i<count($listevent)) { ?>
+										<?php foreach ($listevent as $key => $value) { ?>
                      <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <div class="block2">
                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
                              <img
-                              title="<?php $listevent[$i]->getName(); ?>"
-                              alt="<?php $listevent[$i]->getName(); ?>"
-                              src="<?php echo $listevent[$i]->getPhoto(); ?>"
+                              title="<?php $value->getName(); ?>"
+                              alt="<?php $value->getName(); ?>"
+                              src="<?php echo $value->getPhoto(); ?>"
                               height="320px"
                              >
                               <div class="block2-overlay trans-0-4">
                                  <div class="block2-btn-addcart w-size1 trans-0-4">
                                     <!-- Button -->
-                                    <a href="<?= URl ?>event/see/<?= $listevent[$i]->getID();?>" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    <a href="<?= URl ?>event/see/<?= $value->getID();?>" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                     Ver evento
                                   </a>
                                  </div>
                               </div>
                            </div>
                            <div class="block2-txt p-t-20">
-                              <a href="<?= URl ?>event/see/<?= $listevent[$i]->getID();?>" class="block2-name dis-block m-text6 p-r-5">
-																<?php echo $listevent[$i]->getName(); ?>
+                              <a href="<?= URl ?>event/see/<?= $value->getID();?>" class="block2-name dis-block m-text6 p-r-5">
+																<?php echo $value->getName(); ?>
                               </a>
                               <span class="block2-name dis-block s-text3 p-b-5">
-                                <?php echo "Categoria : " . $listevent[$i]->getNameCategory(); ?>
+                                <?php echo "Categoria : " . $value->getNameCategory(); ?>
                               </span>
                            </div>
                         </div>
                      </div>
-										 <?php $i++;} ?>
+										 <?php } ?>
                      <?php } ?>
                   </div>
                   <div class="pagination flex-m flex-w p-t-26">
