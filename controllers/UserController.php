@@ -26,13 +26,11 @@ class UserController {
                 header("Location:" . URl);
             }
     }
-    public function insert($mail,$pass,$name) {
+    public function insert($name,$mail,$pass) {
         $us = new User($mail, $pass, $name, "user");
         $this->dao->create($us);
     }
     public function searchUser($mail,$pass) {
-       
-   
         $us = $this->dao->read($mail);
         if ($us) {
             if ($us->getPass() == $pass) {
@@ -50,12 +48,12 @@ class UserController {
             require ("views/login.php");
         }
     }
-    public function logverify($mail) {
+    public function logverify($name,$mail,$pass) {
         if ($this->dao->read($mail)) {
             $msg = "El usuario ya esta registrado.";
             require ("views/register.php");
         } else {
-            $this->insert();
+            $this->insert($name,$mail,$pass);
         }
     }
     public function islog() {
