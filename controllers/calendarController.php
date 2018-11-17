@@ -134,12 +134,14 @@ class CalendarController {
         header("Location:" . URl);
     }
     public function infoEvent($id) {
-        return $this->dao->mapeoEventDetail($id);
+        $c_event=new EventController();
+        return $this->dao->mapeoCalendarDetail($id);
     }
     public function filter($startdate = '', $enddate = '') {
         $product = $this->dao->filter($startdate, $enddate);
         $this->viewEventbyfilter($product);
     }
+
     public function viewEventbyfilter($product) {
         $controllercategory = new \controllers\categoryController();
         $dbevents = new \controllers\EventController();

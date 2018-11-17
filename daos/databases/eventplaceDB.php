@@ -40,11 +40,11 @@ class eventplaceDB extends SingletonDao implements IDao {
      */
     public function read($id_plaza_evento) {
         $sql = "SELECT * FROM plaza_eventos where id_plaza_evento = $id_plaza_evento";
-        $parameters['id_plaza_evento'] = $id_plaza_evento;
+
         try {
             $this->connection = Connection::getInstance();
             $this->connection->connect();
-            $resultSet = $this->connection->execute($sql, $parameters);
+            $resultSet = $this->connection->execute($sql);
         }
         catch(Exception $ex) {
             throw $ex;
@@ -132,12 +132,7 @@ class eventplaceDB extends SingletonDao implements IDao {
         
         }*/
     }
-    /**
-     * Transforma el listado de usuario en
-     * objetos de la clase Usuario
-     *
-     * @param  Array $gente Listado de personas a transformar
-     */
+
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
@@ -150,23 +145,6 @@ class eventplaceDB extends SingletonDao implements IDao {
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
-    /*protected function mapeoSeat($id)
-    {
-        $sql = "SELECT * FROM tipo_plaza where id_tipo_plaza=$id";
-        try {
-            $this->connection = Connection::getInstance();
-            $value = $this->connection->execute($sql);
-        } catch (Exception $ex) {
-            throw $ex;
-        }
-        if (!empty($value)) {
-            $value = is_array($value) ? $value : [];
-            $resp = array_map(function ($p) {
-                return new Seat($p['descript'], $p['id_tipo_plaza']);
-            }, $value);
-            return count($resp) > 1 ? $resp : $resp['0'];
-        }
-    }*/
     public function issetSeat() {
         $sql = "SELECT * FROM tipo_plaza";
         try {

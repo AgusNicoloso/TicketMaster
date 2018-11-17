@@ -34,12 +34,11 @@ class EventDB extends SingletonDao implements idao {
      *
      */
     public function read($id) {
-        $sql = "SELECT * FROM eventos where id_event = :id_event";
-        $parameters['id_event'] = $id;
+        $sql = "SELECT * FROM eventos where id_event = $id";
         try {
             $this->connection = Connection::getInstance();
             $this->connection->connect();
-            $resultSet = $this->connection->execute($sql, $parameters);
+            $resultSet = $this->connection->execute($sql);
         }
         catch(Exception $ex) {
             throw $ex;
@@ -183,23 +182,6 @@ class EventDB extends SingletonDao implements idao {
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
-    /*protected function mapeoCategory($id){
-        $sql = "SELECT * FROM categorias where id_category=$id";
-        try {
-            $this->connection = Connection::getInstance();
-            $value = $this->connection->execute($sql);
-        }
-        catch(Exception $ex) {
-            throw $ex;
-        }
-        if (!empty($value)){
-            $value = is_array($value) ? $value : [];
-            $resp = array_map(function ($p) {
-                return new Category($p['category_name'],$p['id_category']);
-            }, $value);
-            return count($resp) > 1 ? $resp : $resp['0'];
-        }
-    }*/
     public function search($search) {
         try {
             $sql = "SELECT * FROM eventos WHERE title_event LIKE '%$search%'";

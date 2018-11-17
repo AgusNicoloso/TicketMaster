@@ -121,73 +121,17 @@ class calendarDB extends SingletonDao implements IDao {
                 $event = new Event($p['title_event'], $p['photo'], $category, $p['id_event']);
                 $place = new Place($p['id_place'], $p['place_name'], $p['capacity']);
                 // $placeevent=$this->mapeoPlacetype($p['id_calendar']);
+                //$artist=$this->mapeoART($p['id_calendar']);
                 $placeevent = new eventplaceDB();
                 $artist = new artistxcalendarDB();
                 $placeevent->read($p['id_calendar']);
                 $artist->mapeoART($p['id_calendar']);
-                //$artist=$this->mapeoART($p['id_calendar']);
                 return new Calendar($event, $place, $placeevent, $p['id_calendar'], '', $artist, $p['date_event']);
             }, $value);
             return count($resp) > 1 ? $resp : $resp['0'];
         }
     }
-     public function mapeoPlacetype($id)
-    {
-        $sql = "select * from plaza_eventos p where p.id_calendar=$id";
-        try {
-            $this->connection = Connection::getInstance();
-            $this->connection->connect();
-            $value = $this->connection->execute($sql);
-        } catch (Exception $ex) {
-            throw $ex;
-        }
-        if (!empty($value)) {
-            $value = is_array($value) ? $value : [];
-            $resp = array_map(function ($p) {
-                $seat=$this->mapeoSeat($p['id_tipo_plaza']);
-                return new EventPlace($p['quantity'],$p['price'],$seat,$p['available'],$p['id_plaza_evento']);
-            }, $value);
-            return count($resp) > 1 ? $resp : $resp['0'];
-        }
-    }
-    protected function mapeoSeat($id)
-    {
-        $sql = "SELECT * FROM tipo_plaza t where t.id_tipo_plaza = $id ";
-        try {
-            $this->connection = Connection::getInstance();
-            $this->connection->connect();
-            $value = $this->connection->execute($sql);
-        } catch (Exception $ex) {
-            throw $ex;
-        }
-        if (!empty($value)) {
-            $value = is_array($value) ? $value : [];
-            $resp = array_map(function ($p) {
-                return new Seat($p['descript'], $p['id_tipo_plaza']);
-            }, $value);
-            return count($resp) > 1 ? $resp : $resp['0'];
-        }
-    }
-    protected function mapeoART($id)
-    {
-        $sql = "
-    SELECT * FROM artistas_x_calendarios axc inner join artistas a on axc.id_artist = a.id_artist where axc.id_calendar=$id ";
-        try {
-            $this->connection = Connection::getInstance();
-            $this->connection->connect();
-            $value = $this->connection->execute($sql);
-        } catch (Exception $ex) {
-            throw $ex;
-        }
-        if (!empty($value)) {
-            $value = is_array($value) ? $value : [];
-            $resp = array_map(function ($p) {
-                return new Artist($p['artist_name']);
-            }, $value);
-            return count($resp) > 1 ? $resp : $resp['0'];
-        }
-    }
-    public function mapeoEventDetail($id) {
+    public function mapeoCalendarDetail($id) {
         $sql = "
 select 
         c.id_calendar,
@@ -220,11 +164,11 @@ where
                 $category = NEW Category($p['category_name'], $p['id_category']);
                 $event = new Event($p['title_event'], $p['photo'], $category, $p['id_event']);
                 $place = new Place($p['id_place'], $p['place_name'], $p['capacity']);
-                $placeevent=$this->mapeoPlacetype($p['id_calendar']);
+                //$placeevent=$this->mapeoPlacetype($p['id_calendar']);
                 //$artist=$this->mapeoART($p['id_calendar']);
-               // $pdb = new eventplaceDB();
+                $pdb = new eventplaceDB();
                 $adb = new artistxcalendarDB();
-                //$placeevent = $pdb->read($p['id_calendar']);
+                $placeevent = $pdb->read($p['id_calendar']);
                 $artist = $adb->mapeoART($p['id_calendar']);
                 return new Calendar($event, $place, $placeevent, $p['id_calendar'], '', $artist, $p['date_event']);
             }, $value);
