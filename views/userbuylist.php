@@ -41,7 +41,7 @@
 			 <div class="topbar"></div>
 			 <div class="wrap_header">
 					<!-- Logo -->
-					<a href="" class="logo">
+					<a href="<?= URl ?>" class="logo">
 						 <h2>TicketMaster</h2>
 					</a>
 					<!-- Menu -->
@@ -61,7 +61,7 @@
 	<section class="cart bgwhite p-t-70 p-b-100">
 		<div class="container">
 			<!-- Cart item -->
-		<?php if ($this->getbuyuser($_SESSION['logued']->getMail())) { $buys = $this->getbuyuser($_SESSION['logued']->getMail()); ?>
+		<?php if ($buys) {  ?>
 			<div class="container-table-cart pos-relative">
 				<div class="wrap-table-shopping-cart bgwhite">
 					<table class="table-shopping-cart">

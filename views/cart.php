@@ -1,4 +1,4 @@
-<?php namespace views; ?>
+<?php namespace views;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +41,7 @@
 			 <div class="topbar"></div>
 			 <div class="wrap_header">
 					<!-- Logo -->
-					<a href="" class="logo">
+					<a href="<?= URl ?>" class="logo">
 						 <h2>TicketMaster</h2>
 					</a>
 					<!-- Menu -->
@@ -61,8 +61,8 @@
 	<section class="cart bgwhite p-t-70 p-b-100">
 		<div class="container">
 			<!-- Cart item -->
+			<?php $total=0; $i=0; ?> <!-- Recibiendo estas variables por la controladora de alguna manera no funciona ya que se auto aumentan, la unica solucion que encontramos fue declararlas aca y que se reseteen automaticamente -->
 		<?php if (isset($carrito) && count($carrito) != 0) { ?>
-			
 			<div class="container-table-cart pos-relative">
 				<div class="wrap-table-shopping-cart bgwhite">
 					<table class="table-shopping-cart">
@@ -74,9 +74,10 @@
 							<th class="column-5">Total</th>
 						</tr>
 							<?php foreach ($carrito as $key){ ?>
+								
 							<tr class="table-row">
 								<td class="column-1">
-									<a href="<?= URl ?>event/deleteEvent/<?= $i; ?>">
+									<a href="<?= URl ?>event/deleteEvent/<?= $i+1; ?>">
 										<div class="cart-img-product b-rad-4 o-f-hidden">
 										<img
 										 title="<?php $key['title_event']; ?>"
@@ -92,7 +93,7 @@
 								<td class="column-4 text-center"><?=$key['quantity'];?></td>
 								<td class="column-5">$<?=($key['price']*$key['quantity']);?></td>
 							</tr>
-							<?php $total = $total + ($key['price']*$key['quantity']);}	?>
+							<?php $total = $total + ($key['price']*$key['quantity']); $i++;}	?>
 						</table>
 					</div>
 				</div>

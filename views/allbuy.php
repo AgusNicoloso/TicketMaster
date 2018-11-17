@@ -41,7 +41,7 @@
              <div class="topbar"></div>
              <div class="wrap_header">
                     <!-- Logo -->
-                    <a href="" class="logo">
+                    <a href="<?= URl ?>" class="logo">
                          <h2>TicketMaster</h2>
                     </a>
                     <!-- Menu -->

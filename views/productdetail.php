@@ -1,12 +1,9 @@
 <?php namespace views;
-use controllers\EventController as EventController;
-use controllers\calendarController as calendarController;
-use controllers\EventPlaceController;
-if(isset($_SESSION['logued'])){ ?>
+if(isset($logued)){ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Product Detail</title>
+	<title>Evento <?= $product->getName(); ?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -56,7 +53,6 @@ if(isset($_SESSION['logued'])){ ?>
 </header>
 	
 	<!-- Product Detail -->
-	<?php $info= $cc->infoEvent($product->getID()); ?>
 	<div class="container bgwhite p-t-35 p-b-80">
 		<div class="flex-w flex-sb">
 			<div class="w-size13 p-t-30 respon5">

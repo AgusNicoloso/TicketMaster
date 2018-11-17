@@ -32,6 +32,7 @@ class BuyController {
         return $this->dao->getbuyuser($user->getID());
     }
     public function userbuylist() {
+        $buys = $this->getbuyuser($_SESSION['logued']->getMail());
         require (ROOT . 'views/userbuylist.php');
     }
 }

@@ -1,11 +1,10 @@
-<?php namespace views;
-
-
-?>
+<?php namespace views; ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <!---------------------------------------------------------------------------------------------------------------------->
 <html>
 <head>
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="<?= URl ?>images/icons/favicon.png"/>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link type="text/css" href="../css/csslog.css" rel="stylesheet" id="bootstrap-css">

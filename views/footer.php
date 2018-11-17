@@ -95,7 +95,7 @@ $controllercategory = new \controllers\categoryController();?>
 		</a>
 
 		<div class="t-center s-text8 p-t-20">
-				Copyright © 2018 Todos los derechos reservados. | UTN Universidad Tecnológica Nacional Mar del Plata
+				Copyright © 2018 Todos los derechos reservados | UTN Universidad Tecnológica Nacional Mar del Plata | Sureda Manuel, Morales Maximiliano, Nicoloso Agustin
 		</div>
 	</div>
 </footer>

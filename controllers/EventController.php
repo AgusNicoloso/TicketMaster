@@ -28,8 +28,9 @@ class EventController {
         require (ROOT . 'views/editevent.php');
     }
     public function deleteEvent($id) {
-        $this->dao->delete($id);
-        header("Location: http://localhost/TicketMaster/product");
+      $daocarrito = new \daos\daoList\daoCarrito();
+      $daocarrito->delete($id);
+      header("Location: http://localhost/TicketMaster/product");
     }
     public function editEvent($id) {
         $product = $this->dao->read($id);
@@ -63,8 +64,8 @@ class EventController {
         $this->viewProductDetail($product);
     }
     public function viewProductDetail($product) {
-        $cc = new calendarController();
-        include (ROOT . 'views/productdetail.php');
+        $productdetailController = new productdetailController();
+        $productdetailController->index($product);
     }
     public function getEvent($id) {
         return $this->dao->read($id);

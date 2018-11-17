@@ -1,8 +1,7 @@
 <?php  namespace views;
-       use controllers\CalendarController;
+use controllers\CalendarController;
 use controllers\UserController;
 use models\User;
-
 $c_user=new UserController();
 $c_calendar=new CalendarController();
 ?>
@@ -56,7 +55,6 @@ $c_calendar=new CalendarController();
                             include("navnotlog.php");
 
                         }
-
                         ?>
                      </div>
 				</div>
