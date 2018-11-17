@@ -217,17 +217,6 @@
       <script type="text/javascript" src="<?= URl ?>vendor/bootstrap/js/bootstrap.min.js"></script>
       <!--===============================================================================================-->
       <script type="text/javascript" src="<?= URl ?>vendor/select2/select2.min.js"></script>
-			<script type="text/javascript">
-			$(".selection-1").select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $('#dropDownSelect1')
-			});
-
-			$(".selection-2").select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $('#dropDownSelect2')
-			});
-			</script>
 			<!--===============================================================================================-->
         <script type="text/javascript" src="<?= URl ?>vendor/daterangepicker/moment.min.js"></script>
         <script type="text/javascript" src="<?= URl ?>vendor/daterangepicker/daterangepicker.js"></script>

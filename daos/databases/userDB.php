@@ -7,22 +7,15 @@ class userDB extends SingletonDao implements idao {
     private $connection;
     function __construct() {
     }
-    /**
-     *
-     */
     public function create($_user) {
-        // Guardo como string la consulta sql utilizand o como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
         $sql = "INSERT INTO clientes (name,user,pass,rol)VALUES (:name, :user, :pass, :rol)";
         $parameters['name'] = $_user->getName();
         $parameters['user'] = $_user->getMail();
         $parameters['pass'] = $_user->getPass();
         $parameters['rol'] = $_user->getRol();
         try {
-            // creo la instancia connection
             $this->connection = Connection::getInstance();
             $this->connection->connect();
-            // Ejecuto la sentencia.
-            //return $this->connection->ExecuteNonQuery($sql, $parameters);
             $this->connection->ExecuteNonQuery($sql, $parameters);
         }
         catch(\PDOException $ex) {
@@ -30,9 +23,6 @@ class userDB extends SingletonDao implements idao {
         }
         header("Location:" . URl);
     }
-    /**
-     *
-     */
     public function read($user) {
         $sql = "SELECT * FROM clientes where user = :user";
         $parameters['user'] = $user;
@@ -61,9 +51,6 @@ class userDB extends SingletonDao implements idao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
-    /**
-     *
-     */
     public function readAll() {
         $sql = "SELECT * FROM users";
         try {
@@ -76,13 +63,6 @@ class userDB extends SingletonDao implements idao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
-    /**
-     *
-     */
-    
-    /**
-     *
-     */
     public function update($value, $valiue) {
     }
     /**
@@ -110,25 +90,11 @@ class userDB extends SingletonDao implements idao {
         
         }*/
     }
-    /**
-     * Transforma el listado de usuario en
-     * objetos de la clase Usuario
-     *
-     * @param  Array $gente Listado de personas a transformar
-     */
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
             return new User($p['user'], $p['pass'], $p['name'], $p['rol'], $p['id_client']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
-    }
-    function add($artist) {
-        // TODO: Implement add() method.
-        
-    }
-    function save() {
-        // TODO: Implement save() method.
-        
     }
 }

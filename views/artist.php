@@ -22,9 +22,6 @@
                     </div>
                     <button type="submit" class="btn btn-primary" name="agregar">Agregar</button>
                 </form>
-                <form id="Artist" method="post" action="Artist/deleteArtist">
-                    <button type="submit" class="btn btn-primary" name="borrar">Borrar</button>
-                </form>
                 <a class="btn btn-primary" href="<?= URl.'home' ?>">Home</a>
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
                 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

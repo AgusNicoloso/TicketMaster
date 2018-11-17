@@ -7,19 +7,12 @@ use models\Category as Category;
 class categoryDB extends SingletonDao implements IDao {
     function __construct() {
     }
-    /**
-     *
-     */
     public function create($calendar) {
-        // Guardo como string la consulta sql utilizand o como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
         $sql = "INSERT INTO categorias (category_name)VALUES (:category_name)";
         $parameters['category_name'] = $calendar->getCategoryName();
         try {
-            // creo la instancia connection
             $this->connection = Connection::getInstance();
             $this->connection->connect();
-            // Ejecuto la sentencia.
-            //return $this->connection->ExecuteNonQuery($sql, $parameters);
             $this->connection->ExecuteNonQuery($sql, $parameters);
         }
         catch(\PDOException $ex) {
@@ -27,9 +20,6 @@ class categoryDB extends SingletonDao implements IDao {
         }
         header("Location:" . URl);
     }
-    /**
-     *
-     */
     public function read($id_category) {
         $sql = "SELECT * FROM categorias where id_category = :id_category";
         $parameters['id_category'] = $id_category;
@@ -44,9 +34,6 @@ class categoryDB extends SingletonDao implements IDao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
-    /**
-     *
-     */
     public function readAll() {
         $sql = "SELECT * FROM categorias";
         try {
@@ -60,9 +47,6 @@ class categoryDB extends SingletonDao implements IDao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
-    /**
-     *
-     */
     public function edit($_user) {
         $sql = "UPDATE users SET name = :name, surname = :surname, nationality = :nationality, state = :state, city = :city, birthdate = :birthdate, email = :email, password = :password, avatar = :avatar, role = :role";
         $parameters['name'] = $_user->getName();
@@ -76,23 +60,15 @@ class categoryDB extends SingletonDao implements IDao {
         $parameters['avatar'] = $_user->getAvatar() ['avatar']['name'];
         $parameters['role'] = $_user->getRole();
         try {
-            // creo la instancia connection
             $this->connection = Connection::getInstance();
-            // Ejecuto la sentencia.
             return $this->connection->ExecuteNonQuery($sql, $parameters);
         }
         catch(\PDOException $ex) {
             throw $ex;
         }
     }
-    /**
-     *
-     */
     public function update($value, $valiue) {
     }
-    /**
-     *
-     */
     public function delete($email) {
         /*$sql = "DELETE FROM usuarios WHERE email = :email";
         
@@ -115,25 +91,11 @@ class categoryDB extends SingletonDao implements IDao {
         
         }*/
     }
-    /**
-     * Transforma el listado de usuario en
-     * objetos de la clase Usuario
-     *
-     * @param  Array $gente Listado de personas a transformar
-     */
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
             return new Category($p['category_name'], $p['id_category']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
-    }
-    function add($artist) {
-        // TODO: Implement add() method.
-        
-    }
-    function save() {
-        // TODO: Implement save() method.
-        
     }
 }

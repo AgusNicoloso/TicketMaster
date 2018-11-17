@@ -7,19 +7,12 @@ use models\seat as Seat;
 class seatDB extends SingletonDao implements IDao {
     function __construct() {
     }
-    /**
-     *
-     */
     public function create($seat) {
-        // Guardo como string la consulta sql utilizand o como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
         $sql = "INSERT INTO tipo_plaza (descript) VALUES (:descript)";
         $parameters['descript'] = $seat->getDescript();
         try {
-            // creo la instancia connection
             $this->connection = Connection::getInstance();
             $this->connection->connect();
-            // Ejecuto la sentencia.
-            //return $this->connection->ExecuteNonQuery($sql, $parameters);
             $this->connection->ExecuteNonQuery($sql, $parameters);
         }
         catch(\PDOException $ex) {
@@ -27,9 +20,6 @@ class seatDB extends SingletonDao implements IDao {
         }
         header("Location:" . URl);
     }
-    /**
-     *
-     */
     public function seatbyid($id) {
         $sql = "SELECT * FROM tipo_plaza where id_tipo_plaza = $id";
         try {
@@ -75,9 +65,6 @@ class seatDB extends SingletonDao implements IDao {
             return count($resp) > 1 ? $resp : $resp['0'];
         }
     }
-    /**
-     *
-     */
     public function readAll() {
         $sql = "SELECT * FROM tipo_plaza";
         try {
@@ -91,18 +78,8 @@ class seatDB extends SingletonDao implements IDao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
-    /**
-     *
-     */
-    
-    /**
-     *
-     */
     public function update($value, $valiue) {
     }
-    /**
-     *
-     */
     public function delete($email) {
         /*$sql = "DELETE FROM usuarios WHERE email = :email";
         
@@ -125,25 +102,11 @@ class seatDB extends SingletonDao implements IDao {
         
         }*/
     }
-    /**
-     * Transforma el listado de usuario en
-     * objetos de la clase Usuario
-     *
-     * @param  Array $gente Listado de personas a transformar
-     */
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
             return new Seat($p['descript'], $p['id_tipo_plaza']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
-    }
-    function add($artist) {
-        // TODO: Implement add() method.
-        
-    }
-    function save() {
-        // TODO: Implement save() method.
-        
     }
 }

@@ -49,10 +49,6 @@ class CategoryDao extends Singleton implements idao {
         // TODO: Implement updateArtist() method.
         
     }
-    function save() {
-        // TODO: Implement save() method.
-        
-    }
     function returnList() {
         return $this->list;
     }

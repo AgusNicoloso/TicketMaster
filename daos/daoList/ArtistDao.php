@@ -45,13 +45,7 @@ class ArtistDao extends Singleton implements idao {
         }
         $_SESSION['ArtistList'] = $arrayArtist;
     }
-    function update($dato, $datonuevo) {
-        // TODO: Implement updateArtist() method.
-        
-    }
-    function save() {
-        // TODO: Implement saveArtist() method.
-        
+    function update($dato, $datonuevo) {        
     }
     function returnList() {
         return $this->list;

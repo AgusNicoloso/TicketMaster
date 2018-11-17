@@ -117,6 +117,8 @@
                   </ul>
                 <?php } ?>
                 </div>
+              <?php } else { ?>
+                <h4>No hay categorias...</h4>
               <?php } ?>
               </div>
                <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
@@ -202,10 +204,8 @@
                   <?php } }?>
                   </div>
 								<?php } else { ?>
-                  <h3 class="text-center">No hay eventos...</h3>
+                  <h4>No hay eventos...</h4>
 								<?php } ?>
-                  <!-- Pagination -->
-
                </div>
             </div>
          </div>
@@ -218,9 +218,6 @@
          <i class="fa fa-angle-double-up" aria-hidden="true"></i>
          </span>
       </div>
-      <!-- Container Selection -->
-      <div id="dropDownSelect1"></div>
-      <div id="dropDownSelect2"></div>
       <!--===============================================================================================-->
       <script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
       <!--===============================================================================================-->
@@ -230,17 +227,6 @@
       <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 			<!--===============================================================================================-->
 			<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
-			<script type="text/javascript">
-			$(".selection-1").select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $('#dropDownSelect1')
-			});
-
-			$(".selection-2").select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $('#dropDownSelect2')
-			});
-			</script>
 			<!--===============================================================================================-->
 				<script type="text/javascript" src="vendor/daterangepicker/moment.min.js"></script>
 				<script type="text/javascript" src="vendor/daterangepicker/daterangepicker.js"></script>
@@ -252,24 +238,6 @@
 				<script type="text/javascript"></script>
 			<!--===============================================================================================-->
 			<script type="text/javascript" src="vendor/noui/nouislider.min.js"></script>
-			<script type="text/javascript">
-			var filterBar = document.getElementById('filter-bar');
-			noUiSlider.create(filterBar, {
-				start: [50, 200],
-				connect: true,
-				range: {
-					'min': 50,
-					'max': 200
-				}
-			});
-			var skipValues = [
-				document.getElementById('value-lower'),
-				document.getElementById('value-upper')
-			];
-			filterBar.noUiSlider.on('update', function (values, handle) {
-				skipValues[handle].innerHTML = Math.round(values[handle]);
-			});
-			</script>
 			<!--===============================================================================================-->
 			<script src="js/main.js"></script>
 		</body>

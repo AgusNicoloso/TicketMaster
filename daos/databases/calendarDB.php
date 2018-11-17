@@ -13,17 +13,13 @@ use models\Seat;
 class calendarDB extends SingletonDao implements IDao {
     private $connection;
     public function create($calendar, $a) {
-        // Guardo como string la consulta sql utilizand o como values, marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada
         $sql = "INSERT INTO calendarios (date_event,id_place,id_event)VALUES (:date_event,:id_place,:id_event)";
         $parameters['date_event'] = $a;
         $parameters['id_place'] = $calendar->getPlace();
         $parameters['id_event'] = $calendar->getEvent();
         try {
-            // creo la instancia connection
             $this->connection = Connection::getInstance();
             $this->connection->connect();
-            // Ejecuto la sentencia.
-            //return $this->connection->ExecuteNonQuery($sql, $parameters);
             $this->connection->ExecuteNonQuery($sql, $parameters);
         }
         catch(\PDOException $ex) {
@@ -35,10 +31,8 @@ class calendarDB extends SingletonDao implements IDao {
         $parameters['id_place'] = $id_place;
         $parameters['date_event'] = $date_event;
         try {
-            // creo la instancia connection
             $this->connection = Connection::getInstance();
             $this->connection->connect();
-            // Ejecuto la sentencia.
             $asd = $this->connection->ExecuteNonQuery($sql, $parameters);
         }
         catch(\PDOException $ex) {
@@ -82,9 +76,7 @@ class calendarDB extends SingletonDao implements IDao {
         $resp = array_map(function ($p) {
             $event = $this->mapeoEvent($p['id_event']);
             $place = $this->mapeoPlacetype($p['id_plaza_evento']);
-            return new Calendar($event, $p['id_place'], $place, $p['id_calendar'], '', '', $p['date_event']);
-            // return new EventPlace($p['id_lugar_evento'],$p['quantity'],$p['available'],$p['price'],$p['id_tipo_plaza']);
-            
+            return new Calendar($event, $p['id_place'], $place, $p['id_calendar'], '', '', $p['date_event']);            
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
     }
@@ -120,8 +112,6 @@ class calendarDB extends SingletonDao implements IDao {
                 $category = NEW Category($p['category_name'], $p['id_category']);
                 $event = new Event($p['title_event'], $p['photo'], $category, $p['id_event']);
                 $place = new Place($p['id_place'], $p['place_name'], $p['capacity']);
-                // $placeevent=$this->mapeoPlacetype($p['id_calendar']);
-                //$artist=$this->mapeoART($p['id_calendar']);
                 $placeevent = new eventplaceDB();
                 $artist = new artistxcalendarDB();
                 $placeevent->read($p['id_calendar']);
@@ -173,17 +163,9 @@ where
             return count($resp) > 1 ? $resp : $resp['0'];
         }
     }
-    function delete($nombre) {
-        // TODO: Implement delete() method.
-        
+    function delete($nombre) {    
     }
-    function update($dato, $datonuevo) {
-        // TODO: Implement update() method.
-        
-    }
-    function save() {
-        // TODO: Implement save() method.
-        
+    function update($dato, $datonuevo) {        
     }
     public function filter($startdate, $enddate) {
         $sql = "select DISTINCT

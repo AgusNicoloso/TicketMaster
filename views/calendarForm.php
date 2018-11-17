@@ -1,5 +1,4 @@
 <?php namespace views;?>
-
 <html>
 <head>
     <title>Alta calendario</title>

@@ -220,7 +220,6 @@ if(isset($logued)){ ?>
 			minimumResultsForSearch: 20,
 			dropdownParent: $('#dropDownSelect1')
 		});
-
 		$(".selection-2").select2({
 			minimumResultsForSearch: 20,
 			dropdownParent: $('#dropDownSelect2')
@@ -231,18 +230,8 @@ if(isset($logued)){ ?>
 	<script type="text/javascript" src="<?= URl ?>js/slick-custom.js"></script>
 <!--===============================================================================================-->
 	<script type="text/javascript" src="<?= URl ?>vendor/sweetalert/sweetalert.min.js"></script>
-	<script type="text/javascript">
-		$('.block2-btn-addcart').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find().html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-	</script>
-
 <!--===============================================================================================-->
 	<script src="<?= URl ?>js/main.js"></script>
-
 </body>
 </html>
 <?php } else {
