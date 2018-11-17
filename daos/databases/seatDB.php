@@ -57,6 +57,24 @@ class seatDB extends SingletonDao implements IDao {
         if (!empty($resultSet)) return $this->mapear($resultSet);
         else return false;
     }
+    public function mapeoSeat($id)
+    {
+        $sql = "SELECT * FROM tipo_plaza t where t.id_tipo_plaza = $id ";
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $value = $this->connection->execute($sql);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+        if (!empty($value)) {
+            $value = is_array($value) ? $value : [];
+            $resp = array_map(function ($p) {
+                return new Seat($p['descript'], $p['id_tipo_plaza']);
+            }, $value);
+            return count($resp) > 1 ? $resp : $resp['0'];
+        }
+    }
     /**
      *
      */

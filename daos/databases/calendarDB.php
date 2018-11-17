@@ -164,11 +164,9 @@ where
                 $category = NEW Category($p['category_name'], $p['id_category']);
                 $event = new Event($p['title_event'], $p['photo'], $category, $p['id_event']);
                 $place = new Place($p['id_place'], $p['place_name'], $p['capacity']);
-                //$placeevent=$this->mapeoPlacetype($p['id_calendar']);
-                //$artist=$this->mapeoART($p['id_calendar']);
                 $pdb = new eventplaceDB();
                 $adb = new artistxcalendarDB();
-                $placeevent = $pdb->read($p['id_calendar']);
+                $placeevent = $pdb->mapeoPlacetype($p['id_calendar']);
                 $artist = $adb->mapeoART($p['id_calendar']);
                 return new Calendar($event, $place, $placeevent, $p['id_calendar'], '', $artist, $p['date_event']);
             }, $value);
