@@ -29,6 +29,7 @@ class UserController {
     public function insert($name,$mail,$pass) {
         $us = new User($mail, $pass, $name, "user");
         $this->dao->create($us);
+        header("Location:" . URl."Login/index");
     }
     public function searchUser($mail,$pass) {
         $us = $this->dao->read($mail);

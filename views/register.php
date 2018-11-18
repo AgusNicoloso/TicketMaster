@@ -12,7 +12,7 @@
         <div class="main-div">
             <div class="panel">
                 <h2>Registro</h2>
-                <p>Porfavor, complete todos los campos.</p>
+                <p>Porfavor, complete todos los campos</p>
             </div>
 
             <form id="User" method="post" action="logverify">
@@ -25,13 +25,15 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="password" class="form-control" name="pass" id="inputPassword" placeholder="Password" required>
+                    <input type="password" class="form-control" name="pass" id="inputPassword" placeholder="Contraseña" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary" >Registrarse</button>
+                <button type="submit" class="btn btn-primary">Registrarse</button>
 
             </form>
-            <br>
+            
+            <a class="btn btn-primary" href="<?= URl ?>Login/index">Iniciar sesion</a>
+            <br><br>
             <a class="btn btn-primary" href="<?= URl.'home' ?>">Home</a>
             <?php
             if(isset($msg)){

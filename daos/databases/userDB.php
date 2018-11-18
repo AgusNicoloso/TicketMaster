@@ -21,7 +21,6 @@ class userDB extends SingletonDao implements idao {
         catch(\PDOException $ex) {
             throw $ex;
         }
-        header("Location:" . URl);
     }
     public function read($user) {
         $sql = "SELECT * FROM clientes where user = :user";

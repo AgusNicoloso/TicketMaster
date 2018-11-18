@@ -15,7 +15,7 @@
         <div class="main-div">
             <div class="panel">
                 <h2>Login</h2>
-                <p>Please enter your email and password</p>
+                <p>Por favor ingresa tu email y contraseña</p>
             </div>
 
             <form id="User" method="post" action="../User/searchUser">
@@ -23,21 +23,22 @@
                 <div class="form-group">
 
 
-                    <input type="email" class="form-control" name="mail" id="inputEmail" placeholder="Email Address">
+                    <input type="email" class="form-control" name="mail" id="inputEmail" placeholder="Email">
 
                 </div>
 
                 <div class="form-group">
 
-                    <input type="password" class="form-control" name="pass" id="inputPassword" placeholder="Password">
+                    <input type="password" class="form-control" name="pass" id="inputPassword" placeholder="Contraseña">
 
                 </div>
 
-                <button type="submit" class="btn btn-primary" >Login</button>
+                <button type="submit" class="btn btn-primary">Iniciar sesion</button>
 
             </form>
 
-            <br>
+            <a class="btn btn-primary" href="<?= URl ?>User/index">Registrate</a>
+            <br><br>
             <a class="btn btn-primary" href="<?= URl.'home' ?>">Home</a>
 
             <?php
