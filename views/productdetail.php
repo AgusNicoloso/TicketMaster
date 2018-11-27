@@ -142,7 +142,13 @@ if(isset($logued)){ ?>
 						<p class="s-text8">
 							<?php if(is_array($info)) { ?>
 							<?php $i=0; while($i < count($info)){ 
-								$date = $info[$i]->getDate(); $artistlist = $info[$i]->getArtist();
+								$date = $info[$i]->getDate();
+								if(isset($_SESSION['artists'])){
+								    $artistlist=$_SESSION['artists'];
+                                }else{
+                                    $artistlist = $info[$i]->getArtist();
+                                }
+
 								if(is_array($artistlist)){
 									foreach($artistlist as $artist){
 									    $new_arr[] = $artist->getName();

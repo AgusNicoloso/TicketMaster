@@ -18,4 +18,29 @@ class Place {
     public function getCapacity() {
         return $this->capacity;
     }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param string $place
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+    }
+
+    /**
+     * @param string $capacity
+     */
+    public function setCapacity($capacity)
+    {
+        $this->capacity = $capacity;
+    }
+
 }

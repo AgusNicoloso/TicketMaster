@@ -16,4 +16,13 @@ class Category {
     public function getID() {
         return $this->id;
     }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
 }

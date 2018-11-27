@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 use daos\databases\categoryDB as Dao;
+//use daos\daoList\categoryList as Dao;
 use models\Category;
 class CategoryController {
     protected $dao;
@@ -16,7 +17,7 @@ class CategoryController {
             require ("views/category.php");
         } else {
             $category = new Category($category_name);
-            $this->dao->create($category);     
+            $this->dao->create($category);
         }
     }
     public function home() {

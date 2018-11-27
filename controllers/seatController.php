@@ -3,6 +3,7 @@ namespace controllers;
 use daos\databases\Connection;
 use models\seat as Seat;
 use daos\databases\seatDB as dao;
+//use daos\daolist\seatList as dao;
 class SeatController {
     protected $dao;
     public function __construct() {
@@ -18,6 +19,7 @@ class SeatController {
         } else {
             $seat = new Seat($seatName);
             $this->dao->create($seat);
+            print_r($_SESSION['seats']);
         }
     }
     public function allSeat() {

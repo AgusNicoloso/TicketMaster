@@ -13,4 +13,13 @@ class Seat {
     public function getDescript() {
         return $this->descript;
     }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
 }

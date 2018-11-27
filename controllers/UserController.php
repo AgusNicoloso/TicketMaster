@@ -22,7 +22,10 @@ class UserController {
     public function logout($cs) {
         
             if (isset($cs)) {
-                session_destroy();
+                //session_destroy();
+                unset($_SESSION['status']);
+                unset($_SESSION['logued']);
+                unset($_SESSION['CarritoList']);
                 header("Location:" . URl);
             }
     }

@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 use daos\databases\artistDB as dao;
+//use daos\daoList\artistList as dao;
 use models\Artist as Artist;
 class ArtistController {
     protected $dao;
@@ -11,13 +12,17 @@ class ArtistController {
         include ("views/artist.php");
     }
     public function addArtist($nombre) {
-        $artist = new Artist($nombre);
-        $this->dao->create($artist->getName());
+
+        $this->dao->create($nombre);
+        header("Location:".URl);
     }
     public function deleteArtist($nombre) {
         $this->dao->delete($nombre);
     }
     public function showArtist() {
+        if(isset($_SESSION['artists'])){
+            return $_SESSION['artists'];
+        }
         return $this->dao->readAll();
     }
 }

@@ -1,9 +1,11 @@
 <?php
 namespace controllers;
 use controllers\productdetailController as productdetailController;
+use models\Category;
 use models\event as Event;
 use models\Photo as Photo;
 use daos\databases\eventDB as dao;
+//use daos\daoList\eventList as dao;
 class EventController {
     protected $dao;
     private $obj;
@@ -70,11 +72,21 @@ class EventController {
     public function getEvent($id) {
         return $this->dao->read($id);
     }
-    public function insert() {
+    public function insert($evento,$categoria) {
         try {
+
             $rutaFoto = new Photo();
             $rutaFoto->uploadPhoto($_FILES['fotoevento'], "photos");
-            $us = new Event($_POST['nombreevento'], $rutaFoto->getDirection(), $_POST['categoria']);
+            if(isset($_SESSION['category'])){
+                $arreglo=$_SESSION['category'];
+                if(is_array($arreglo)){
+                    $aux=$arreglo[$categoria-1];
+                }else{
+                    $aux=$_SESSION['category'];
+                }
+                $categoria=$aux;
+            }
+            $us = new Event($evento, $rutaFoto->getDirection(), $categoria);
             $this->dao->create($us);
         }
         catch(Exception $e) {

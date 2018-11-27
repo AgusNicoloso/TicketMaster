@@ -3,6 +3,7 @@ namespace controllers;
 use daos\databases\Connection;
 use models\Place as Place;
 use daos\databases\placeDB as dao;
+//use daos\daoList\placeList as dao;
 class PlaceController {
     protected $dao;
     public function __construct() {

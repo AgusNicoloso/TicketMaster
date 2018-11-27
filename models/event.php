@@ -34,5 +34,14 @@ class Event {
     public function setPhoto($p) {
         $this->photo = $p;
     }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
 }
 ?>
