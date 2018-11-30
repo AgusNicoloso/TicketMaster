@@ -10,9 +10,9 @@ class TicketsController {
     }
     public function index() {
     }
-    public function insert($qr) {
+    public function insert($number,$qr) {
         try {
-            $ticket = new Ticket($qr);
+            $ticket = new Ticket($number,$qr);
             $this->dao->create($ticket);
         }
         catch(Exception $e) {
@@ -21,5 +21,8 @@ class TicketsController {
     }
     public function search($qr) {
         return $this->dao->read($qr);
+    }
+    public function getLastID() {
+        return $this->dao->getLastID();
     }
 }

@@ -21,7 +21,7 @@ class CalendarController {
         $art = $c_artist->showArtist();
         $seatList = $c_seat->allSeat();
         $categoryList = $c_category->getAll();
-        $eventList = $c_event->getAll();
+        $eventList = $c_event->getAllNotCalendar();
         $placeList = $c_place->allPlace();
         $msg;
         if (empty($seatList) || empty($art) || empty($eventList) || empty($placeList)) {
@@ -29,8 +29,12 @@ class CalendarController {
         }
         require ('views/calendarForm.php');
     }
-     public function index2($event,$dateIn,$dateOut,$place,$seats) {
-        $c_eventplace = new EventPlaceController();
+     public function index2($event='',$dateIn='',$dateOut='',$place='',$seats='') {
+        if(empty($event) || empty($dateIn) || empty($dateOut) || empty($place) || empty($seats)){
+        $msg = "Complete los datos por favor";
+        require ('views/calendarForm.php');
+        }else{
+            $c_eventplace = new EventPlaceController();
         $c_place = new PlaceController();
         $c_seat = new SeatController();
         $lista = new ArtistController();
@@ -43,6 +47,7 @@ class CalendarController {
         $place = $c_place->placebyid($place);
         $lista = $lista->showArtist();
         require ('views/calendar2Form.php');
+        }  
     }
     public function quatity($cantidad,$place) {
         $c_eventplace = new EventPlaceController();
@@ -56,7 +61,7 @@ class CalendarController {
         }
         return true;
     }
-    public function oktoadd($precios,$cantidad,$event,$dateIn,$dateOut,$place,$days,$seats,$dates) {
+    public function oktoadd($precios='',$cantidad='',$event='',$dateIn='',$dateOut='',$place='',$days='',$seats='',$dates='') {
         $c_eventplace = new EventPlaceController();
         $c_place = new PlaceController();
         $c_seat = new SeatController();

@@ -2,6 +2,7 @@
 namespace controllers;
 use models\Buy as Buy;
 use daos\databases\BuyDB as dao;
+use daos\databases\linebuyDB as linebuyDB;
 use controllers\UserController as UserController;
 class BuyController {
     protected $dao;
@@ -14,9 +15,9 @@ class BuyController {
         if ($this->getAll()) { $buys = $this->getAll(); }
         require (ROOT . 'views/allbuy.php');
     }
-    public function insert($ticket, $client, $date) {
+    public function insert($date, $client) {
         try {
-            $buy = new Buy($ticket, $client, $date);
+            $buy = new Buy($date, $client);
             $this->dao->create($buy);
         }
         catch(Exception $e) {
@@ -29,10 +30,14 @@ class BuyController {
     public function getbuyuser($email) {
         $userdb = new UserController();
         $user = $userdb->search($email);
-        return $this->dao->getbuyuser($user->getID());
+        $linebuyDB = new linebuyDB();
+        return $linebuyDB->getbuyuser($user->getID());
     }
     public function userbuylist() {
         $buys = $this->getbuyuser($_SESSION['logued']->getMail());
         require (ROOT . 'views/userbuylist.php');
+    }
+    public function getLastID() {
+        return $this->dao->getLastID();
     }
 }

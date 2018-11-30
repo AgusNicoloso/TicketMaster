@@ -40,14 +40,14 @@
                             if(!empty($eventList)){
                                 foreach ($eventList as $key=>$value){
                                     ?>
-                                    <option value="<?= $value->getId(); ?>"><?= $value->getName(); ?></option>
+                                    <option value="<?= $value->getId(); ?>" required><?= $value->getName(); ?></option>
                                     <?php
                                 }
                             }
                         }
                         else{
                             ?>
-                            <option value="<?=  $eventList->getId(); ?>"><?= $eventList->getName(); ?></option>
+                            <option value="<?=  $eventList->getId(); ?>" required><?= $eventList->getName(); ?></option>
                         <?php
                         }
                         ?>
@@ -55,10 +55,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="">Fecha Inicio</label> <input type="date" class="form-control" name="dateIn" min="<?=date("Y-m-d"); ?>">
+                    <label for="">Fecha Inicio</label> <input type="date" class="form-control" name="dateIn" min="<?=date("Y-m-d"); ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="">Fecha Fin</label> <input type="date" class="form-control" name="dateOut" min="<?=date("Y-m-d"); ?>">
+                    <label for="">Fecha Fin</label> <input type="date" class="form-control" name="dateOut" min="<?=date("Y-m-d"); ?>" required>
                 </div>
                 <tile>Lugar</tile>
                 <div class="form-group">
@@ -71,14 +71,14 @@
                             if(!empty($placeList)){
                                 foreach ($placeList as $key=>$value){
                                     ?>
-                                    <option value="<?php echo $value->getId(); ?>"><?php echo $value->getPlace(); ?></option>
+                                    <option value="<?php echo $value->getId(); ?>" required><?php echo $value->getPlace(); ?></option>
                                     <?php
                                 }
                             }
                         }
                         else{
                             ?>
-                            <option value="<?php echo $placeList->getId(); ?>"><?php echo $placeList->getPlace(); ?></option>
+                            <option value="<?php echo $placeList->getId(); ?>" required><?php echo $placeList->getPlace(); ?></option>
                             <?php
                         }
                         ?>
@@ -87,17 +87,17 @@
                 </div>
                 <tile>Plaza</tile>
                 <div class="container-fluid">
-                    <select class="form-control" id="multiselectwithsearch" multiple="multiple" name="seats[]">
+                    <select class="form-control" id="multiselectwithsearch" multiple="multiple" name="seats[]" required>
                         <?php
                         if(is_array($seatList)){?>
                             
                            <?php foreach ($seatList as $key => $value) { ?>
 
-                                <option value="<?php echo $value->getId(); ?>"> <?php echo $value->getDescript(); ?> </option>
+                                <option value="<?php echo $value->getId(); ?>" required> <?php echo $value->getDescript(); ?> </option>
                             <?php }
                              } else{  ?>
 
-                            <option value="<?php echo $seatList->getId(); ?>"> <?php echo $seatList->getDescript(); ?> </option>
+                            <option value="<?php echo $seatList->getId(); ?>" required> <?php echo $seatList->getDescript(); ?> </option>
                       <?php }  ?>
                     </select>
                     

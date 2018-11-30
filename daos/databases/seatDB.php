@@ -34,7 +34,7 @@ class seatDB extends SingletonDao implements IDao {
         else return false;
     }
     public function read($seat_descript) {
-        $sql = "SELECT * FROM tipo_plaza where seat_descript = :seat_descript";
+        $sql = "SELECT * FROM tipo_plaza where descript = :descript";
         $parameters['descript'] = $seat_descript;
         try {
             $this->connection = Connection::getInstance();

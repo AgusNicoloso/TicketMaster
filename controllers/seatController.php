@@ -31,6 +31,10 @@ class SeatController {
     public function seatbyid($id) {
         return $this->dao->seatbyid($id);
     }
+    public function searchbyplace($place_name) {
+        $place = $this->dao->read($place_name);
+        return $place->getId();
+    }
     public function arrayseat($array) {
         $arreglo = array();
         if (is_array($array)) {

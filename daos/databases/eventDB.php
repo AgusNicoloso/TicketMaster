@@ -76,7 +76,7 @@ class EventDB extends SingletonDao implements idao {
     }
     public function readLimit($page, $id) {
         try {
-            $sql = "SELECT * FROM eventos WHERE id_category = $id limit $page,9";
+            $sql = "SELECT DISTINCT e.id_event, e.title_event,e.photo,e.id_category FROM eventos e INNER JOIN calendarios c ON c.id_event = e.id_event where id_category = $id LIMIT $page,9";
             $this->connection = Connection::getInstance();
             $this->connection->connect();
             $resultSet = $this->connection->execute($sql);
@@ -89,7 +89,20 @@ class EventDB extends SingletonDao implements idao {
     }
     public function readLimitAll($page) {
         try {
-            $sql = "SELECT * FROM eventos limit $page,9";
+            $sql = "SELECT DISTINCT e.id_event, e.title_event,e.photo,e.id_category FROM eventos e INNER JOIN calendarios c ON c.id_event = e.id_event LIMIT $page,9";
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            echo $ex->getMessage();
+        }
+        if (!empty($resultSet)) return $this->mapear($resultSet);
+        else return false;
+    }
+    public function getAllNotCalendar() {
+        try {
+            $sql = "SELECT e.id_event, e.title_event,e.photo,e.id_category FROM eventos e left outer join calendarios c on c.id_event = e.id_event WHERE c.id_calendar IS NULL";
             $this->connection = Connection::getInstance();
             $this->connection->connect();
             $resultSet = $this->connection->execute($sql);
@@ -155,7 +168,7 @@ class EventDB extends SingletonDao implements idao {
     }
     public function search($search) {
         try {
-            $sql = "SELECT * FROM eventos WHERE title_event LIKE '%$search%'";
+            $sql = "SELECT e.id_event, e.title_event,e.photo,e.id_category FROM eventos e left outer join calendarios c on c.id_event = e.id_event WHERE title_event LIKE '%$search%' AND c.id_calendar IS NOT NULL";
             $this->connection = Connection::getInstance();
             $this->connection->connect();
             $resultSet = $this->connection->execute($sql);

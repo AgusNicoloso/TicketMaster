@@ -72,8 +72,14 @@ class EventController {
     public function getEvent($id) {
         return $this->dao->read($id);
     }
-    public function insert($evento,$categoria) {
-        try {
+    public function insert($evento='',$categoria='') {
+        if(empty($evento) || empty($categoria)){
+            $msg = "Complete los datos por favor";
+            $controllercategory = new \controllers\categoryController();
+         if ($controllercategory->getAll()) { $list = $controllercategory->getAll();}
+        require (ROOT . 'views/event.php');
+        }else{
+            try {
 
             $rutaFoto = new Photo();
             $rutaFoto->uploadPhoto($_FILES['fotoevento'], "photos");
@@ -93,9 +99,14 @@ class EventController {
             echo $e->getMessage();
         }
         header("Location:" . URl . "Calendar/index");
+        }
+        
     }
     public function getAll() {
         return $this->dao->readAll();
+    }
+    public function getAllNotCalendar() {
+        return $this->dao->getAllNotCalendar();
     }
     public function getLimitAll($page) {
         return $this->dao->readLimitAll($page);

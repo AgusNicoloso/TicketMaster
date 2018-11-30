@@ -76,28 +76,28 @@
 							<?php foreach ($buys as $key => $value) { ?>
 							<tr class="table-row">
 								<td class="column-1"><?= $key+1; ?></td>
-								<td class="column-2"><?= $value->getDate();?></td>
-								<td class="column-3"><?= $value->getClient()->getName();?></td>
+								<td class="column-2"><?= $value->getId_buy()->getDate();?></td>
+								<td class="column-3"><?= $value->getId_buy()->getClient()->getName();?></td>
 								<td class="column-4 text-center">
 										<img
-							 			 src="<?= URl.$value->getTicket()->getQR(); ?>"
+							 			 src="<?= URl.$value->getId_ticket()->getQR(); ?>"
 							 			 height="120px"
 										>
 								</td>
-								<td class="column-5"><?= $value->getClient()->getMail(); ?></td>
+								<td class="column-5"><?= $value->getId_buy()->getClient()->getMail(); ?></td>
 							</tr>
 							<?php } } else { ?>
 								<tr class="table-row">
 								<td class="column-1"><?= 1 ?></td>
-								<td class="column-2"><?= $buys->getDate();?></td>
-								<td class="column-3"><?= $buys->getClient()->getName();?></td>
+								<td class="column-2"><?= $buys->getId_buy()->getDate();?></td>
+								<td class="column-3"><?= $buys->getId_buy()->getClient()->getName();?></td>
 								<td class="column-4 text-center">
 										<img
-							 			 src="<?= URl.$buys->getTicket()->getQR(); ?>"
+							 			 src="<?= URl.$buys->getId_ticket()->getQR(); ?>"
 							 			 height="120px"
 										>
 								</td>
-								<td class="column-5"><?= $buys->getClient()->getMail(); ?></td>
+								<td class="column-5"><?= $buys->getId_buy()->getClient()->getMail(); ?></td>
 							</tr>
 							<?php } ?>
 						</table>

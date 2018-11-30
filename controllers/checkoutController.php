@@ -5,33 +5,57 @@ class CheckoutController {
     public function index() {
         $ticketsController = new \controllers\ticketsController();
         $buyController = new \controllers\buyController();
+        $Linebuycontroller = new \controllers\Linebuycontroller();
+        $SeatController = new \controllers\SeatController();
         $qr = new \models\Qr_barcode();
         $foto = new \models\Photo();
         $compra = false;
         if (isset($_SESSION['CarritoList'])) {
             date_default_timezone_set('America/Argentina/Buenos_Aires');
-            $fechanow = date('c');
+            $fechanow = date("Y-m-d H:i:s");
             $user = $_SESSION['logued'];
             $email = $user->getMail();
             $name = $user->getName();
             if (is_array($_SESSION['CarritoList'])) {
-                $i = 0;
-                while ($i < count($_SESSION['CarritoList'])) {
-                    $Evento[] = $_SESSION['CarritoList'][$i]['title_event'];
-                    $Plazas[] = $_SESSION['CarritoList'][$i]['name_place'];
-                    $i++;
-                }
-                $events = implode(' - ', $Evento);
-                $seat = implode(' - ', $Plazas);
-            } else {
-                $events = $_SESSION['CarritoList']['title_event'];
-                $seat = $_SESSION['CarritoList']['name_place'];
-            }
-            $qr->text("Gracias por la compra en TicketMaster!!
-    Estos son los detalles de tu compra: 
+                $carrito = count($_SESSION['CarritoList']);
+                $i=0;
+                while ($i<$carrito) {
+                    $nro_ticket = rand(0,999999999);
+                    $event = $_SESSION['CarritoList'][$i]['title_event'];
+                    $place = $_SESSION['CarritoList'][$i]['name_place'];
+                     $qr->text("Gracias por la compra en TicketMaster
+    Numero de ticket: $nro_ticket
     Fecha de compra: $fechanow
-    Eventos: $events 
-    Plazas: $seat
+    Evento: $event
+    Plaza: $place
+    Nombre: $name
+    Email: $email");
+            $imageDirectory = ROOT . "photos/qr" . '/';
+            if (!file_exists($imageDirectory)) {
+                mkdir($imageDirectory);
+            }
+            $namear = str_replace(array("\\", "¨", "º", "-", "~", "#", "@", "|", "!", "\"", "·", "$", "%", "&", "/", "(", ")", "?", "'", "¡", "¿", "[", "^", "<code>", "]", "+", "}", "{", "¨", "´", ">", "< ", ";", ",", ":", ".", " "), '', $nro_ticket);
+            $ruta = "photos/qr" . '/' . $namear . ".png";
+            $file = $imageDirectory . $namear . ".png";
+            $qr->qrCode(300, $file);
+            $ticketsController->insert($nro_ticket,$ruta);
+            $buyController->insert($fechanow, $user->getID());
+            $id_buy = $buyController->getLastID();
+            $id_ticket = $ticketsController->getLastID();
+            $id_plaza_evento = $SeatController->searchbyplace($_SESSION['CarritoList'][$i]['name_place']);
+            $Linebuycontroller->insert($_SESSION['CarritoList'][$i]['quantity'],$_SESSION['CarritoList'][$i]['total'],$id_plaza_evento,$id_buy,$id_ticket);
+            $i++;
+                $compra = true;
+                 }
+            } else {
+                $nro_ticket = rand(0,999999999);
+                    $event = $_SESSION['CarritoList']['title_event'];
+                    $place = $_SESSION['CarritoList']['name_place'];
+                     $qr->text("Gracias por la compra en TicketMaster
+    Numero de ticket: $nro_ticket
+    Fecha de compra: $fechanow
+    Evento: $event
+    Plaza: $place
     Nombre: $name
     Email: $email");
             $imageDirectory = ROOT . "photos/qr" . '/';
@@ -41,14 +65,18 @@ class CheckoutController {
             $namear = str_replace(array("\\", "¨", "º", "-", "~", "#", "@", "|", "!", "\"", "·", "$", "%", "&", "/", "(", ")", "?", "'", "¡", "¿", "[", "^", "<code>", "]", "+", "}", "{", "¨", "´", ">", "< ", ";", ",", ":", ".", " "), '', $fechanow);
             $ruta = "photos/qr" . '/' . $namear . ".png";
             $file = $imageDirectory . $namear . ".png";
-            $qr->qrCode(500, $file);
-            $ticketsController->insert($ruta);
-            $ticket = $ticketsController->search($ruta);
-            $buyController->insert($ticket, $user->getID(), $fechanow);
-            $url = URl;
-            unset($_SESSION['CarritoList']);
-            $compra = true;
+            $qr->qrCode(300, $file);
+            $ticketsController->insert($nro_ticket,$ruta);
+            $buyController->insert($fechanow, $user->getID());
+            $id_buy = $buyController->getLastID();
+            $id_ticket = $ticketsController->getLastID();
+            $id_plaza_evento = $PlaceController->searchbyplace($_SESSION['CarritoList']['name_place']);
+            $Linebuycontroller->insert($_SESSION['CarritoList']['quantity'],$_SESSION['CarritoList']['total'],$id_plaza_evento,$id_buy,$id_ticket);
+                $compra = true;
+            }
+        unset($_SESSION['CarritoList']);  
         }
+        $url = URl;
         require (ROOT . 'views/checkout.php');
     }
 }

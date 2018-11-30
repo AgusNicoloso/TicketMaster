@@ -40,7 +40,7 @@
                                     <tr>
                                         <th scope="row"><?php echo $key+1;?></th>
                                         <td><?php echo $value->getDescript(); ?></td>
-                                        <td><input type="text" class="form-control" placeholder="Precio" name="precios[]"><input type="text" class="form-control" placeholder="Cantidad" name="cantidad[]"></td>
+                                        <td><input type="text" class="form-control" placeholder="Precio" name="precios[]" required><input type="text" class="form-control" placeholder="Cantidad" name="cantidad[]" required></td>
                                     </tr>
                                 <?php }
                             }else{?>
@@ -48,7 +48,7 @@
                                 <tr>
                                     <th scope="row"><?php echo '1'?></th>
                                     <td><?php echo $seatList->getDescript(); ?></td>
-                                    <td><input type="text" placeholder="Precio" class="form-control" name="precios[]"><input type="text" class="form-control" placeholder="Cantidad" name="cantidad[]"></td>
+                                    <td><input type="text" placeholder="Precio" class="form-control" name="precios[]" required><input type="text" class="form-control" placeholder="Cantidad" name="cantidad[]" required></td>
 
                                 </tr>
                             <?php }  ?>
@@ -80,15 +80,15 @@
         <?php } ?>
             
                     <h2><?php echo "Día " . $contador ?></h2>
-                    <select id="multiselectwithsearch<?=$contador?>" multiple="multiple" name="dia<?php echo $contador?>[]">
+                    <select id="multiselectwithsearch<?=$contador?>" multiple="multiple" name="dia<?php echo $contador?>[]" required>
                         <?php
                         if(!empty($lista)){
                           if(!is_array($lista)){ ?>
-                            <option value="<?php echo $lista->getId(); ?>"> <?php echo $lista->getName(); ?> </option>
+                            <option value="<?php echo $lista->getId(); ?>" required> <?php echo $lista->getName(); ?> </option>
                         <?php  } else {
                             foreach ($lista as $key => $value) { ?>
 
-                                <option value="<?php echo $value->getId(); ?>"> <?php echo $value->getName(); ?> </option>
+                                <option value="<?php echo $value->getId(); ?>" required> <?php echo $value->getName(); ?> </option>
                             <?php } }
                         } ?>
                     </select>

@@ -17,6 +17,13 @@
                 <h2>Alta Evento</h2>
                 <p>Agregar Datos de Evento</p>
             </div>
+            <?php
+            if(isset($msg)){
+                ?>
+                <div class="alert alert-danger"><?php echo $msg;?></div>
+                <?php
+            }
+            ?>
               <form id="Event" method="post" action="insert" enctype="multipart/form-data">
               <div class="form-group">
                 <input type="text" class="form-control" name="nombreevento" placeholder="Nombre Evento" required>

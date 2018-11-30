@@ -15,8 +15,8 @@
 </head>
 <body>
 	<div align="center">
-			<?php if($compra){ ?>
-			<?= "<img align=center src='$url$ruta'>" ?> 
+			<?php if($compra){ //<?= "<img align=center src='$url$ruta'>"?>
+			 <h4>compraste supuestamente...</h4>
 			<?php } else {echo "Necesitas cargar algo al carrito antes de comprar";} ?>
 			<br>
 			<a class="btn btn-primary" href="<?= URl.'home' ?>">Home</a>

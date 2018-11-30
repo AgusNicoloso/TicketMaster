@@ -241,6 +241,5 @@
 		<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
 		<!--===============================================================================================-->
 		<script src="js/main.js"></script>
-
 	</body>
 	</html>

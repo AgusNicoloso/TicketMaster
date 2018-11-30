@@ -9,8 +9,9 @@ class TicketsDB extends SingletonDao implements idao {
     function __construct() {
     }
     public function create($ticket) {
-        $sql = "INSERT INTO tickets (qr) VALUES (:qr)";
+        $sql = "INSERT INTO tickets (number_ticket,qr) VALUES (:number_ticket,:qr)";
         $parameters['qr'] = $ticket->getQR();
+        $parameters['number_ticket'] = $ticket->getNumber();
         try {
             $this->connection = Connection::getInstance();
             $this->connection->connect();
@@ -52,8 +53,21 @@ class TicketsDB extends SingletonDao implements idao {
     protected function mapear($value) {
         $value = is_array($value) ? $value : [];
         $resp = array_map(function ($p) {
-            return new Ticket($p['qr'], $p['id_ticket']);
+            return new Ticket($p['number_ticket'],$p['qr'], $p['id_ticket']);
         }, $value);
         return count($resp) > 1 ? $resp : $resp['0'];
+    }
+    public function getLastID() {
+        $sql = "select max(id_ticket) as id from tickets";
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $resultSet = $this->connection->execute($sql);
+        }
+        catch(Exception $ex) {
+            throw $ex;
+        }
+        if (!empty($resultSet)) return $resultSet[0]["id"];
+        else return false;
     }
 }

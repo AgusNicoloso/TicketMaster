@@ -3,10 +3,8 @@ class Buy {
     private $date;
     private $client;
     private $id;
-    private $ticket;
-    function __construct($ticket, $client, $date = '', $id = '') {
+    function __construct($date, $client, $id = '') {
         $this->id = $id;
-        $this->ticket = $ticket;
         $this->date = $date;
         $this->client = $client;
     }
@@ -18,9 +16,6 @@ class Buy {
     }
     public function getID() {
         return $this->id;
-    }
-    public function getTicket() {
-        return $this->ticket;
     }
 }
 ?>

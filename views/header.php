@@ -30,7 +30,7 @@ $c_calendar=new CalendarController();
                                                 </button>
 
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="<?= URl ?>Buy/index">Ver ventas</a>
+                                                <a class="dropdown-item" href="<?= URl ?>linebuy/index">Ver ventas</a>
                                                 <a class="dropdown-item" href="<?= URl ?>Artist">Agregar Artista</a>
                                                 <a class="dropdown-item" href="<?= URl ?>Category/index">Agregar Categoria</a>
                                                 <a class="dropdown-item" href="<?= URl ?>Place/index">Agregar Lugar de Evento</a>
