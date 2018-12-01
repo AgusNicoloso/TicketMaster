@@ -46,6 +46,7 @@ class CalendarController {
         $_SESSION['dates'] = array();
         $place = $c_place->placebyid($place);
         $lista = $lista->showArtist();
+
         require ('views/calendar2Form.php');
         }  
     }
@@ -70,10 +71,10 @@ class CalendarController {
             $msg = 'Supera la capacidad del establecimiento';
             require ('views/calendarForm.php');
         } else {
-            $this->addCalendar($precios,$cantidad,$event,$dateIn,$dateOut,$place,$days,$seats,$dates);
+            $this->addCalendar($precios,$cantidad,$event,$place,$days,$seats,$dates);
         }
     }
-    public function addCalendar($precios,$cantidad,$event,$dateIn,$dateOut,$place,$days,$seats,$dates) {
+    public function addCalendar($precios,$cantidad,$event,$place,$days,$seats,$dates) {
         $i = 1;
         $a = $dates;
         $c_eventPlace = new EventPlaceController();

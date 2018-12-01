@@ -68,17 +68,17 @@
                 <?php
                 if($_POST) {
                     $contador = 1;
-                     while($contador <= $dayCounter+1) {
+                    $arreglo[]=null;
+                    while($contador <= $dayCounter+1) {
                     if (($dateStart <= $dateFinish)) {
                         $aux = $dateStart;
-                        array_push( $_SESSION['dates'], $aux->format('Y-m-d'));
-                        $dateStart->modify('+1 day');
+                    //array_push( $arreglo, $aux->format('Y-m-d'));
+                        ?>
+
+                <input type="date" name="dates[]" value="<?= $aux->format('Y-m-d') ?>" hidden>
+                   <?php     $dateStart->modify('+1 day');
                     }
                 ?>
-                <?php foreach($_SESSION['dates'] as $key=>$value){?>
-            <input type="date" name="dates[]" value="<?= $value ?>" hidden>
-        <?php } ?>
-            
                     <h2><?php echo "Día " . $contador ?></h2>
                     <select id="multiselectwithsearch<?=$contador?>" multiple="multiple" name="dia<?php echo $contador?>[]" required>
                         <?php
@@ -106,9 +106,9 @@
                     </script>
                     <?php $contador++; }
                     ?>
-
-
-                    
+                    <?php foreach($arreglo as $key=>$value){?>
+                <input type="date" name="dates[]" value="<?= $value ?>" hidden>
+                <?php } ?>
             <?php
             } ?>
 
