@@ -153,4 +153,7 @@ class CalendarController {
         $dbevents = new \controllers\EventController();
         include (ROOT . 'views/eventbyfilter.php');
     }
+    public function discountavailable($id_event,$place,$quantity) {
+        $this->dao->discountavailable($id_event,$place,$quantity);
+    }
 }

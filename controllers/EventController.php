@@ -69,6 +69,14 @@ class EventController {
         $productdetailController = new productdetailController();
         $productdetailController->index($product);
     }
+    public function see1($id,$msg) {
+        $product = $this->dao->read($id);
+        $this->viewProductDetail1($product,$msg);
+    }
+    public function viewProductDetail1($product,$msg) {
+        $productdetailController = new productdetailController();
+        $productdetailController->index1($product,$msg);
+    }
     public function getEvent($id) {
         return $this->dao->read($id);
     }

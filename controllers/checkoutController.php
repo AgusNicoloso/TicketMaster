@@ -7,6 +7,7 @@ class CheckoutController {
         $buyController = new \controllers\buyController();
         $Linebuycontroller = new \controllers\Linebuycontroller();
         $SeatController = new \controllers\SeatController();
+        $calendarController = new \controllers\calendarController();
         $qr = new \models\Qr_barcode();
         $foto = new \models\Photo();
         $compra = false;
@@ -44,6 +45,7 @@ class CheckoutController {
             $id_ticket = $ticketsController->getLastID();
             $id_plaza_evento = $SeatController->searchbyplace($_SESSION['CarritoList'][$i]['name_place']);
             $Linebuycontroller->insert($_SESSION['CarritoList'][$i]['quantity'],$_SESSION['CarritoList'][$i]['total'],$id_plaza_evento,$id_buy,$id_ticket);
+            $calendarController->discountavailable($_SESSION['CarritoList'][$i]['id_event'],$id_plaza_evento,$_SESSION['CarritoList'][$i]['quantity']);
             $i++;
                 $compra = true;
                  }

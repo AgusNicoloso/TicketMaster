@@ -36,8 +36,13 @@ class EventPlaceController {
     public function readAll() {
         return $this->dao->readAll();
     }
-    public function ver($id, $id_tipo_plaza, $num_product, $fecha) {
-        $carrito = new DaoCarrito();
+    public function ver($id='', $id_tipo_plaza='', $num_product='', $fecha='') {
+        if(empty($id) || empty($id_tipo_plaza) || empty($num_product) || empty($fecha)){
+           $msg = "Complete todos los datos";
+           $ec = new EventController();
+           $ec->see1($id,$msg);
+        }else{
+            $carrito = new DaoCarrito();
         $ec = new EventController();
         $i = 0;
         while ($i < count($fecha)) {
@@ -48,6 +53,7 @@ class EventPlaceController {
             $i++;
         }
         header("Location:" . URl . "product");
+        }
     }
     public function capacityCounter($array) {
         $suma = 0;

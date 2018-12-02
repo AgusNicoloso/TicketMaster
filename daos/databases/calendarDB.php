@@ -26,6 +26,24 @@ class calendarDB extends SingletonDao implements IDao {
             throw $ex;
         }
     }
+    public function discountavailable($id_event,$place,$quantity){
+        $sql = "UPDATE calendarios AS c
+INNER JOIN plaza_eventos AS P 
+ON 
+c.id_calendar = p.id_calendar
+SET 
+p.available = p.available - $quantity
+WHERE 
+p.available > 0 and c.id_event = $id_event and p.id_tipo_plaza = $place";
+        try {
+            $this->connection = Connection::getInstance();
+            $this->connection->connect();
+            $this->connection->ExecuteNonQuery($sql);
+        }
+        catch(\PDOException $ex) {
+            throw $ex;
+        }
+    }
     public function verifyDate($date_event, $id_place) {
         $sql = "select c.id_place,c.date_event FROM calendarios c where c.id_place = :id_place and c.date_event = :date_event";
         $parameters['id_place'] = $id_place;

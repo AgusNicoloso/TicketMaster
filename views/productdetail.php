@@ -75,7 +75,13 @@ if(isset($logued)){ ?>
 				<h4 class="product-detail-name m-text16 p-b-13">
 					<?php echo $product->getName(); ?>
 				</h4>
-				<!--  -->
+				<?php
+            if(isset($msg)){
+                ?>
+                <div class="alert alert-danger text-center"><?php echo $msg;?></div>
+                <?php
+            }
+            ?>
 				<form action="<?= URl ?>EventPlace/ver" method="post">
 					<input type="hidden" name="id" value="<?= $product->getID(); ?>">
 				<div class="p-t-33 p-b-60">
@@ -90,19 +96,35 @@ if(isset($logued)){ ?>
 									$list = $info[0]->getTypeplace();
 									if(is_array($list)){
 										foreach ($list as $key => $value) { ?>
+											<?php if($value->getAvailable()<=0) { ?>
+												<option disabled><?= $value->getSeatName() . " - NO HAY STOCK"?></option>
+											<?php } else { ?>
 								<option value="<?= $value->getID(); ?>"><?= $value->getSeatName() . " - $" . $value->getPrice();?></option>
-																	<?php } ?>
+							<?php } ?>
+									<?php } ?>
 									<?php } else {  ?>
+										<?php if($list->getAvailable()<=0) { ?>
+											<option disabled><?= $list->getSeatName() . " - NO HAY STOCK"?></option>
+											<?php } else { ?>
 										<option value="<?= $list->getID(); ?>"><?= $list->getSeatName() . " - $" . $list->getPrice();?></option>
+										<?php } ?>
 								<?php } ?>
 								<?php } else { 
 								$list = $info->getTypeplace();
 								if(is_array($list)){
 								foreach ($list as $key => $value) { ?>
+									<?php if($value->getAvailable()<=0) { ?>
+										<option disabled><?= $value->getSeatName() . " - NO HAY STOCK"?></option>
+											<?php } else { ?>
 								  	<option value="<?= $value->getID(); ?>"><?= $value->getSeatName() . " - $" . $value->getPrice();?></option>
+								  	<?php } ?>
 								  <?php }  ?>
 							<?php } else { ?>
+								<?php if($list->getAvailable()<=0) { ?>
+									<option disabled><?= $list->getSeatName() . " - NO HAY STOCK"?></option>
+											<?php } else { ?>
 								<option value="<?= $info->getTypeplace()->getID(); ?>"><?= $info->getTypeplace()->getSeatName() . " - $" . $info->getTypeplace()->getPrice();?></option>
+								<?php } ?>
 							<?php }}?>
 							</select>
 						</div>
