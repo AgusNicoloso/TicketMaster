@@ -79,7 +79,7 @@ class CheckoutController {
         unset($_SESSION['CarritoList']);  
         }
         $url = URl;
-        require (ROOT . 'views/checkout.php');
+        $buyController->userbuylist();
     }
 }
 ?>
