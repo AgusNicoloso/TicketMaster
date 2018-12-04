@@ -79,6 +79,7 @@ class CheckoutController {
         unset($_SESSION['CarritoList']);  
         }
         $url = URl;
+        echo "<script type=\"text/javascript\">alert('Muchas gracias por tu compra!');</script>";
         $buyController->userbuylist();
     }
 }
